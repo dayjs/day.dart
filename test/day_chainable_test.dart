@@ -8,11 +8,11 @@ void main() {
     d
       ..setYear(2020)
       ..setMonth(5)
-      ..setDay(1)
+      ..setDate(1)
       ..finished();
 
     expect(d.year(), equals(2020));
     expect(d.month(), equals(5));
-    expect(d.day(), equals(1));
+    expect(d.date(), equals(1));
   });
 }

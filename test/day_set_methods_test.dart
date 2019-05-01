@@ -27,12 +27,12 @@ void main() {
 
     test('Set day', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.day(29);
+      final dClone = d.date(29);
 
-      expect(d.day(), equals(30));
+      expect(d.date(), equals(30));
       expect(d.time.day, equals(30));
 
-      expect(dClone.day(), equals(29));
+      expect(dClone.date(), equals(29));
       expect(dClone.time.day, equals(29));
     });
 

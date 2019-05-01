@@ -1,10 +1,6 @@
-import 'constants.dart';
-
-const _C = Constants;
-
 class Day {
   DateTime _time;
-  final Map<String, int> _values = Map<String, int>();
+  final Map<String, int> _values = <String, int>{};
 
   Day() {
     this._time = DateTime.now();
@@ -55,11 +51,17 @@ class Day {
     }
   }
 
-  day([int day]) {
-    if (day == null) {
-      return this._values['day'];
+  weekday([int weekday]) {
+    if (weekday == null) {
+      return this._values['weekday'];
+    }
+  }
+
+  date([int date]) {
+    if (date == null) {
+      return this._values['date'];
     } else {
-      return this._cloneAndSetSingleValue('day', day);
+      return this._cloneAndSetSingleValue('date', date);
     }
   }
 
@@ -99,7 +101,7 @@ class Day {
 
   setMonth(int month) => this._values['month'] = month;
 
-  setDay(int day) => this._values['day'] = day;
+  setDate(int date) => this._values['date'] = date;
 
   setHour(int hour) => this._values['hour'] = hour;
 
@@ -117,6 +119,8 @@ class Day {
     this._updateTime();
   }
 
+  add(int number, String unit) {}
+
   _cloneAndSetSingleValue(key, val) {
     final d = this.clone();
     d.setValue(key, val);
@@ -129,7 +133,8 @@ class Day {
 
     this._values['year'] = time.year;
     this._values['month'] = time.month;
-    this._values['day'] = time.day;
+    this._values['weekday'] = time.weekday;
+    this._values['date'] = time.day;
     this._values['hour'] = time.hour;
     this._values['minute'] = time.minute;
     this._values['second'] = time.second;
@@ -138,7 +143,7 @@ class Day {
 
   _updateTime() {
     final vals = this._values;
-    this._time = DateTime(vals['year'], vals['month'], vals['day'],
+    this._time = DateTime(vals['year'], vals['month'], vals['date'],
         vals['hour'], vals['minute'], vals['second'], vals['millisecond']);
   }
 

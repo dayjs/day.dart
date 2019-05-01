@@ -14,7 +14,7 @@ void main() {
     });
 
     test('Get day', () {
-      expect(d.day(), equals(30));
+      expect(d.date(), equals(30));
     });
 
     test('Get hour', () {
