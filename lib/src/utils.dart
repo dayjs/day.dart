@@ -1,16 +1,20 @@
-import 'constants.dart';
+import 'constants.dart' as C;
 
-class Utils {
-  processUnit(String unit) {
-    const unitMap = {
-      'Y': Constants.Y,
-      'M': Constants.M,
-      'W': Constants.W,
-      'D': Constants.D,
-      'H': Constants.H,
-      'MIN': Constants.MIN,
-      'S': Constants.S,
-      'MS': Constants.MS
-    };
+const _unitMap = {
+  'y': C.Y,
+  'M': C.M,
+  'w': C.W,
+  'd': C.D,
+  'h': C.H,
+  'm': C.MIN,
+  's': C.S,
+  'ms': C.MS
+};
+
+String processUnit(String unit) {
+  if (_unitMap.containsKey(unit)) {
+    return _unitMap[unit];
   }
+
+  return unit.trim().toLowerCase();
 }

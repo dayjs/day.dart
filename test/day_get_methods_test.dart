@@ -32,5 +32,16 @@ void main() {
     test('Get millisecond', () {
       expect(d.millisecond(), equals(0));
     });
+
+    test('Common getting', () {
+      expect(d.get('y'), equals(2019));
+      expect(d.get('M'), equals(4));
+      expect(d.get('w'), equals(2));
+      expect(d.get('d'), equals(30));
+      expect(d.get('h'), equals(10));
+      expect(d.get('m'), equals(30));
+      expect(d.get('s'), equals(30));
+      expect(d.get('ms'), equals(0));
+    });
   });
 }

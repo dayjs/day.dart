@@ -1,122 +1,142 @@
+import 'utils.dart' as U;
+
 class Day {
   DateTime _time;
-  final Map<String, int> _values = <String, int>{};
+  final Map<String, int> _values = {};
 
   Day() {
-    this._time = DateTime.now();
-    this._parseTime();
+    _time = DateTime.now();
+    _parseTime();
   }
 
   Day.fromString(String time) {
-    this._time = DateTime.parse(time);
-    this._parseTime();
+    _time = DateTime.parse(time);
+    _parseTime();
   }
 
   Day.fromDateTime(DateTime time) {
-    this._time = time;
-    this._parseTime();
+    _time = time;
+    _parseTime();
   }
 
   Day.fromUnix(int time) {
-    this._time = DateTime.fromMillisecondsSinceEpoch(time);
-    this._parseTime();
+    _time = DateTime.fromMillisecondsSinceEpoch(time);
+    _parseTime();
   }
 
   Day.fromDayInstance(Day day) {
-    this._time = day.time;
-    this._parseTime();
+    _time = day.time;
+    _parseTime();
   }
 
   DateTime get time {
-    return this._time;
+    return _time;
   }
 
   Day clone() {
-    return Day.fromDateTime(this.time);
+    return Day.fromDateTime(time);
   }
 
   year([int year]) {
     if (year == null) {
-      return this._values['year'];
+      return _values['year'];
     } else {
-      return this._cloneAndSetSingleValue('year', year);
+      return _cloneAndSetSingleValue('year', year);
     }
   }
 
   month([int month]) {
     if (month == null) {
-      return this._values['month'];
+      return _values['month'];
     } else {
-      return this._cloneAndSetSingleValue('month', month);
+      return _cloneAndSetSingleValue('month', month);
     }
   }
 
   weekday([int weekday]) {
     if (weekday == null) {
-      return this._values['weekday'];
+      return _values['weekday'];
     }
   }
 
   date([int date]) {
     if (date == null) {
-      return this._values['date'];
+      return _values['date'];
     } else {
-      return this._cloneAndSetSingleValue('date', date);
+      return _cloneAndSetSingleValue('date', date);
     }
   }
 
   hour([int hour]) {
     if (hour == null) {
-      return this._values['hour'];
+      return _values['hour'];
     } else {
-      return this._cloneAndSetSingleValue('hour', hour);
+      return _cloneAndSetSingleValue('hour', hour);
     }
   }
 
   minute([int minute]) {
     if (minute == null) {
-      return this._values['minute'];
+      return _values['minute'];
     } else {
-      return this._cloneAndSetSingleValue('minute', minute);
+      return _cloneAndSetSingleValue('minute', minute);
     }
   }
 
   second([int second]) {
     if (second == null) {
-      return this._values['second'];
+      return _values['second'];
     } else {
-      return this._cloneAndSetSingleValue('second', second);
+      return _cloneAndSetSingleValue('second', second);
     }
   }
 
   millisecond([int millisecond]) {
     if (millisecond == null) {
-      return this._values['millisecond'];
+      return _values['millisecond'];
     } else {
-      return this._cloneAndSetSingleValue('millisecond', millisecond);
+      return _cloneAndSetSingleValue('millisecond', millisecond);
     }
   }
 
-  setYear(int year) => this._values['year'] = year;
+  setYear(int year) => _values['year'] = year;
 
-  setMonth(int month) => this._values['month'] = month;
+  setMonth(int month) => _values['month'] = month;
 
-  setDate(int date) => this._values['date'] = date;
+  setDate(int date) => _values['date'] = date;
 
-  setHour(int hour) => this._values['hour'] = hour;
+  setHour(int hour) => _values['hour'] = hour;
 
-  setMinute(int minute) => this._values['minute'] = minute;
+  setMinute(int minute) => _values['minute'] = minute;
 
-  setSecond(int second) => this._values['second'] = second;
+  setSecond(int second) => _values['second'] = second;
 
-  setMillisecond(int millisecond) => this._values['millisecond'] = millisecond;
+  setMillisecond(int millisecond) => _values['millisecond'] = millisecond;
 
   setValue(key, val) {
-    this._values[key] = val;
+    _values[key] = val;
   }
 
   finished() {
-    this._updateTime();
+    _updateTime();
+  }
+
+  get(String unit) {
+    final processedUnit = U.processUnit(unit);
+
+    if (_values.containsKey(processedUnit)) {
+      return _values[processedUnit];
+    }
+
+    return null;
+  }
+
+  set(String unit, int val) {
+    final processedUnit = U.processUnit(unit);
+
+    if (_values.containsKey(processedUnit)) {
+      _values[processedUnit] = val;
+    }
   }
 
   add(int number, String unit) {}
@@ -129,22 +149,23 @@ class Day {
   }
 
   _parseTime() {
-    final time = this.time;
+    final vals = _values;
 
-    this._values['year'] = time.year;
-    this._values['month'] = time.month;
-    this._values['weekday'] = time.weekday;
-    this._values['date'] = time.day;
-    this._values['hour'] = time.hour;
-    this._values['minute'] = time.minute;
-    this._values['second'] = time.second;
-    this._values['millisecond'] = time.millisecond;
+    vals['year'] = time.year;
+    vals['month'] = time.month;
+    vals['weekday'] = time.weekday;
+    vals['date'] = time.day;
+    vals['hour'] = time.hour;
+    vals['minute'] = time.minute;
+    vals['second'] = time.second;
+    vals['millisecond'] = time.millisecond;
   }
 
   _updateTime() {
     final vals = this._values;
-    this._time = DateTime(vals['year'], vals['month'], vals['date'],
-        vals['hour'], vals['minute'], vals['second'], vals['millisecond']);
+
+    _time = DateTime(vals['year'], vals['month'], vals['date'], vals['hour'],
+        vals['minute'], vals['second'], vals['millisecond']);
   }
 
   @override
@@ -156,6 +177,6 @@ class Day {
 
   @override
   bool operator ==(day) {
-    return day is Day && this.time == day.time;
+    return day is Day && time == day.time;
   }
 }
