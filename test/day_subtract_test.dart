@@ -16,7 +16,7 @@ void main() {
       final Day dClone = d.subtract(2, 'month');
 
       expect(d.month(), equals(4));
-      expect(dClone.month(), equals(2));
+      expect(dClone.month(), equals(3));
     });
 
     test('Subtract 4 months', () {

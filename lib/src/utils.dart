@@ -35,3 +35,20 @@ Duration durationFromUnit(int val, String unit) {
       return null;
   }
 }
+
+int processDiffDuration(Duration duration, String unit) {
+  switch (unit) {
+    case C.D:
+      return duration.inDays.abs();
+    case C.H:
+      return duration.inHours.abs();
+    case C.MIN:
+      return duration.inMinutes.abs();
+    case C.S:
+      return duration.inSeconds.abs();
+    case C.MS:
+      return duration.inMilliseconds.abs();
+    default:
+      return null;
+  }
+}

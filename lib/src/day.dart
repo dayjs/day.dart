@@ -191,6 +191,48 @@ class Day {
 
   dec(int val, String unit) => subtract(val, unit);
 
+  toUtc() {
+    final d = clone();
+    d._time = d.time.toUtc();
+    d._parseTime();
+    return d;
+  }
+
+  toLocal() {
+    final d = clone();
+    d._time = d.time.toLocal();
+    d._parseTime();
+    return d;
+  }
+
+  bool get isUtc => time.isUtc;
+
+  toIso8601String() => time.toIso8601String();
+
+  String get timezoneName => time.timeZoneName;
+
+  int get timezoneOffset => time.timeZoneOffset.inHours;
+
+  compareTo(Day day) => time.compareTo(day.time);
+
+  isBefore(Day day) => time.isBefore(day.time);
+
+  isAfter(Day day) => time.isAfter(day.time);
+
+  diff(Day day, String unit) {
+    final difference = time.difference(day.time);
+    final processedUnit = U.processUnit(unit);
+
+    switch (processedUnit) {
+      case 'year':
+        return (year() - day.year()).abs();
+      case 'month':
+        return (year() - day.year()).abs() * 12 + day.month() - month();
+      default:
+        return U.processDiffDuration(difference, processedUnit);
+    }
+  }
+
   _cloneAndSetSingleValue(key, val) {
     final d = clone();
     d.setValue(key, val);
@@ -216,6 +258,8 @@ class Day {
 
     _time = DateTime(vals['year'], vals['month'], vals['date'], vals['hour'],
         vals['minute'], vals['second'], vals['millisecond']);
+
+    _parseTime();
   }
 
   @override
