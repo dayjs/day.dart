@@ -157,7 +157,35 @@ class Day {
     return null;
   }
 
-  subtract(int val, String unit) {}
+  subtract(int val, String unit) {
+    final processedUnit = U.processUnit(unit);
+    final duration = U.durationFromUnit(val, processedUnit);
+
+    if (duration != null) {
+      final d = clone();
+      d._time = d.time.subtract(duration);
+      d._parseTime();
+      return d;
+    } else {
+      if (unit == 'year') {
+        return _cloneAndSetSingleValue('year', year() - val);
+      } else if (unit == 'month') {
+        final int result = month() - val;
+
+        final d = clone();
+        if (result > 0) {
+          d.setValue('month', result);
+        } else {
+          d.setValue('year', d.year() - (result.abs() ~/ 12 + 1));
+          d.setValue('month', 12 - result.abs() % 12);
+        }
+        d.finished();
+        return d;
+      }
+    }
+
+    return null;
+  }
 
   inc(int val, String unit) => add(val, unit);
 

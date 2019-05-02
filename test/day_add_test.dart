@@ -3,7 +3,7 @@ import 'package:day.dart/day.dart';
 
 void main() {
   group('Add Method:', () {
-    test('add 1 year', () {
+    test('Add 1 year', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(1, 'year');
 
@@ -11,7 +11,7 @@ void main() {
       expect(dClone.year(), equals(2020));
     });
 
-    test('add 2 months', () {
+    test('Add 2 months', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(2, 'month');
 
@@ -30,7 +30,7 @@ void main() {
       expect(dClone.month(), equals(1));
     });
 
-    test('add 1 day', () {
+    test('Add 1 day', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(1, 'date');
 
@@ -41,7 +41,7 @@ void main() {
       expect(dClone.date(), equals(1));
     });
 
-    test('add 1 hour', () {
+    test('Add 1 hour', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(1, 'hour');
 
@@ -49,7 +49,7 @@ void main() {
       expect(dClone.hour(), equals(11));
     });
 
-    test('add 1 minute', () {
+    test('Add 1 minute', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(1, 'minute');
 
@@ -57,15 +57,15 @@ void main() {
       expect(dClone.minute(), equals(31));
     });
 
-    test('add 1 second', () {
+    test('Add 1 second', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(1, 'second');
 
-      expect(d.minute(), equals(30));
-      expect(dClone.minute(), equals(31));
+      expect(d.second(), equals(30));
+      expect(dClone.second(), equals(31));
     });
 
-    test('add 1 ms', () {
+    test('Add 1 ms', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.add(1, 'ms');
 
