@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 import 'package:day.dart/day.dart';
 
 void main() {
-  group('Day Constructor', () {
+  group('Day Constructor:', () {
     test('No named', () {
       final d = Day();
 

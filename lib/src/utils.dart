@@ -18,3 +18,20 @@ String processUnit(String unit) {
 
   return unit.trim().toLowerCase();
 }
+
+Duration durationFromUnit(int val, String unit) {
+  switch (unit) {
+    case C.D:
+      return Duration(days: val);
+    case C.H:
+      return Duration(hours: val);
+    case C.MIN:
+      return Duration(minutes: val);
+    case C.S:
+      return Duration(seconds: val);
+    case C.MS:
+      return Duration(milliseconds: val);
+    default:
+      return null;
+  }
+}

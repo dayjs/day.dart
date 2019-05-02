@@ -29,13 +29,9 @@ class Day {
     _parseTime();
   }
 
-  DateTime get time {
-    return _time;
-  }
+  DateTime get time => _time;
 
-  Day clone() {
-    return Day.fromDateTime(time);
-  }
+  Day clone() => Day.fromDateTime(time);
 
   year([int year]) {
     if (year == null) {
@@ -113,22 +109,18 @@ class Day {
 
   setMillisecond(int millisecond) => _values['millisecond'] = millisecond;
 
-  setValue(key, val) {
-    _values[key] = val;
+  setValue(String key, int val) {
+    if (_values.containsKey(key)) {
+      _values[key] = val;
+    }
   }
 
-  finished() {
-    _updateTime();
-  }
+  finished() => _updateTime();
 
   get(String unit) {
     final processedUnit = U.processUnit(unit);
 
-    if (_values.containsKey(processedUnit)) {
-      return _values[processedUnit];
-    }
-
-    return null;
+    return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
   }
 
   set(String unit, int val) {
@@ -139,10 +131,40 @@ class Day {
     }
   }
 
-  add(int number, String unit) {}
+  add(int val, String unit) {
+    final processedUnit = U.processUnit(unit);
+    final duration = U.durationFromUnit(val, processedUnit);
+
+    if (duration != null) {
+      final d = clone();
+      d._time = d.time.add(duration);
+      d._parseTime();
+      return d;
+    } else {
+      if (unit == 'year') {
+        return _cloneAndSetSingleValue('year', year() + val);
+      } else if (unit == 'month') {
+        final int result = month() + val;
+
+        final d = clone();
+        d.setValue('year', d.year() + result ~/ 12);
+        d.setValue('month', result % 12);
+        d.finished();
+        return d;
+      }
+    }
+
+    return null;
+  }
+
+  subtract(int val, String unit) {}
+
+  inc(int val, String unit) => add(val, unit);
+
+  dec(int val, String unit) => subtract(val, unit);
 
   _cloneAndSetSingleValue(key, val) {
-    final d = this.clone();
+    final d = clone();
     d.setValue(key, val);
     d.finished();
     return d;
@@ -162,7 +184,7 @@ class Day {
   }
 
   _updateTime() {
-    final vals = this._values;
+    final vals = _values;
 
     _time = DateTime(vals['year'], vals['month'], vals['date'], vals['hour'],
         vals['minute'], vals['second'], vals['millisecond']);
@@ -176,7 +198,8 @@ class Day {
   }
 
   @override
-  bool operator ==(day) {
-    return day is Day && time == day.time;
-  }
+  bool operator ==(day) => day is Day && time == day.time;
+
+  @override
+  String toString() => time.toString();
 }

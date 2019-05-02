@@ -2,10 +2,10 @@ import 'package:test/test.dart';
 import 'package:day.dart/day.dart';
 
 void main() {
-  group('Set Methods', () {
+  group('Set Methods:', () {
     test('Set year', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.year(2020);
+      final Day dClone = d.year(2020);
 
       expect(d.year(), equals(2019));
       expect(d.time.year, equals(2019));
@@ -16,7 +16,7 @@ void main() {
 
     test('Set month', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.month(5);
+      final Day dClone = d.month(5);
 
       expect(d.month(), equals(4));
       expect(d.time.month, equals(4));
@@ -27,7 +27,7 @@ void main() {
 
     test('Set day', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.date(29);
+      final Day dClone = d.date(29);
 
       expect(d.date(), equals(30));
       expect(d.time.day, equals(30));
@@ -38,7 +38,7 @@ void main() {
 
     test('Set hour', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.hour(11);
+      final Day dClone = d.hour(11);
 
       expect(d.hour(), equals(10));
       expect(d.time.hour, equals(10));
@@ -49,7 +49,7 @@ void main() {
 
     test('Set minute', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.minute(31);
+      final Day dClone = d.minute(31);
 
       expect(d.minute(), equals(30));
       expect(d.time.minute, equals(30));
@@ -60,7 +60,7 @@ void main() {
 
     test('Set second', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.second(32);
+      final Day dClone = d.second(32);
 
       expect(d.second(), equals(30));
       expect(d.time.second, equals(30));
@@ -71,7 +71,7 @@ void main() {
 
     test('Set millisecond', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.millisecond(1);
+      final Day dClone = d.millisecond(1);
 
       expect(d.millisecond(), equals(0));
       expect(d.time.millisecond, equals(0));
@@ -82,7 +82,7 @@ void main() {
 
     test('Chainable', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
-      final dClone = d.year(2020).month(5);
+      final Day dClone = d.year(2020).month(5);
 
       expect(d.year(), equals(2019));
       expect(d.time.year, equals(2019));

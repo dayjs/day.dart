@@ -4,7 +4,7 @@ import 'package:day.dart/day.dart';
 void main() {
   final d = Day.fromString('2019-04-30T10:30:30.000Z');
 
-  group('Get Methods', () {
+  group('Get Methods:', () {
     test('Get year', () {
       expect(d.year(), equals(2019));
     });
