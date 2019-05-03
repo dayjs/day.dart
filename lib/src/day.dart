@@ -49,17 +49,17 @@ class Day {
     }
   }
 
-  weekday([int weekday]) {
-    if (weekday == null) {
-      return _values['weekday'];
-    }
-  }
-
   date([int date]) {
     if (date == null) {
       return _values['date'];
     } else {
       return _cloneAndSetSingleValue('date', date);
+    }
+  }
+
+  weekday([int weekday]) {
+    if (weekday == null) {
+      return _values['weekday'];
     }
   }
 
@@ -209,9 +209,9 @@ class Day {
 
   toIso8601String() => time.toIso8601String();
 
-  String get timezoneName => time.timeZoneName;
+  String get timeZoneName => time.timeZoneName;
 
-  int get timezoneOffset => time.timeZoneOffset.inHours;
+  int get timeZoneOffset => time.timeZoneOffset.inHours;
 
   compareTo(Day day) => time.compareTo(day.time);
 
