@@ -49,7 +49,7 @@ Also inherit from Day.js, part of manipulations is immutable.
 ## Import
 
 ```dart
-import 'package:day.dart/day.dart';
+import 'package:day/day.dart';
 ```
 
 ## Constructor

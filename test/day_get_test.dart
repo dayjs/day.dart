@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:day.dart/day.dart';
+import 'package:day/day.dart';
 
 void main() {
   final d = Day.fromString('2019-04-30T10:30:30.000Z');

@@ -1,6 +1,6 @@
 // View https://github.com/g1eny0ung/day.dart for more usage.
 
-import 'package:day.dart/day.dart';
+import 'package:day/day.dart';
 
 void main() {
   final now = Day();

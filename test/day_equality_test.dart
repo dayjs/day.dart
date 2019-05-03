@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:day.dart/day.dart';
+import 'package:day/day.dart';
 
 void main() {
   test('Equality', () {
