@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.png?raw=true" alt="day.dart logo" />    
 </p>
-<p align="center">🕒 <a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart. With nearly the same API.</p>
+<p align="center"><a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart. With nearly the same API.</p>
 
 <p align="center">
   <img alt="Pub" src="https://img.shields.io/pub/v/day.svg">

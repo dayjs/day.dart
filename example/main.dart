@@ -9,7 +9,7 @@ void main() {
   final afterOneDay = now.add(1, 'date');
   print(afterOneDay);
 
-  // chainable
+  // Chainable
   now
     ..setYear(2020)
     ..setMonth(5)
