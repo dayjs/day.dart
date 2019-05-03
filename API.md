@@ -37,12 +37,12 @@ Also inherit from Day.js, part of manipulations is immutable.
     - [Time zone Name](#time-zone-name)
     - [Time zone Offset](#time-zone-offset)
     - [Difference](#difference)
-  - [Query]
+  - [Query](#query)
     - [Compare To](#compare-to)
     - [Is Before](#is-before)
     - [Is After](#is-after)
     - [Is Utc](#is-utc)
-  - [Transformation]
+  - [Transformation](#transformation)
     - [To Utc](#to-utc)
     - [To Local](#to-local)
 
@@ -270,9 +270,17 @@ Day().subtract(1, 'date');
 
 A `.add()` shorthand.
 
+```dart
+Day().inc(1, 'date');
+```
+
 ### Dec (Same as subtract)
 
 A `.subtract()` shorthand.
+
+```dart
+Day().dec(1, 'date');
+```
 
 ## Displaying
 

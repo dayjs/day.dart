@@ -22,7 +22,7 @@
 
 ## API
 
-[📚API Documentation](API.md)
+📚 [API Documentation](API.md)
 
 ## Todo
 
