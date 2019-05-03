@@ -1,9 +1,13 @@
 name: day.dart
-version: 1.0.0
-description: Day.js in dart
+version: 0.1.0
+description: >-
+  Day.js in dart
 author: Yue Yang <g1enyy0ung@gmail.com>
 homepage: https://github.com/g1eny0ung/day.dart
+issue_tracker: https://github.com/g1eny0ung/day.dart/issues
+
 environment:
   sdk: '>=2.0.0 <3.0.0'
+
 dev_dependencies:
   test: ^1.6.2
