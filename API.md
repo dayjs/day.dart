@@ -1,10 +1,10 @@
-# API Documation
+# API Documentation
 
 Day.dart use `dart:core` library's `DateTime` class and expand its functionality, make it more useful.
 
 Also inherit from Day.js, part of manipulations is immutable.
 
-[API Documation](#api-documation)
+[API Documentation](#api-documentation)
   - [Import](#import)
   - [Constructor](#constructor)
     - [Without Parameter](#without-parameter)
@@ -17,7 +17,7 @@ Also inherit from Day.js, part of manipulations is immutable.
     - [Year `.year()`](#year-year)
     - [Month `.month()`](#month-month)
     - [Day of the Month `.date()`](#day-of-the-month-date)
-    - [Day of the Week `.weekday()`](#day-of-the-week-day)
+    - [Day of the Week `.weekday()`](#day-of-the-week-weekday)
     - [Hour `.hour()`](#hour-hour)
     - [Minute `.minute()`](#minute-minute)
     - [Second `.second()`](#second-second)
