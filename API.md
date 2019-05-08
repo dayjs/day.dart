@@ -381,7 +381,7 @@ Day().isUtc;
 Returns this day in the UTC time zone.
 
 ```dart
-Day.().toUtc();
+Day().toUtc();
 ```
 
 ### To Local
