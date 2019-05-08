@@ -27,7 +27,7 @@
 
 ## Todo
 
-- `.format()` method
+- ~~`.format()` method~~
 - 🌐 I18n support
 - ⚙️ Plugin system
 
