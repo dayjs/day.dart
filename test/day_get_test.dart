@@ -17,6 +17,10 @@ void main() {
       expect(d.date(), equals(30));
     });
 
+    test('Get weekday', () {
+      expect(d.weekday(), equals(2));
+    });
+
     test('Get hour', () {
       expect(d.hour(), equals(10));
     });

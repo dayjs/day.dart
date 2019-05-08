@@ -1,3 +1,4 @@
+import 'constants.dart' as C;
 import 'utils.dart' as U;
 
 class Day {
@@ -191,6 +192,15 @@ class Day {
 
   dec(int val, String unit) => subtract(val, unit);
 
+  format([String format]) {
+    if (format == null) {
+      return toIso8601String();
+    }
+
+    return format.replaceAllMapped(RegExp(C.REGEXP_FORMAT),
+        (Match m) => U.processMatchFromFormat(m, this));
+  }
+
   toUtc() {
     final d = clone();
     d._time = d.time.toUtc();
@@ -245,8 +255,8 @@ class Day {
 
     vals['year'] = time.year;
     vals['month'] = time.month;
-    vals['weekday'] = time.weekday;
     vals['date'] = time.day;
+    vals['weekday'] = time.weekday;
     vals['hour'] = time.hour;
     vals['minute'] = time.minute;
     vals['second'] = time.second;
