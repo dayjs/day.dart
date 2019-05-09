@@ -18,16 +18,16 @@
 * 🕒 Nearly the same API as Day.js
 * 💪 Contains Immutable Methods
 * 🔗 Chainable
+* 👀 Useful formatting method
 
 ---
 
 ## API
 
-📚 [API Documentation](API.md)
+📚 [API Documentation](https://github.com/g1eny0ung/day.dart/blob/master/API.md)
 
 ## Todo
 
-- ~~`.format()` method~~
 - 🌐 I18n support
 - ⚙️ Plugin system
 
