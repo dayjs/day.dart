@@ -360,7 +360,7 @@ class Day {
   /// The time zone offset, which is the difference between local time and UTC.
   ///
   /// Same as [DateTime.timeZoneOffset].
-  int get timeZoneOffset => time.timeZoneOffset.inHours;
+  Duration get timeZoneOffset => time.timeZoneOffset;
 
   /// Compares this day to other, returning zero if the values are equal.
   ///
