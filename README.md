@@ -22,7 +22,7 @@
 
 ---
 
-## API
+## API Documentation
 
 📚 [API Documentation](https://github.com/g1eny0ung/day.dart/blob/master/API.md)
 

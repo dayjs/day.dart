@@ -1,7 +1,7 @@
 import 'constants.dart' as C;
 import 'utils.dart' as U;
 
-/// A [Day] object is a datetime manager.
+/// A [Day] object is a [DateTime] manager.
 class Day {
   /// The internal [DateTime] instance of the [Day].
   DateTime _time;
