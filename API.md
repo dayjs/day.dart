@@ -333,9 +333,9 @@ Day('2019-05-08').format('YYYY-MM-DDTHH:mm:ss'); // 2019-05-08T00:00:00
 | `D`    | 1-31             | The day of the month                  |
 | `DD`   | 01-31            | The day of the month, 2 digits        |
 | `W`    | 1-7              | The day of the week                   |
-| `WW`   | Su-Sa            | The min name of the day of the week   |
-| `WWW`  | Sun-Sat          | The short name of the day of the week |
-| `WWWW` | Sunday-Saturday  | The name of the day of the week       |
+| `WW`   | Mo-Su            | The min name of the day of the week   |
+| `WWW`  | Mon-Sun          | The short name of the day of the week |
+| `WWWW` | Monday-Sunday    | The name of the day of the week       |
 | `H`    | 0-23             | The hour                              |
 | `HH`   | 00-23            | The hour, 2 digits                    |
 | `h`    | 1-12             | The hour, 12 hour clock               |
