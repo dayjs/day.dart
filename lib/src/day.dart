@@ -58,7 +58,7 @@ class Day {
 
   /// Constructs a new [Day] from a unix milliseconds.
   ///
-  /// This will call [DateTime.fromMillisecondsSinceEpoch].
+  /// This will call the [DateTime]'s fromMillisecondsSinceEpoch method.
   ///
   /// Example:
   ///
@@ -82,13 +82,15 @@ class Day {
     _parseTime();
   }
 
-  /// The internal time of this day, **do not use it publicly**.
+  /// The internal time of this [Day], **do not use it publicly**.
   DateTime get time => _time;
 
-  /// Clone this day, returns a new [Day] instance.
+  /// Clone this [Day]
+  ///
+  /// returns a new [Day] instance.
   Day clone() => Day.fromDateTime(time);
 
-  /// Get or set the year of this day.
+  /// Get or set the year of this [Day].
   ///
   /// When setting a new year, it will return a new [Day] instance with the new year.
   year([int year]) {
@@ -99,7 +101,7 @@ class Day {
     }
   }
 
-  /// Get or set the month of this day.
+  /// Get or set the month of this [Day].
   ///
   /// When setting a new month, it will return a new [Day] instance with the new month.
   month([int month]) {
@@ -110,7 +112,7 @@ class Day {
     }
   }
 
-  /// Get or set the date of this day.
+  /// Get or set the date of this [Day].
   ///
   /// When setting a new date, it will return a new [Day] instance with the new date.
   date([int date]) {
@@ -121,16 +123,12 @@ class Day {
     }
   }
 
-  /// Get or set the weekday of this day.
-  ///
-  /// When setting a new weekday, it will return a new [Day] instance with the new weekday.
-  weekday([int weekday]) {
-    if (weekday == null) {
-      return _values['weekday'];
-    }
+  /// Get the weekday of this [Day].
+  int weekday() {
+    return _values['weekday'];
   }
 
-  /// Get or set the hour of this day.
+  /// Get or set the hour of this [Day].
   ///
   /// When setting a new hour, it will return a new [Day] instance with the new hour.
   hour([int hour]) {
@@ -141,7 +139,7 @@ class Day {
     }
   }
 
-  /// Get or set the minute of this day.
+  /// Get or set the minute of this [Day].
   ///
   /// When setting a new minute, it will return a new [Day] instance with the new minute.
   minute([int minute]) {
@@ -152,7 +150,7 @@ class Day {
     }
   }
 
-  /// Get or set the second of this day.
+  /// Get or set the second of this [Day].
   ///
   /// When setting a new second, it will return a new [Day] instance with the new second.
   second([int second]) {
@@ -163,7 +161,7 @@ class Day {
     }
   }
 
-  /// Get or set the millisecond of this day.
+  /// Get or set the millisecond of this [Day].
   ///
   /// When setting a new millisecond, it will return a new [Day] instance with the new millisecond.
   millisecond([int millisecond]) {
@@ -174,36 +172,38 @@ class Day {
     }
   }
 
-  /// Set year, it will not update the [time].
-  setYear(int year) => _values['year'] = year;
+  /// Set the year, it won't update the [time].
+  void setYear(int year) => _values['year'] = year;
 
-  /// Set month, it will not update the [time].
-  setMonth(int month) => _values['month'] = month;
+  /// Set the month, it won't update the [time].
+  void setMonth(int month) => _values['month'] = month;
 
-  /// Set date, it will not update the [time].
-  setDate(int date) => _values['date'] = date;
+  /// Set the date, it won't update the [time].
+  void setDate(int date) => _values['date'] = date;
 
-  /// Set hour, it will not update the [time].
-  setHour(int hour) => _values['hour'] = hour;
+  /// Set the hour, it won't update the [time].
+  void setHour(int hour) => _values['hour'] = hour;
 
-  /// Set minute, it will not update the [time].
-  setMinute(int minute) => _values['minute'] = minute;
+  /// Set the minute, it won't update the [time].
+  void setMinute(int minute) => _values['minute'] = minute;
 
-  /// Set second, it will not update the [time].
-  setSecond(int second) => _values['second'] = second;
+  /// Set the second, it won't update the [time].
+  void setSecond(int second) => _values['second'] = second;
 
-  /// Set millisecond, it will not update the [time].
-  setMillisecond(int millisecond) => _values['millisecond'] = millisecond;
+  /// Set the millisecond, it won't update the [time].
+  void setMillisecond(int millisecond) => _values['millisecond'] = millisecond;
 
-  /// Set by key and val, it will not update the [time].
-  setValue(String key, int val) {
+  /// Set by key and val, it won't update the [time].
+  void setValue(String key, int val) {
     if (_values.containsKey(key)) {
       _values[key] = val;
     }
   }
 
-  /// Alias for [_updateTime].
-  finished() => _updateTime();
+  /// Alias of [_updateTime].
+  ///
+  /// Updates [_time] by [_values], used publicly.
+  void finished() => _updateTime();
 
   /// Get value by unit. Support shorthand.
   ///
@@ -227,7 +227,7 @@ class Day {
   /// set('date', 1);
   /// set('d', 1);
   /// ```
-  set(String unit, int val) {
+  void set(String unit, int val) {
     final processedUnit = U.processUnit(unit);
 
     if (_values.containsKey(processedUnit)) {
@@ -307,17 +307,17 @@ class Day {
     return null;
   }
 
-  /// Alias for [add].
+  /// Alias of [add].
   inc(int val, String unit) => add(val, unit);
 
-  /// Alias for [subtract].
+  /// Alias of [subtract].
   dec(int val, String unit) => subtract(val, unit);
 
-  /// Format the datetime displaying.
+  /// Format the [Day]'s displaying.
   ///
   /// More details, view:
   /// https://github.com/g1eny0ung/day.dart/blob/master/API.md#format-format
-  format([String format]) {
+  String format([String format]) {
     if (format == null) {
       return toIso8601String();
     }
@@ -326,16 +326,16 @@ class Day {
         (Match m) => U.processMatchFromFormat(m, this));
   }
 
-  /// Convert this day to UTC.
-  toUtc() {
+  /// Convert this [Day] to UTC.
+  Day toUtc() {
     final d = clone();
     d._time = d.time.toUtc();
     d._parseTime();
     return d;
   }
 
-  /// Convert this day to local.
-  toLocal() {
+  /// Convert this [Day] to local.
+  Day toLocal() {
     final d = clone();
     d._time = d.time.toLocal();
     d._parseTime();
@@ -344,41 +344,41 @@ class Day {
 
   /// True if this [Day] is set to UTC time.
   ///
-  /// Same as [DateTime.isUtc].
+  /// Same as the [DateTime]'s isUtc method.
   bool get isUtc => time.isUtc;
 
-  /// Returns an ISO-8601 full-precision extended format representation.
+  /// Returns an ISO-8601 full-precision extended format representation of this [Day].
   ///
-  /// Same as [DateTime.toIso8601String].
-  toIso8601String() => time.toIso8601String();
+  /// This will call the [DateTime]'s toIso8601String method.
+  String toIso8601String() => time.toIso8601String();
 
   /// The time zone name.
   ///
-  /// Same as [DateTime.timeZoneName].
+  /// This will call the [DateTime]'s timeZoneName method.
   String get timeZoneName => time.timeZoneName;
 
   /// The time zone offset, which is the difference between local time and UTC.
   ///
-  /// Same as [DateTime.timeZoneOffset].
+  /// This will call the [DateTime]'s timeZoneOffset method.
   Duration get timeZoneOffset => time.timeZoneOffset;
 
   /// Compares this day to other, returning zero if the values are equal.
   ///
-  /// Same as [DateTime.compareTo].
+  /// This will call the [DateTime]'s compareTo method.
   compareTo(Day day) => time.compareTo(day.time);
 
   /// Returns true if this day occurs before other day.
   ///
-  /// Same as [DateTime.isBefore].
+  /// This will call the [DateTime]'s isBefore method.
   isBefore(Day day) => time.isBefore(day.time);
 
   /// Returns true if this day occurs after other day.
   ///
-  /// Same as [DateTime.isAfter].
+  /// This will call the [DateTime]'s isAfter method.
   isAfter(Day day) => time.isAfter(day.time);
 
   /// Returns a number with the difference between two days by specified unit.
-  diff(Day day, String unit) {
+  int diff(Day day, String unit) {
     final difference = time.difference(day.time);
     final processedUnit = U.processUnit(unit);
 
@@ -392,7 +392,7 @@ class Day {
     }
   }
 
-  _cloneAndSetSingleValue(key, val) {
+  Day _cloneAndSetSingleValue(key, val) {
     final d = clone();
     d.setValue(key, val);
     d.finished();
@@ -400,7 +400,7 @@ class Day {
   }
 
   /// Parses [time] to [_values], used internally.
-  _parseTime() {
+  void _parseTime() {
     final vals = _values;
 
     vals['year'] = time.year;
@@ -414,7 +414,7 @@ class Day {
   }
 
   /// Updates [_time] by [_values], used internally.
-  _updateTime() {
+  void _updateTime() {
     final vals = _values;
 
     _time = DateTime(vals['year'], vals['month'], vals['date'], vals['hour'],

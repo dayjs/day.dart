@@ -110,8 +110,10 @@ final nowClone = now.clone();
 Gets or sets the year.
 
 ```dart
-Day().year();
-Day().year(2020);
+final d = Day();
+
+d.year();
+d.year(2020);
 ```
 
 ### Month `.month()`
@@ -119,8 +121,10 @@ Day().year(2020);
 Gets or sets the month. Starts at 1.
 
 ```dart
-Day().month();
-Day().month(1);
+final d = Day();
+
+d.month();
+d.month(1);
 ```
 
 ### Day of the month `.date()`
@@ -128,8 +132,10 @@ Day().month(1);
 Gets or sets the date. Starts at 1.
 
 ```dart
-Day().date();
-Day().date(1);
+final d = Day();
+
+d.date();
+d.date(1);
 ```
 
 ### Day of the week `.weekday()`
@@ -137,7 +143,9 @@ Day().date(1);
 Get the weekday. Starts at 1. **(Only Get, No Set)**
 
 ```dart
-Day().weekday();
+final d = Day();
+
+d.weekday();
 ```
 
 ### Hour `.hour()`
@@ -146,8 +154,10 @@ Gets or sets the hour.
 
 
 ```dart
-Day().hour();
-Day().hour(12);
+final d = Day();
+
+d.hour();
+d.hour(12);
 ```
 
 ### Minute `.minute()`
@@ -155,8 +165,10 @@ Day().hour(12);
 Gets or sets the minute.
 
 ```dart
-Day().minute();
-Day().minute(45);
+final d = Day();
+
+d.minute();
+d.minute(45);
 ```
 
 ### Second `.second()`
@@ -164,8 +176,10 @@ Day().minute(45);
 Gets or sets the second.
 
 ```dart
-Day().second();
-Day().second(55);
+final d = Day();
+
+d.second();
+d.second(55);
 ```
 
 ### Millisecond `.millisecond()`
@@ -173,18 +187,22 @@ Day().second(55);
 Gets or sets the millisecond.
 
 ```dart
-Day().millisecond();
-Day().millisecond(128);
+final d = Day();
+
+d.millisecond();
+d.millisecond(128);
 ```
 
 ### Get `.get(String unit)`
 
 Returns a number associate with the unit from Day instance.
 
-```
-Day().get('month');
-Day().get('date');
-Day().get('weekday');
+```dart
+final d = Day();
+
+d.get('month');
+d.get('date');
+d.get('weekday');
 ```
 
 #### List of all available units
@@ -256,7 +274,9 @@ Day('2019-04-30')
 Returns a cloned day with a specified amount of time added.
 
 ```dart
-Day().add(1, 'date');
+final d = Day();
+
+d.add(1, 'date');
 ```
 
 ### Subtract `.subtract(int val, String unit)`
@@ -264,7 +284,9 @@ Day().add(1, 'date');
 Returns a cloned day with a specified amount of time subtracted.
 
 ```dart
-Day().subtract(1, 'date');
+final d = Day();
+
+d.subtract(1, 'date');
 ```
 
 ### Inc (Same as add)
@@ -272,7 +294,9 @@ Day().subtract(1, 'date');
 A `.add()` shorthand.
 
 ```dart
-Day().inc(1, 'date');
+final d = Day();
+
+d.inc(1, 'date');
 ```
 
 ### Dec (Same as subtract)
@@ -280,7 +304,9 @@ Day().inc(1, 'date');
 A `.subtract()` shorthand.
 
 ```dart
-Day().dec(1, 'date');
+final d = Day();
+
+d.dec(1, 'date');
 ```
 
 ## Displaying
@@ -290,8 +316,8 @@ Day().dec(1, 'date');
 Returns a string with specific format. If no format passed, the `.format()` will call `.toIso8601String()`.
 
 ```dart
-Day().format() // 2019-05-08T16:38:31.721959
-Day('2019-05-08').format('YYYY-MM-DDTHH:mm:ss') // 2019-05-08T00:00:00
+Day().format(); // 2019-05-08T16:38:31.721959
+Day('2019-05-08').format('YYYY-MM-DDTHH:mm:ss'); // 2019-05-08T00:00:00
 ```
 
 #### List of all available formats
