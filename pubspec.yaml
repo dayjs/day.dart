@@ -7,7 +7,9 @@ description: >-
   Build on the top of the powerful DateTime class.
 author: Yue Yang <g1enyy0ung@gmail.com>
 homepage: https://github.com/g1eny0ung/day.dart
+repository: https://github.com/g1eny0ung/day.dart
 issue_tracker: https://github.com/g1eny0ung/day.dart/issues
+documentation: https://github.com/g1eny0ung/day.dart/blob/master/API.md
 
 environment:
   sdk: '>=2.0.0 <3.0.0'
