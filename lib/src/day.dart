@@ -1,6 +1,8 @@
 import 'constants.dart' as C;
 import 'utils.dart' as U;
 
+typedef dynamic DayPlugin(Day day);
+
 /// A [Day] object is a [DateTime] manager.
 class Day {
   /// The internal [DateTime] instance of the [Day].
@@ -19,6 +21,8 @@ class Day {
   /// - second
   /// - millisecond
   final Map<String, int> _values = {};
+
+  static final Map<String, DayPlugin> _plugins = {};
 
   /// Constructs a new [Day] instance with current date and time in the local time zone.
   ///
@@ -421,6 +425,14 @@ class Day {
         vals['minute'], vals['second'], vals['millisecond']);
 
     _parseTime();
+  }
+
+  static Map<String, DayPlugin> get plugins => _plugins;
+
+  static Map<String, DayPlugin> get p => _plugins;
+
+  static void extend(String customPluginName, DayPlugin plugin) {
+    Day._plugins[customPluginName] = plugin;
   }
 
   @override
