@@ -45,7 +45,7 @@ import 'package:day/plugins/get_time_values.dart';
 void main() {
   // Named as getTimeValues
   // 
-  // You can also write:
+  // You can also name anything what you like:
   // Day.extend('gtv', getTimeValues);
   // 
   // Then you can use it by:
@@ -77,7 +77,7 @@ Welcome PRs to add a new plugin. ⚙️
 
 ### Get Time Values
 
-Get day.time as a Map.
+Get `day.time` as a `Map`.
 
 ```dart
 import 'package:day/day.dart';

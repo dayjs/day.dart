@@ -19,6 +19,7 @@
 * 💪 Contains Immutable Methods
 * 🔗 Chainable
 * 👀 Useful formatting method
+* ⚙️ Plugin system
 
 ---
 
