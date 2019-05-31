@@ -26,10 +26,13 @@
 
 📚 [API Documentation](https://github.com/g1eny0ung/day.dart/blob/master/API.md)
 
+## Plugins
+
+⚙️ [Plugins](https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md)
+
 ## Todo
 
 - 🌐 I18n support
-- ⚙️ Plugin system
 
 ## License
 
