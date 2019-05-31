@@ -111,6 +111,7 @@ void main() {
 
     test('All put together', () {
       expect(d.format('YYYY MM DD HH mm ss A'), '2019 04 30 10 30 30 AM');
+      expect(d.format('YYYY-MM-DD-HH-mm-ss:A'), '2019-04-30-10-30-30:AM');
     });
   });
 }
