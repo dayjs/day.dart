@@ -224,7 +224,7 @@ Different from `Day.js`, `Day.dart` won't create a new Instance after setting.
 
 All set methods will change the origin instance.
 
-You must call `.finished()` method to apply all changes.
+You must call **`.finished()`** method to apply all changes.
 
 For example:
 
@@ -240,7 +240,7 @@ d
 
 #### List of all available methods
 
-Only `.set()` support unit shorthand (See Above).
+Only **`.set()`** support unit shorthand (See Above).
 
 ```dart
 d
