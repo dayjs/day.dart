@@ -1,7 +1,7 @@
 name: day
 version: 0.3.0
 description: >-
-  Day.js in dart.
+  A date library Day.js in dart.
   Day.dart is inspired by Day.js.
   Write with nearly the same API.
   Build on the top of the powerful DateTime class.
