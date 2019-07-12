@@ -9,7 +9,7 @@
 
 <p align="center">
   <img alt="Pub" src="https://img.shields.io/pub/v/day.svg">
-  <img src="https://travis-ci.org/g1eny0ung/day.dart.svg?branch=master" alt="Travis CI" />
+  <img src="https://travis-ci.org/dayjs/day.dart.svg?branch=master" alt="Travis CI" />
   <img alt="GitHub" src="https://img.shields.io/github/license/g1eny0ung/day.dart.svg">
 </p>
 
@@ -33,8 +33,8 @@
 
 ## Todo
 
-- 🌐 I18n support
+🌐 I18n support
 
 ## License
 
-Distributed under the The MIT License (MIT).
+Distributed under the MIT License (MIT).
