@@ -1,5 +1,6 @@
-import 'constants.dart' as C;
 import 'day.dart';
+import 'constants.dart' as C;
+import 'package:day/i18n/en.dart' as EnLocale;
 
 const _unitMap = {
   'y': C.Y,
@@ -69,9 +70,9 @@ String processMatchFromFormat(Match m, Day day) {
     case 'MM':
       return day.month().toString().padLeft(2, '0');
     case 'MMM':
-      return C.MONTHS[day.month()].substring(0, 3);
+      return EnLocale.MONTHS[day.month()].substring(0, 3);
     case 'MMMM':
-      return C.MONTHS[day.month()];
+      return EnLocale.MONTHS[day.month()];
     case 'D':
       return day.date().toString();
     case 'DD':
@@ -79,11 +80,11 @@ String processMatchFromFormat(Match m, Day day) {
     case 'W':
       return day.weekday().toString();
     case 'WW':
-      return C.WEEKDAYS[day.weekday()].substring(0, 2);
+      return EnLocale.WEEKDAYS[day.weekday()].substring(0, 2);
     case 'WWW':
-      return C.WEEKDAYS[day.weekday()].substring(0, 3);
+      return EnLocale.WEEKDAYS[day.weekday()].substring(0, 3);
     case 'WWWW':
-      return C.WEEKDAYS[day.weekday()];
+      return EnLocale.WEEKDAYS[day.weekday()];
     case 'H':
       return day.hour().toString();
     case 'HH':
@@ -116,7 +117,7 @@ int _getHourAs12(int hour) {
 }
 
 String _toAMOrPM(int hour, [bool toLowercase = false]) {
-  final result = hour < 12 ? 'AM' : 'PM';
+  final result = hour < 12 ? EnLocale.AM : EnLocale.PM;
 
   return toLowercase ? result.toLowerCase() : result;
 }
