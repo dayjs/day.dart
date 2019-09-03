@@ -3,6 +3,16 @@ import 'package:day/day.dart';
 import 'package:day/plugins/get_time_values.dart';
 
 void main() {
+  // Named as getTimeValues
+  //
+  // You can also name anything what you like:
+  // Day.extend('gtv', getTimeValues);
+  //
+  // Then you can use it by:
+  // final timeValues = Day.plugins['gtv'](d);
+  //
+  // Also support shorthand:
+  // final timeValues = Day.p['gtv'](d);
   Day.extend('getTimeValues', getTimeValues);
 
   test('Plugin => Get Time Values:', () {

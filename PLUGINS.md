@@ -1,10 +1,10 @@
 # Plugins
 
-- [Introduce](#introduce)
+- [Introduction](#introduction)
 - [Plugin List](#plugin-list)
   - [Get Time Values](#get-time-values)
 
-## Introduce
+## Introduction
 
 Because dart can't inject a method to an existing class.
 
