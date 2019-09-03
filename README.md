@@ -34,7 +34,7 @@
 
 ## I18n support
 
-🌐 [I18N](https://github.com/g1eny0ung/day.dart/blob/master/I18N.md)
+🌐 [I18n](https://github.com/g1eny0ung/day.dart/blob/master/I18N.md)
 
 ## License
 
