@@ -99,9 +99,9 @@ class Day {
   /// When setting a new year, it will return a new [Day] instance with the new year.
   year([int year]) {
     if (year == null) {
-      return _values['year'];
+      return _values[C.Y];
     } else {
-      return _cloneAndSetSingleValue('year', year);
+      return _cloneAndSetSingleValue(C.Y, year);
     }
   }
 
@@ -110,9 +110,9 @@ class Day {
   /// When setting a new month, it will return a new [Day] instance with the new month.
   month([int month]) {
     if (month == null) {
-      return _values['month'];
+      return _values[C.M];
     } else {
-      return _cloneAndSetSingleValue('month', month);
+      return _cloneAndSetSingleValue(C.M, month);
     }
   }
 
@@ -121,15 +121,15 @@ class Day {
   /// When setting a new date, it will return a new [Day] instance with the new date.
   date([int date]) {
     if (date == null) {
-      return _values['date'];
+      return _values[C.D];
     } else {
-      return _cloneAndSetSingleValue('date', date);
+      return _cloneAndSetSingleValue(C.D, date);
     }
   }
 
   /// Get the weekday of this [Day].
   int weekday() {
-    return _values['weekday'];
+    return _values[C.W];
   }
 
   /// Get or set the hour of this [Day].
@@ -137,9 +137,9 @@ class Day {
   /// When setting a new hour, it will return a new [Day] instance with the new hour.
   hour([int hour]) {
     if (hour == null) {
-      return _values['hour'];
+      return _values[C.H];
     } else {
-      return _cloneAndSetSingleValue('hour', hour);
+      return _cloneAndSetSingleValue(C.H, hour);
     }
   }
 
@@ -148,9 +148,9 @@ class Day {
   /// When setting a new minute, it will return a new [Day] instance with the new minute.
   minute([int minute]) {
     if (minute == null) {
-      return _values['minute'];
+      return _values[C.MIN];
     } else {
-      return _cloneAndSetSingleValue('minute', minute);
+      return _cloneAndSetSingleValue(C.MIN, minute);
     }
   }
 
@@ -159,9 +159,9 @@ class Day {
   /// When setting a new second, it will return a new [Day] instance with the new second.
   second([int second]) {
     if (second == null) {
-      return _values['second'];
+      return _values[C.S];
     } else {
-      return _cloneAndSetSingleValue('second', second);
+      return _cloneAndSetSingleValue(C.S, second);
     }
   }
 
@@ -170,32 +170,32 @@ class Day {
   /// When setting a new millisecond, it will return a new [Day] instance with the new millisecond.
   millisecond([int millisecond]) {
     if (millisecond == null) {
-      return _values['millisecond'];
+      return _values[C.MS];
     } else {
-      return _cloneAndSetSingleValue('millisecond', millisecond);
+      return _cloneAndSetSingleValue(C.MS, millisecond);
     }
   }
 
   /// Set the year, it won't update the [time].
-  void setYear(int year) => _values['year'] = year;
+  void setYear(int year) => _values[C.Y] = year;
 
   /// Set the month, it won't update the [time].
-  void setMonth(int month) => _values['month'] = month;
+  void setMonth(int month) => _values[C.M] = month;
 
   /// Set the date, it won't update the [time].
-  void setDate(int date) => _values['date'] = date;
+  void setDate(int date) => _values[C.D] = date;
 
   /// Set the hour, it won't update the [time].
-  void setHour(int hour) => _values['hour'] = hour;
+  void setHour(int hour) => _values[C.H] = hour;
 
   /// Set the minute, it won't update the [time].
-  void setMinute(int minute) => _values['minute'] = minute;
+  void setMinute(int minute) => _values[C.MIN] = minute;
 
   /// Set the second, it won't update the [time].
-  void setSecond(int second) => _values['second'] = second;
+  void setSecond(int second) => _values[C.S] = second;
 
   /// Set the millisecond, it won't update the [time].
-  void setMillisecond(int millisecond) => _values['millisecond'] = millisecond;
+  void setMillisecond(int millisecond) => _values[C.MS] = millisecond;
 
   /// Set by key and val, it won't update the [time].
   void setValue(String key, int val) {
@@ -257,14 +257,14 @@ class Day {
       d._parseTime();
       return d;
     } else {
-      if (unit == 'year') {
-        return _cloneAndSetSingleValue('year', year() + val);
-      } else if (unit == 'month') {
+      if (unit == C.Y) {
+        return _cloneAndSetSingleValue(C.Y, year() + val);
+      } else if (unit == C.M) {
         final int result = month() + val;
 
         final d = clone();
-        d.setValue('year', d.year() + result ~/ 12);
-        d.setValue('month', result % 12);
+        d.setValue(C.Y, d.year() + result ~/ 12);
+        d.setValue(C.M, result % 12);
         d.finished();
         return d;
       }
@@ -291,17 +291,17 @@ class Day {
       d._parseTime();
       return d;
     } else {
-      if (unit == 'year') {
-        return _cloneAndSetSingleValue('year', year() - val);
-      } else if (unit == 'month') {
+      if (unit == C.Y) {
+        return _cloneAndSetSingleValue(C.Y, year() - val);
+      } else if (unit == C.M) {
         final int result = month() - val;
 
         final d = clone();
         if (result > 0) {
-          d.setValue('month', result);
+          d.setValue(C.M, result);
         } else {
-          d.setValue('year', d.year() - (result.abs() ~/ 12 + 1));
-          d.setValue('month', 12 - result.abs() % 12);
+          d.setValue(C.Y, d.year() - (result.abs() ~/ 12 + 1));
+          d.setValue(C.M, 12 - result.abs() % 12);
         }
         d.finished();
         return d;
@@ -387,9 +387,9 @@ class Day {
     final processedUnit = U.processUnit(unit);
 
     switch (processedUnit) {
-      case 'year':
+      case C.Y:
         return (year() - day.year()).abs();
-      case 'month':
+      case C.M:
         return (year() - day.year()).abs() * 12 + day.month() - month();
       default:
         return U.processDiffDuration(difference, processedUnit);
@@ -407,22 +407,22 @@ class Day {
   void _parseTime() {
     final vals = _values;
 
-    vals['year'] = time.year;
-    vals['month'] = time.month;
-    vals['date'] = time.day;
-    vals['weekday'] = time.weekday;
-    vals['hour'] = time.hour;
-    vals['minute'] = time.minute;
-    vals['second'] = time.second;
-    vals['millisecond'] = time.millisecond;
+    vals[C.Y] = time.year;
+    vals[C.M] = time.month;
+    vals[C.D] = time.day;
+    vals[C.W] = time.weekday;
+    vals[C.H] = time.hour;
+    vals[C.MIN] = time.minute;
+    vals[C.S] = time.second;
+    vals[C.MS] = time.millisecond;
   }
 
   /// Updates [_time] by [_values], used internally.
   void _updateTime() {
     final vals = _values;
 
-    _time = DateTime(vals['year'], vals['month'], vals['date'], vals['hour'],
-        vals['minute'], vals['second'], vals['millisecond']);
+    _time = DateTime(vals[C.Y], vals[C.M], vals[C.D], vals[C.H], vals[C.MIN],
+        vals[C.S], vals[C.MS]);
 
     _parseTime();
   }
