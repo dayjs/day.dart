@@ -1,5 +1,6 @@
 import 'constants.dart' as C;
 import 'utils.dart' as U;
+import 'package:day/i18n/en.dart' as EN_Locale;
 
 typedef dynamic DayPluginFunction(Day day);
 
@@ -23,6 +24,23 @@ class Day {
   final Map<String, int> _values = {};
 
   static final Map<String, DayPluginFunction> _plugins = {};
+
+  static var _locale = EN_Locale.Locale;
+
+  static dynamic get locale => _locale;
+
+  static set locale(dynamic locale) => _locale = locale;
+
+  var _localLocale = null;
+
+  dynamic get localLocale => _localLocale;
+
+  useLocale(dynamic localLocale) {
+    final d = clone();
+
+    d._localLocale = localLocale;
+    return d;
+  }
 
   /// Constructs a new [Day] instance with current date and time in the local time zone.
   ///

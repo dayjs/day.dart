@@ -1,6 +1,5 @@
 import 'day.dart';
 import 'constants.dart' as C;
-import 'package:day/i18n/en.dart' as EnLocale;
 
 const _unitMap = {
   'y': C.Y,
@@ -56,6 +55,8 @@ int processDiffDuration(Duration duration, String unit) {
 }
 
 String processMatchFromFormat(Match m, Day day) {
+  final locale = day.localLocale != null ? day.localLocale : Day.locale;
+
   switch (m[0]) {
     case 'Y':
     case 'YY':
@@ -70,9 +71,11 @@ String processMatchFromFormat(Match m, Day day) {
     case 'MM':
       return day.month().toString().padLeft(2, '0');
     case 'MMM':
-      return EnLocale.MONTHS[day.month()].substring(0, 3);
+      return locale['Name'] == 'en'
+          ? locale['Months'][day.month()].substring(0, 3)
+          : locale['MonthsShort'][day.month()];
     case 'MMMM':
-      return EnLocale.MONTHS[day.month()];
+      return locale['Months'][day.month()];
     case 'D':
       return day.date().toString();
     case 'DD':
@@ -80,11 +83,15 @@ String processMatchFromFormat(Match m, Day day) {
     case 'W':
       return day.weekday().toString();
     case 'WW':
-      return EnLocale.WEEKDAYS[day.weekday()].substring(0, 2);
+      return locale['Name'] == 'en'
+          ? locale['Weekdays'][day.weekday()].substring(0, 2)
+          : locale['WeekdaysMin'][day.weekday()];
     case 'WWW':
-      return EnLocale.WEEKDAYS[day.weekday()].substring(0, 3);
+      return locale['Name'] == 'en'
+          ? locale['Weekdays'][day.weekday()].substring(0, 3)
+          : locale['WeekdaysShort'][day.weekday()];
     case 'WWWW':
-      return EnLocale.WEEKDAYS[day.weekday()];
+      return locale['Weekdays'][day.weekday()];
     case 'H':
       return day.hour().toString();
     case 'HH':
@@ -104,9 +111,9 @@ String processMatchFromFormat(Match m, Day day) {
     case 'SSS':
       return day.millisecond().toString().padLeft(3, '0');
     case 'A':
-      return _toAMOrPM(day.hour());
+      return _toAMOrPM(day.hour(), locale);
     case 'a':
-      return _toAMOrPM(day.hour(), true);
+      return _toAMOrPM(day.hour(), locale, true);
     default:
       return null;
   }
@@ -116,8 +123,8 @@ int _getHourAs12(int hour) {
   return hour <= 12 ? hour : hour - 12;
 }
 
-String _toAMOrPM(int hour, [bool toLowercase = false]) {
-  final result = hour < 12 ? EnLocale.AM : EnLocale.PM;
+String _toAMOrPM(int hour, dynamic locale, [bool toLowercase = false]) {
+  final result = hour < 12 ? locale['AM'] : locale['PM'];
 
   return toLowercase ? result.toLowerCase() : result;
 }
