@@ -31,7 +31,7 @@ class Day {
 
   static set locale(dynamic locale) => _locale = locale;
 
-  var _localLocale = null;
+  var _localLocale;
 
   dynamic get localLocale => _localLocale;
 
