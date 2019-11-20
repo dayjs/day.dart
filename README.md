@@ -15,14 +15,14 @@
 
 > Day.dart is inspired by Day.js. Write with nearly the same API. Build on the top of the powerful **DateTime** class.
 
+## Features
+
 - 🕒 Nearly the same API as Day.js
 - 💪 Contains Immutable Methods
 - 🔗 Chainable
 - 👀 Useful formatting method
 - ⚙️ Plugin system
 - 🌐 I18n support
-
----
 
 ## API Documentation
 
@@ -38,4 +38,4 @@
 
 ## License
 
-Distributed under the MIT License (MIT).
+Distributed under the MIT License.
