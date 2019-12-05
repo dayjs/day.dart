@@ -26,16 +26,12 @@ class Day {
   static final Map<String, DayPluginFunction> _plugins = {};
 
   static var _locale = EN_Locale.Locale;
-
-  static dynamic get locale => _locale;
-
-  static set locale(dynamic locale) => _locale = locale;
-
+  static Map<String, dynamic> get locale => _locale;
+  static set locale(Map<String, dynamic> locale) => _locale = locale;
   var _localLocale;
+  Map<String, dynamic> get localLocale => _localLocale;
 
-  dynamic get localLocale => _localLocale;
-
-  useLocale(dynamic localLocale) {
+  useLocale(Map<String, dynamic> localLocale) {
     final d = clone();
 
     d._localLocale = localLocale;
