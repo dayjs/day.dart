@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
 import 'package:day/day.dart';
-import 'package:day/i18n/zh_cn.dart' as ZH_CN_Locale;
+import 'package:day/i18n/zh_cn.dart' as zhCNLocale;
 
 void main() {
   final d =
-      Day.fromString('2019-04-30T10:30:30.000Z').useLocale(ZH_CN_Locale.Locale);
+      Day.fromString('2019-04-30T10:30:30.000Z').useLocale(zhCNLocale.locale);
 
   group('En', () {
     test('Months', () {

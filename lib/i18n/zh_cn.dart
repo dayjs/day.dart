@@ -1,4 +1,4 @@
-final Map<String, dynamic> Locale = {
+final Map<String, dynamic> locale = {
   'Name': 'zh-cn',
   'Months': {
     1: '一月',

@@ -1,20 +1,20 @@
 import 'day.dart';
-import 'constants.dart' as C;
+import 'constants.dart' as c;
 
-const _unitMap = {
-  'y': C.Y,
-  'M': C.M,
-  'd': C.D,
-  'w': C.W,
-  'h': C.H,
-  'm': C.MIN,
-  's': C.S,
-  'ms': C.MS
+const unitMap = {
+  'y': c.Y,
+  'M': c.M,
+  'd': c.D,
+  'w': c.W,
+  'h': c.H,
+  'm': c.MIN,
+  's': c.S,
+  'ms': c.MS
 };
 
 String processUnit(String unit) {
-  if (_unitMap.containsKey(unit)) {
-    return _unitMap[unit];
+  if (unitMap.containsKey(unit)) {
+    return unitMap[unit];
   }
 
   return unit.trim().toLowerCase();
@@ -22,15 +22,15 @@ String processUnit(String unit) {
 
 Duration durationFromUnit(int val, String unit) {
   switch (unit) {
-    case C.D:
+    case c.D:
       return Duration(days: val);
-    case C.H:
+    case c.H:
       return Duration(hours: val);
-    case C.MIN:
+    case c.MIN:
       return Duration(minutes: val);
-    case C.S:
+    case c.S:
       return Duration(seconds: val);
-    case C.MS:
+    case c.MS:
       return Duration(milliseconds: val);
     default:
       return null;
@@ -39,15 +39,15 @@ Duration durationFromUnit(int val, String unit) {
 
 int processDiffDuration(Duration duration, String unit) {
   switch (unit) {
-    case C.D:
+    case c.D:
       return duration.inDays.abs();
-    case C.H:
+    case c.H:
       return duration.inHours.abs();
-    case C.MIN:
+    case c.MIN:
       return duration.inMinutes.abs();
-    case C.S:
+    case c.S:
       return duration.inSeconds.abs();
-    case C.MS:
+    case c.MS:
       return duration.inMilliseconds.abs();
     default:
       return null;
