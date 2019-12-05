@@ -1,15 +1,15 @@
 import 'day.dart';
-import 'constants.dart' as c;
+import 'constants.dart' show Unit;
 
 const unitMap = {
-  'y': c.Y,
-  'M': c.M,
-  'd': c.D,
-  'w': c.W,
-  'h': c.H,
-  'm': c.MIN,
-  's': c.S,
-  'ms': c.MS
+  'y': Unit.y,
+  'M': Unit.m,
+  'd': Unit.d,
+  'w': Unit.w,
+  'h': Unit.h,
+  'm': Unit.min,
+  's': Unit.s,
+  'ms': Unit.ms
 };
 
 String processUnit(String unit) {
@@ -22,15 +22,15 @@ String processUnit(String unit) {
 
 Duration durationFromUnit(int val, String unit) {
   switch (unit) {
-    case c.D:
+    case Unit.d:
       return Duration(days: val);
-    case c.H:
+    case Unit.h:
       return Duration(hours: val);
-    case c.MIN:
+    case Unit.min:
       return Duration(minutes: val);
-    case c.S:
+    case Unit.s:
       return Duration(seconds: val);
-    case c.MS:
+    case Unit.ms:
       return Duration(milliseconds: val);
     default:
       return null;
@@ -39,15 +39,15 @@ Duration durationFromUnit(int val, String unit) {
 
 int processDiffDuration(Duration duration, String unit) {
   switch (unit) {
-    case c.D:
+    case Unit.d:
       return duration.inDays.abs();
-    case c.H:
+    case Unit.h:
       return duration.inHours.abs();
-    case c.MIN:
+    case Unit.min:
       return duration.inMinutes.abs();
-    case c.S:
+    case Unit.s:
       return duration.inSeconds.abs();
-    case c.MS:
+    case Unit.ms:
       return duration.inMilliseconds.abs();
     default:
       return null;
