@@ -96,17 +96,14 @@ class Day {
   /// final d = Day.fromDayInstance(Day());
   /// ```
   Day.fromDayInstance(Day day) {
-    _time = day.time;
+    _time = day._time;
     _parseTime();
   }
-
-  /// The internal time of this [Day], **do not use it publicly**.
-  DateTime get time => _time;
 
   /// Clone this [Day]
   ///
   /// returns a new [Day] instance.
-  Day clone() => Day.fromDateTime(time);
+  Day clone() => Day.fromDateTime(_time);
 
   /// Get or set the year of this [Day].
   ///
@@ -267,7 +264,7 @@ class Day {
 
     if (duration != null) {
       final d = clone();
-      d._time = d.time.add(duration);
+      d._time = d._time.add(duration);
       d._parseTime();
       return d;
     } else {
@@ -301,7 +298,7 @@ class Day {
 
     if (duration != null) {
       final d = clone();
-      d._time = d.time.subtract(duration);
+      d._time = d._time.subtract(duration);
       d._parseTime();
       return d;
     } else {
@@ -347,7 +344,7 @@ class Day {
   /// Convert this [Day] to UTC.
   Day toUtc() {
     final d = clone();
-    d._time = d.time.toUtc();
+    d._time = d._time.toUtc();
     d._parseTime();
     return d;
   }
@@ -355,7 +352,7 @@ class Day {
   /// Convert this [Day] to local.
   Day toLocal() {
     final d = clone();
-    d._time = d.time.toLocal();
+    d._time = d._time.toLocal();
     d._parseTime();
     return d;
   }
@@ -363,41 +360,41 @@ class Day {
   /// True if this [Day] is set to UTC time.
   ///
   /// Same as the [DateTime]'s isUtc method.
-  bool get isUtc => time.isUtc;
+  bool get isUtc => _time.isUtc;
 
   /// Returns an ISO-8601 full-precision extended format representation of this [Day].
   ///
   /// This will call the [DateTime]'s toIso8601String method.
-  String toIso8601String() => time.toIso8601String();
+  String toIso8601String() => _time.toIso8601String();
 
   /// The time zone name.
   ///
   /// This will call the [DateTime]'s timeZoneName method.
-  String get timeZoneName => time.timeZoneName;
+  String get timeZoneName => _time.timeZoneName;
 
   /// The time zone offset, which is the difference between local time and UTC.
   ///
   /// This will call the [DateTime]'s timeZoneOffset method.
-  Duration get timeZoneOffset => time.timeZoneOffset;
+  Duration get timeZoneOffset => _time.timeZoneOffset;
 
   /// Compares this day to other, returning zero if the values are equal.
   ///
   /// This will call the [DateTime]'s compareTo method.
-  compareTo(Day day) => time.compareTo(day.time);
+  compareTo(Day day) => _time.compareTo(day._time);
 
   /// Returns true if this day occurs before other day.
   ///
   /// This will call the [DateTime]'s isBefore method.
-  isBefore(Day day) => time.isBefore(day.time);
+  isBefore(Day day) => _time.isBefore(day._time);
 
   /// Returns true if this day occurs after other day.
   ///
   /// This will call the [DateTime]'s isAfter method.
-  isAfter(Day day) => time.isAfter(day.time);
+  isAfter(Day day) => _time.isAfter(day._time);
 
   /// Returns a number with the difference between two days by specified unit.
   int diff(Day day, String unit) {
-    final difference = time.difference(day.time);
+    final difference = _time.difference(day._time);
     final processedUnit = u.processUnit(unit);
 
     switch (processedUnit) {
@@ -421,14 +418,14 @@ class Day {
   void _parseTime() {
     final vals = _values;
 
-    vals[Unit.y] = time.year;
-    vals[Unit.m] = time.month;
-    vals[Unit.d] = time.day;
-    vals[Unit.w] = time.weekday;
-    vals[Unit.h] = time.hour;
-    vals[Unit.min] = time.minute;
-    vals[Unit.s] = time.second;
-    vals[Unit.ms] = time.millisecond;
+    vals[Unit.y] = _time.year;
+    vals[Unit.m] = _time.month;
+    vals[Unit.d] = _time.day;
+    vals[Unit.w] = _time.weekday;
+    vals[Unit.h] = _time.hour;
+    vals[Unit.min] = _time.minute;
+    vals[Unit.s] = _time.second;
+    vals[Unit.ms] = _time.millisecond;
   }
 
   /// Updates [_time] by [_values], used internally.
@@ -449,16 +446,18 @@ class Day {
     Day._plugins[customPluginName] = plugin;
   }
 
+  bool isValid() => _time != null;
+
   @override
   int get hashCode {
     int result = 17;
-    result = 31 * result + time.hashCode;
+    result = 31 * result + _time.hashCode;
     return result;
   }
 
   @override
-  bool operator ==(day) => day is Day && time == day.time;
+  bool operator ==(day) => day is Day && _time == day._time;
 
   @override
-  String toString() => time.toString();
+  String toString() => _time.toString();
 }
