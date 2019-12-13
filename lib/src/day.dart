@@ -3,6 +3,12 @@ import 'utils.dart' as u;
 import 'package:day/i18n/en.dart' as enLocale;
 
 /// A [Day] object is a [DateTime] manager.
+/// 
+/// API Documentation: https://github.com/g1eny0ung/day.dart/blob/master/API.md
+/// 
+/// Plugins https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md
+/// 
+/// I18n https://github.com/g1eny0ung/day.dart/blob/master/I18N.md
 class Day {
   /// The internal [DateTime] instance of the [Day].
   DateTime _time;
@@ -24,14 +30,19 @@ class Day {
   static var _locale = enLocale.locale;
   static Map<String, dynamic> get locale => _locale;
   static set locale(Map<String, dynamic> locale) => _locale = locale;
+
   var _localLocale;
   Map<String, dynamic> get localLocale => _localLocale;
-
-  useLocale(Map<String, dynamic> localLocale) {
+  Day useLocale(Map<String, dynamic> localLocale) {
     final d = clone();
 
     d._localLocale = localLocale;
     return d;
+  }
+
+  _initTime(time) {
+    _time = time;
+    _parseTime();
   }
 
   /// Constructs a new [Day] instance with current date and time in the local time zone.
@@ -42,8 +53,7 @@ class Day {
   /// final d = Day();
   /// ```
   Day() {
-    _time = DateTime.now();
-    _parseTime();
+    _initTime(DateTime.now());
   }
 
   /// Constructs a new [Day] based on an ISO 8601 formatted string.
@@ -54,8 +64,7 @@ class Day {
   /// final d = Day.fromString('2019-04-30')
   /// ```
   Day.fromString(String time) {
-    _time = DateTime.parse(time);
-    _parseTime();
+    _initTime(DateTime.parse(time));
   }
 
   /// Constructs a new [Day] from a [DateTime] instance.
@@ -66,8 +75,7 @@ class Day {
   /// final d = Day.fromDateTime(DateTime.now());
   /// ```
   Day.fromDateTime(DateTime time) {
-    _time = time;
-    _parseTime();
+    _initTime(time);
   }
 
   /// Constructs a new [Day] from a unix milliseconds.
@@ -80,8 +88,7 @@ class Day {
   /// final d = Day.fromUnix(0);
   /// ```
   Day.fromUnix(int time) {
-    _time = DateTime.fromMillisecondsSinceEpoch(time);
-    _parseTime();
+    _initTime(DateTime.fromMillisecondsSinceEpoch(time));
   }
 
   /// Constructs a new [Day] from a [Day].
@@ -92,11 +99,10 @@ class Day {
   /// final d = Day.fromDayInstance(Day());
   /// ```
   Day.fromDayInstance(Day day) {
-    _time = day._time;
-    _parseTime();
+    _initTime(day._time);
   }
 
-  /// Clone this [Day]
+  /// Clone this [Day].
   ///
   /// returns a new [Day] instance.
   Day clone() => Day.fromDateTime(_time);
