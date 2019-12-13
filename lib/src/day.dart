@@ -3,11 +3,11 @@ import 'utils.dart' as u;
 import 'package:day/i18n/en.dart' as enLocale;
 
 /// A [Day] object is a [DateTime] manager.
-/// 
+///
 /// API Documentation: https://github.com/g1eny0ung/day.dart/blob/master/API.md
-/// 
+///
 /// Plugins https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md
-/// 
+///
 /// I18n https://github.com/g1eny0ung/day.dart/blob/master/I18N.md
 class Day {
   /// The internal [DateTime] instance of the [Day].
@@ -38,6 +38,20 @@ class Day {
 
     d._localLocale = localLocale;
     return d;
+  }
+
+  /// Parses [time] to [_values], used internally.
+  void _parseTime() {
+    final vals = _values;
+
+    vals[Unit.y] = _time.year;
+    vals[Unit.m] = _time.month;
+    vals[Unit.d] = _time.day;
+    vals[Unit.w] = _time.weekday;
+    vals[Unit.h] = _time.hour;
+    vals[Unit.min] = _time.minute;
+    vals[Unit.s] = _time.second;
+    vals[Unit.ms] = _time.millisecond;
   }
 
   _initTime(time) {
@@ -106,6 +120,13 @@ class Day {
   ///
   /// returns a new [Day] instance.
   Day clone() => Day.fromDateTime(_time);
+
+  Day _cloneAndSetSingleValue(key, val) {
+    final d = clone();
+    d.setValue(key, val);
+    d.finished();
+    return d;
+  }
 
   /// Get or set the year of this [Day].
   ///
@@ -189,40 +210,50 @@ class Day {
     }
   }
 
-  /// Set the year, it won't update the [time].
+  /// Set the year, it won't update the internal [_time].
   void setYear(int year) => _values[Unit.y] = year;
 
-  /// Set the month, it won't update the [time].
+  /// Set the month, it won't update the internal [_time].
   void setMonth(int month) => _values[Unit.m] = month;
 
-  /// Set the date, it won't update the [time].
+  /// Set the date, it won't update the internal [_time].
   void setDate(int date) => _values[Unit.d] = date;
 
-  /// Set the hour, it won't update the [time].
+  /// Set the hour, it won't update the internal [_time].
   void setHour(int hour) => _values[Unit.h] = hour;
 
-  /// Set the minute, it won't update the [time].
+  /// Set the minute, it won't update the internal [_time].
   void setMinute(int minute) => _values[Unit.min] = minute;
 
-  /// Set the second, it won't update the [time].
+  /// Set the second, it won't update the internal [_time].
   void setSecond(int second) => _values[Unit.s] = second;
 
-  /// Set the millisecond, it won't update the [time].
+  /// Set the millisecond, it won't update the internal [_time].
   void setMillisecond(int millisecond) => _values[Unit.ms] = millisecond;
 
-  /// Set by key and val, it won't update the [time].
+  /// Set by [String] key and [Int] val, it won't update the internal [_time].
   void setValue(String key, int val) {
     if (_values.containsKey(key)) {
       _values[key] = val;
     }
   }
 
+  /// Updates the internal [_time] by [_values], used internally.
+  void _updateTime() {
+    final vals = _values;
+
+    _time = DateTime(vals[Unit.y], vals[Unit.m], vals[Unit.d], vals[Unit.h],
+        vals[Unit.min], vals[Unit.s], vals[Unit.ms]);
+
+    _parseTime();
+  }
+
   /// Alias of [_updateTime].
   ///
-  /// Updates [_time] by [_values], used publicly.
+  /// Updates the internal [_time] by [_values], used publicly.
   void finished() => _updateTime();
 
-  /// Get value by unit. Support shorthand.
+  /// Get value by [String] unit. Support shorthand.
   ///
   /// Example:
   ///
@@ -407,37 +438,6 @@ class Day {
       default:
         return u.processDiffDuration(difference, processedUnit);
     }
-  }
-
-  Day _cloneAndSetSingleValue(key, val) {
-    final d = clone();
-    d.setValue(key, val);
-    d.finished();
-    return d;
-  }
-
-  /// Parses [time] to [_values], used internally.
-  void _parseTime() {
-    final vals = _values;
-
-    vals[Unit.y] = _time.year;
-    vals[Unit.m] = _time.month;
-    vals[Unit.d] = _time.day;
-    vals[Unit.w] = _time.weekday;
-    vals[Unit.h] = _time.hour;
-    vals[Unit.min] = _time.minute;
-    vals[Unit.s] = _time.second;
-    vals[Unit.ms] = _time.millisecond;
-  }
-
-  /// Updates [_time] by [_values], used internally.
-  void _updateTime() {
-    final vals = _values;
-
-    _time = DateTime(vals[Unit.y], vals[Unit.m], vals[Unit.d], vals[Unit.h],
-        vals[Unit.min], vals[Unit.s], vals[Unit.ms]);
-
-    _parseTime();
   }
 
   bool isValid() => _time != null;
