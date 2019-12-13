@@ -1,94 +1,69 @@
 # Plugins
 
 - [Introduction](#introduction)
-- [Plugin List](#plugin-list)
-  - [Get Time Values](#get-time-values)
+- [Plugins List](#plugins-list)
+  - [Is Leap Year](#is-leap-year)
 
 ## Introduction
 
-Because dart can't inject a method to an existing class.
+Day.dart use the extension syntax to implement plugins system. (Require the dart version >= 2.7.0)
 
-So, for now, the plugin system was implement as this, for example:
+For example:
 
-[lib/plugins/get_time_values.dart](lib/plugins/get_time_values.dart)
+[lib/plugins/is_leap_year.dart](lib/plugins/is_leap_year.dart)
 
 ```dart
 import '../day.dart';
 
-Map<String, int> getTimeValues(Day day) {
-  final time = day.time;
+/// Check a [Day] instance is a leap year or not.
+///
+/// Reference: https://stackoverflow.com/a/11595914/5676489
+extension IsLeapYear on Day {
+  bool isLeapYear() {
+    final y = this.year();
 
-  return {
-    'year': time.year,
-    'month': time.month,
-    'date': time.day,
-    'weekday': time.weekday,
-    'hour': time.hour,
-    'minute': time.minute,
-    'second': time.second,
-    'millisecond': time.millisecond
-  };
+    return y & 3 == 0 && (y % 25 != 0 || y & 15 == 0);
+  }
 }
 ```
 
-All plugin function should receive a day instance as parameter.
-
 Then you can use it like:
 
-[test/plugins/get_time_values_test.dart](test/plugins/get_time_values_test.dart)
+[test/plugins/is_leap_year_test.dart](test/plugins/is_leap_year_test.dart)
 
 ```dart
 import 'package:test/test.dart';
 import 'package:day/day.dart';
-import 'package:day/plugins/get_time_values.dart';
+import 'package:day/plugins/is_leap_year.dart';
 
 void main() {
-  // Named as getTimeValues
-  // 
-  // You can also name anything what you like:
-  // Day.extend('gtv', getTimeValues);
-  // 
-  // Then you can use it by:
-  // final timeValues = Day.plugins['gtv'](d);
-  //
-  // Also support shorthand:
-  // final timeValues = Day.p['gtv'](d);
-  Day.extend('getTimeValues', getTimeValues);
-
-  test('Plugin => Get Time Values:', () {
+  test('Plugin => Is Leap Year', () {
     final d = Day.fromString('2019-04-30T10:30:30.001Z');
-    final timeValues = Day.plugins['getTimeValues'](d);
+    final d2000 = Day.fromString('2000-01-01');
+    final d2100 = Day.fromString('2100-01-01');
 
-    expect(timeValues['year'], 2019);
-    expect(timeValues['month'], 4);
-    expect(timeValues['date'], 30);
-    expect(timeValues['weekday'], 2);
-    expect(timeValues['hour'], 10);
-    expect(timeValues['minute'], 30);
-    expect(timeValues['second'], 30);
-    expect(timeValues['millisecond'], 1);
+    expect(d.isLeapYear(), false);
+    expect(d2000.isLeapYear(), true);
+    expect(d2100.isLeapYear(), false);
   });
 }
 ```
 
 Welcome PRs to add a new plugin. ⚙️
 
-## Plugin List
+## Plugins List
 
-### Get Time Values
+### Is Leap Year
 
-Get `day.time` as a `Map`.
+Check a Day instance is a leap year or not.
 
 ```dart
 import 'package:day/day.dart';
-import 'package:day/plugins/get_time_values.dart';
+import 'package:day/plugins/is_leap_year.dart';
 
 void main() {
-  Day.extend('getTimeValues', getTimeValues);
-  
   final d = Day.fromString('2019-04-30T10:30:30.001Z');
-  final timeValues = Day.plugins['getTimeValues'](d);
-  
-  print(timeValues); // {year: 2019, month: 4, date: 30, weekday: 2, hour: 10, minute: 30, second: 30, millisecond: 1}
+
+  print(d.isLeapYear()); // false
 }
 ```

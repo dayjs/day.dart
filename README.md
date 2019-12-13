@@ -3,7 +3,7 @@
 <br />
 
 <p align="center">
-  <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.png?raw=true" alt="day.dart logo" />    
+  <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.png?raw=true" alt="day.dart logo" />
 </p>
 <p align="center">A date library <a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart. With nearly the same API.</p>
 
@@ -24,17 +24,11 @@
 - ⚙️ Plugin system
 - 🌐 I18n support
 
-## API Documentation
+## 📚 [API Documentation](https://github.com/g1eny0ung/day.dart/blob/master/API.md)
 
-📚 [API Documentation](https://github.com/g1eny0ung/day.dart/blob/master/API.md)
+## ⚙️ [Plugins](https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md)
 
-## Plugins
-
-⚙️ [Plugins](https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md)
-
-## I18n support
-
-🌐 [I18n](https://github.com/g1eny0ung/day.dart/blob/master/I18N.md)
+## 🌐 [I18n](https://github.com/g1eny0ung/day.dart/blob/master/I18N.md)
 
 ## License
 
