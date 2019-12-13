@@ -2,8 +2,6 @@ import 'constants.dart' show Unit, dayDartRegexpFormat;
 import 'utils.dart' as u;
 import 'package:day/i18n/en.dart' as enLocale;
 
-typedef dynamic DayPluginFunction(Day day);
-
 /// A [Day] object is a [DateTime] manager.
 class Day {
   /// The internal [DateTime] instance of the [Day].
@@ -22,8 +20,6 @@ class Day {
   /// - second
   /// - millisecond
   final Map<String, int> _values = {};
-
-  static final Map<String, DayPluginFunction> _plugins = {};
 
   static var _locale = enLocale.locale;
   static Map<String, dynamic> get locale => _locale;
@@ -436,14 +432,6 @@ class Day {
         vals[Unit.min], vals[Unit.s], vals[Unit.ms]);
 
     _parseTime();
-  }
-
-  static Map<String, DayPluginFunction> get plugins => _plugins;
-
-  static Map<String, DayPluginFunction> get p => _plugins;
-
-  static void extend(String customPluginName, DayPluginFunction plugin) {
-    Day._plugins[customPluginName] = plugin;
   }
 
   bool isValid() => _time != null;

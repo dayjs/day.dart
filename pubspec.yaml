@@ -12,7 +12,7 @@ issue_tracker: https://github.com/dayjs/day.dart/issues
 documentation: https://github.com/dayjs/day.dart/blob/master/API.md
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 
 dev_dependencies:
   test: ^1.6.8
