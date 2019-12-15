@@ -363,7 +363,7 @@ class Day {
 
   /// Format the [Day]'s displaying.
   ///
-  /// More details, view:
+  /// For more details, view:
   /// https://github.com/g1eny0ung/day.dart/blob/master/API.md#format-format
   String format([String format]) {
     if (format == null) {
@@ -373,27 +373,6 @@ class Day {
     return format.replaceAllMapped(RegExp(dayDartRegexpFormat),
         (Match m) => u.processMatchFromFormat(m, this));
   }
-
-  /// Convert this [Day] to UTC.
-  Day toUtc() {
-    final d = clone();
-    d._time = d._time.toUtc();
-    d._parseTime();
-    return d;
-  }
-
-  /// Convert this [Day] to local.
-  Day toLocal() {
-    final d = clone();
-    d._time = d._time.toLocal();
-    d._parseTime();
-    return d;
-  }
-
-  /// True if this [Day] is set to UTC time.
-  ///
-  /// Same as the [DateTime]'s isUtc method.
-  bool get isUtc => _time.isUtc;
 
   /// Returns an ISO-8601 full-precision extended format representation of this [Day].
   ///
@@ -440,12 +419,33 @@ class Day {
     }
   }
 
+  /// True if this [Day] is set to UTC time.
+  ///
+  /// Same as the [DateTime]'s isUtc method.
+  bool get isUtc => _time.isUtc;
+
+  /// Convert this [Day] to UTC.
+  Day toUtc() {
+    final d = clone();
+    d._time = d._time.toUtc();
+    d._parseTime();
+    return d;
+  }
+
+  /// Convert this [Day] to local.
+  Day toLocal() {
+    final d = clone();
+    d._time = d._time.toLocal();
+    d._parseTime();
+    return d;
+  }
+
   bool isValid() => _time != null;
 
   @override
   int get hashCode {
     int result = 17;
-    result = 31 * result + _time.hashCode;
+    result = 37 * result + _time.hashCode;
     return result;
   }
 
