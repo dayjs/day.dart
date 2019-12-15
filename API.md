@@ -387,8 +387,6 @@ The time zone offset, which is the difference between local time and UTC.
 Day().timeZoneOffset;
 ```
 
-Support unit shorthand.
-
 ## Query
 
 ### Difference
@@ -401,6 +399,8 @@ final d2 = Day.fromString('2021-05-01T10:30:30.000Z');
 
 d1.diff(d2, 'y'); // 2
 ```
+
+Support unit shorthand.
 
 ### Compare To
 
