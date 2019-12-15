@@ -5,14 +5,14 @@ import 'package:day/day.dart';
 void main() {
   final now = Day();
 
-  // After one day
-  final afterOneDay = now.add(1, 'date');
-  print(afterOneDay);
+  // Tomorrow
+  final tomorrow = now.add(1, 'date');
+  print(tomorrow);
 
   // Chainable
   now
     ..setYear(2020)
-    ..setMonth(5)
+    ..setMonth(1)
     ..setDate(1)
     ..finished();
 
