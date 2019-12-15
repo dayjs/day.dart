@@ -1,6 +1,6 @@
 # API Documentation
 
-Day.dart use `dart:core` library's `DateTime` class and expand its functionality, make it more useful.
+Day.dart use `dart:core` 's `DateTime` class and expand its functionality, make it more useful.
 
 Also inherit from Day.js, part of manipulations is immutable.
 
@@ -51,6 +51,13 @@ Also inherit from Day.js, part of manipulations is immutable.
 
 ```dart
 import 'package:day/day.dart';
+```
+
+With plugins:
+
+```dart
+import 'package:day/day.dart';
+import 'package:day/plugins/is_leap_year.dart';
 ```
 
 ## Constructor
