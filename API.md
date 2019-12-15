@@ -37,8 +37,8 @@ Also inherit from Day.js, part of manipulations is immutable.
     - [As ISO 8601 String](#as-iso-8601-string)
     - [Time zone Name](#time-zone-name)
     - [Time zone Offset](#time-zone-offset)
-    - [Difference](#difference)
   - [Query](#query)
+    - [Difference](#difference)
     - [Compare To](#compare-to)
     - [Is Before](#is-before)
     - [Is After](#is-after)
@@ -387,6 +387,10 @@ The time zone offset, which is the difference between local time and UTC.
 Day().timeZoneOffset;
 ```
 
+Support unit shorthand.
+
+## Query
+
 ### Difference
 
 Returns a number with the difference between two days by specified unit.
@@ -397,10 +401,6 @@ final d2 = Day.fromString('2021-05-01T10:30:30.000Z');
 
 d1.diff(d2, 'y'); // 2
 ```
-
-Support unit shorthand.
-
-## Query
 
 ### Compare To
 
