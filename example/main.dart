@@ -1,4 +1,4 @@
-// View https://github.com/g1eny0ung/day.dart for more usage.
+// View https://github.com/dayjs/day.dart for more usage.
 
 import 'package:day/day.dart';
 
