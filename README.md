@@ -24,11 +24,11 @@
 - ⚙️ Plugin system
 - 🌐 I18n support
 
-### 📚 [API Documentation](https://github.com/g1eny0ung/day.dart/blob/master/API.md)
+### 📚 [API Documentation](https://github.com/dayjs/day.dart/blob/master/API.md)
 
-### ⚙️ [Plugins](https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md)
+### ⚙️ [Plugins](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md)
 
-### 🌐 [I18n](https://github.com/g1eny0ung/day.dart/blob/master/I18N.md)
+### 🌐 [I18n](https://github.com/dayjs/day.dart/blob/master/I18N.md)
 
 ## License
 

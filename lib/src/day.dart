@@ -4,11 +4,11 @@ import 'package:day/i18n/en.dart' as enLocale;
 
 /// A [Day] object is a [DateTime] manager.
 ///
-/// API Documentation: https://github.com/g1eny0ung/day.dart/blob/master/API.md
+/// API Documentation: https://github.com/dayjs/day.dart/blob/master/API.md
 ///
-/// Plugins https://github.com/g1eny0ung/day.dart/blob/master/PLUGINS.md
+/// Plugins https://github.com/dayjs/day.dart/blob/master/PLUGINS.md
 ///
-/// I18n https://github.com/g1eny0ung/day.dart/blob/master/I18N.md
+/// I18n https://github.com/dayjs/day.dart/blob/master/I18N.md
 class Day {
   /// The internal [DateTime] instance of the [Day].
   DateTime _time;
@@ -37,6 +37,7 @@ class Day {
     final d = clone();
 
     d._localLocale = localLocale;
+
     return d;
   }
 
@@ -123,8 +124,10 @@ class Day {
 
   Day _cloneAndSetSingleValue(key, val) {
     final d = clone();
+
     d.setValue(key, val);
     d.finished();
+
     return d;
   }
 
@@ -211,27 +214,43 @@ class Day {
   }
 
   /// Set the year, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setYear(int year) => _values[Unit.y] = year;
 
   /// Set the month, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMonth(int month) => _values[Unit.m] = month;
 
   /// Set the date, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setDate(int date) => _values[Unit.d] = date;
 
   /// Set the hour, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setHour(int hour) => _values[Unit.h] = hour;
 
   /// Set the minute, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMinute(int minute) => _values[Unit.min] = minute;
 
   /// Set the second, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setSecond(int second) => _values[Unit.s] = second;
 
   /// Set the millisecond, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMillisecond(int millisecond) => _values[Unit.ms] = millisecond;
 
   /// Set by [String] key and [Int] val, it won't update the internal [_time].
+  ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setValue(String key, int val) {
     if (_values.containsKey(key)) {
       _values[key] = val;
@@ -269,6 +288,8 @@ class Day {
 
   /// Set val by unit. Support shorthand.
   ///
+  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  ///
   /// Example:
   ///
   /// ```dart
@@ -297,8 +318,10 @@ class Day {
 
     if (duration != null) {
       final d = clone();
+
       d._time = d._time.add(duration);
       d._parseTime();
+
       return d;
     } else {
       if (unit == Unit.y) {
@@ -307,9 +330,15 @@ class Day {
         final int result = month() + val;
 
         final d = clone();
-        d.setValue(Unit.y, d.year() + result ~/ 12);
-        d.setValue(Unit.m, result % 12);
+        if (result > 0) {
+          d.setValue(Unit.m, result);
+        } else {
+          d
+            ..setValue(Unit.y, d.year() - (result.abs() ~/ 12 + 1))
+            ..setValue(Unit.m, 12 - result.abs() % 12);
+        }
         d.finished();
+
         return d;
       }
     }
@@ -331,8 +360,10 @@ class Day {
 
     if (duration != null) {
       final d = clone();
+
       d._time = d._time.subtract(duration);
       d._parseTime();
+
       return d;
     } else {
       if (unit == Unit.y) {
@@ -344,10 +375,12 @@ class Day {
         if (result > 0) {
           d.setValue(Unit.m, result);
         } else {
-          d.setValue(Unit.y, d.year() - (result.abs() ~/ 12 + 1));
-          d.setValue(Unit.m, 12 - result.abs() % 12);
+          d
+            ..setValue(Unit.y, d.year() - (result.abs() ~/ 12 + 1))
+            ..setValue(Unit.m, 12 - result.abs() % 12);
         }
         d.finished();
+
         return d;
       }
     }

@@ -8,7 +8,17 @@ void main() {
       final Day dClone = d.subtract(1, 'year');
 
       expect(d.year(), equals(2019));
+
       expect(dClone.year(), equals(2018));
+    });
+
+    test('Subtract -1 year', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-1, 'year');
+
+      expect(d.year(), equals(2019));
+
+      expect(dClone.year(), equals(2020));
     });
 
     test('Subtract 2 months', () {
@@ -16,6 +26,7 @@ void main() {
       final Day dClone = d.subtract(2, 'month');
 
       expect(d.month(), equals(4));
+
       expect(dClone.month(), equals(3));
     });
 
@@ -41,6 +52,28 @@ void main() {
       expect(dClone.month(), equals(12));
     });
 
+    test('Subtract -8 months', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-8, 'month');
+
+      expect(d.year(), equals(2019));
+      expect(d.month(), equals(4));
+
+      expect(dClone.year(), equals(2019));
+      expect(dClone.month(), equals(12));
+    });
+
+    test('Subtract -9 months', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-9, 'month');
+
+      expect(d.year(), equals(2019));
+      expect(d.month(), equals(4));
+
+      expect(dClone.year(), equals(2020));
+      expect(dClone.month(), equals(1));
+    });
+
     test('Subtract 1 day', () {
       final d = Day.fromString('2019-04-30T10:30:30.000Z');
       final Day dClone = d.subtract(1, 'date');
@@ -57,7 +90,17 @@ void main() {
       final Day dClone = d.subtract(1, 'hour');
 
       expect(d.hour(), equals(10));
+
       expect(dClone.hour(), equals(9));
+    });
+
+    test('Subtract -1 hour', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-1, 'hour');
+
+      expect(d.hour(), equals(10));
+
+      expect(dClone.hour(), equals(11));
     });
 
     test('Subtract 1 minute', () {
@@ -65,7 +108,17 @@ void main() {
       final Day dClone = d.subtract(1, 'minute');
 
       expect(d.minute(), equals(30));
+
       expect(dClone.minute(), equals(29));
+    });
+
+    test('Subtract -1 minute', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-1, 'minute');
+
+      expect(d.minute(), equals(30));
+
+      expect(dClone.minute(), equals(31));
     });
 
     test('Subtract 1 second', () {
@@ -73,7 +126,17 @@ void main() {
       final Day dClone = d.subtract(1, 'second');
 
       expect(d.second(), equals(30));
+
       expect(dClone.second(), equals(29));
+    });
+
+    test('Subtract -1 second', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-1, 'second');
+
+      expect(d.second(), equals(30));
+
+      expect(dClone.second(), equals(31));
     });
 
     test('Subtract 1 ms', () {
@@ -81,7 +144,17 @@ void main() {
       final Day dClone = d.subtract(1, 'ms');
 
       expect(d.millisecond(), equals(0));
+
       expect(dClone.millisecond(), equals(999));
+    });
+
+    test('Subtract -1 ms', () {
+      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+      final Day dClone = d.subtract(-1, 'ms');
+
+      expect(d.millisecond(), equals(0));
+
+      expect(dClone.millisecond(), equals(1));
     });
   });
 }

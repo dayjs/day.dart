@@ -4,49 +4,48 @@ Day.dart use `dart:core` 's `DateTime` class and expand its functionality, make 
 
 Also inherit from Day.js, part of manipulations is immutable.
 
-[API Documentation](#api-documentation)
-  - [Import](#import)
-  - [Constructor](#constructor)
-    - [Without Parameter](#without-parameter)
-    - [From String](#from-string)
-    - [From DateTime](#from-datetime)
-    - [From Unix](#from-unix)
-    - [From Day Instance](#from-day-instance)
-  - [Check Is Valid](#check-is-valid)
-  - [Clone](#clone)
-  - [Get And Set](#get-and-set)
-    - [Year `.year()`](#year-year)
-    - [Month `.month()`](#month-month)
-    - [Day of the Month `.date()`](#day-of-the-month-date)
-    - [Day of the Week `.weekday()`](#day-of-the-week-weekday)
-    - [Hour `.hour()`](#hour-hour)
-    - [Minute `.minute()`](#minute-minute)
-    - [Second `.second()`](#second-second)
-    - [Millisecond `.millisecond()`](#millisecond-millisecond)
-    - [Get `.get(String unit)`](#get-getstring-unit)
-      - [List of all available units](#list-of-all-available-units)
-    - [Set `.set(String unit, int val)`](#set-setstring-unit-int-val)
-      - [List of all available methods](#list-of-all-available-methods)
-  - [Manipulating](#manipulating)
-    - [Add `.add(int val, String unit)`](#add-addint-val-string-unit)
-    - [Subtract `.subtract(int val, String unit)`](#subtract-subtractint-val-string-unit)
-    - [Inc (Same as add)](#inc-same-as-add)
-    - [Dec (Same as subtract)](#dec-same-as-subtract)
-  - [Displaying](#displaying)
-    - [Format `.format()`](#format-format)
-    - [As String](#as-string)
-    - [As ISO 8601 String](#as-iso-8601-string)
-    - [Time zone Name](#time-zone-name)
-    - [Time zone Offset](#time-zone-offset)
-  - [Query](#query)
-    - [Difference](#difference)
-    - [Compare To](#compare-to)
-    - [Is Before](#is-before)
-    - [Is After](#is-after)
-    - [Is Utc](#is-utc)
-  - [Transformation](#transformation)
-    - [To Utc](#to-utc)
-    - [To Local](#to-local)
+- [Import](#import)
+- [Constructor](#constructor)
+  - [Without Parameter](#without-parameter)
+  - [From String](#from-string)
+  - [From DateTime](#from-datetime)
+  - [From Unix](#from-unix)
+  - [From Day Instance](#from-day-instance)
+- [Check Is Valid](#check-is-valid)
+- [Clone](#clone)
+- [Get And Set](#get-and-set)
+  - [Year `.year()`](#year-year)
+  - [Month `.month()`](#month-month)
+  - [Day of the Month `.date()`](#day-of-the-month-date)
+  - [Day of the Week `.weekday()`](#day-of-the-week-weekday)
+  - [Hour `.hour()`](#hour-hour)
+  - [Minute `.minute()`](#minute-minute)
+  - [Second `.second()`](#second-second)
+  - [Millisecond `.millisecond()`](#millisecond-millisecond)
+  - [Get `.get(String unit)`](#get-getstring-unit)
+    - [List of all available units](#list-of-all-available-units)
+  - [Set `.set(String unit, int val)`](#set-setstring-unit-int-val)
+    - [List of all available methods](#list-of-all-available-methods)
+- [Manipulating](#manipulating)
+  - [Add `.add(int val, String unit)`](#add-addint-val-string-unit)
+  - [Subtract `.subtract(int val, String unit)`](#subtract-subtractint-val-string-unit)
+  - [Inc (Same as add)](#inc-same-as-add)
+  - [Dec (Same as subtract)](#dec-same-as-subtract)
+- [Displaying](#displaying)
+  - [Format `.format()`](#format-format)
+  - [As String](#as-string)
+  - [As ISO 8601 String](#as-iso-8601-string)
+  - [Time zone Name](#time-zone-name)
+  - [Time zone Offset](#time-zone-offset)
+- [Query](#query)
+  - [Difference](#difference)
+  - [Compare To](#compare-to)
+  - [Is Before](#is-before)
+  - [Is After](#is-after)
+  - [Is Utc](#is-utc)
+- [Transformation](#transformation)
+  - [To Utc](#to-utc)
+  - [To Local](#to-local)
 
 ## Import
 
@@ -169,7 +168,6 @@ d.weekday();
 
 Gets or sets the hour.
 
-
 ```dart
 final d = Day();
 
@@ -258,6 +256,8 @@ d
 #### List of all available methods
 
 Only **`.set()`** support unit shorthand (See Above).
+
+Use **`.setValue()`** for semantics.
 
 ```dart
 d
