@@ -1,6 +1,6 @@
 import 'constants.dart' show Unit, dayDartRegexpFormat;
 import 'utils.dart' as u;
-import 'package:day/i18n/en.dart' as enLocale;
+import 'package:day/i18n/en.dart' as en_locale;
 
 /// A [Day] object is a [DateTime] manager.
 ///
@@ -27,7 +27,7 @@ class Day {
   /// - millisecond
   final Map<String, int> _values = {};
 
-  static var _locale = enLocale.locale;
+  static var _locale = en_locale.locale;
   static Map<String, dynamic> get locale => _locale;
   static set locale(Map<String, dynamic> locale) => _locale = locale;
 
