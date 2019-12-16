@@ -397,7 +397,7 @@ class Day {
   /// Format the [Day]'s displaying.
   ///
   /// For more details, view:
-  /// https://github.com/g1eny0ung/day.dart/blob/master/API.md#format-format
+  /// https://github.com/dayjs/day.dart/blob/master/API.md#format-format
   String format([String format]) {
     if (format == null) {
       return toIso8601String();
@@ -475,6 +475,7 @@ class Day {
 
   bool isValid() => _time != null;
 
+  // https://dart.dev/guides/libraries/library-tour#implementing-map-keys
   @override
   int get hashCode {
     int result = 17;
