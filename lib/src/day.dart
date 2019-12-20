@@ -6,9 +6,9 @@ import 'package:day/i18n/en.dart' as en_locale;
 ///
 /// API Documentation: https://github.com/dayjs/day.dart/blob/master/API.md
 ///
-/// Plugins https://github.com/dayjs/day.dart/blob/master/PLUGINS.md
+/// Plugins: https://github.com/dayjs/day.dart/blob/master/PLUGINS.md
 ///
-/// I18n https://github.com/dayjs/day.dart/blob/master/I18N.md
+/// I18n: https://github.com/dayjs/day.dart/blob/master/I18N.md
 class Day {
   /// The internal [DateTime] instance of the [Day].
   DateTime _time;
@@ -475,6 +475,9 @@ class Day {
 
   bool isValid() => _time != null;
 
+  @override
+  String toString() => _time.toString();
+
   // https://dart.dev/guides/libraries/library-tour#implementing-map-keys
   @override
   int get hashCode {
@@ -485,7 +488,4 @@ class Day {
 
   @override
   bool operator ==(day) => day is Day && _time == day._time;
-
-  @override
-  String toString() => _time.toString();
 }
