@@ -335,7 +335,7 @@ Returns a string with specific format. If no format passed, the `.format()` will
 
 ```dart
 Day().format(); // 2019-05-08T16:38:31.721959
-Day('2019-05-08').format('YYYY-MM-DDTHH:mm:ss'); // 2019-05-08T00:00:00
+Day.fromString('2019-05-08').format('YYYY-MM-DDTHH:mm:ss'); // 2019-05-08T00:00:00
 ```
 
 #### List of all available formats
