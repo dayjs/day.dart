@@ -473,6 +473,8 @@ class Day {
     return d;
   }
 
+  DateTime toDateTime() => _time;
+
   bool isValid() => _time != null;
 
   @override

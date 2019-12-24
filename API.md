@@ -46,6 +46,7 @@ Also inherit from Day.js, part of manipulations is immutable.
 - [Transformation](#transformation)
   - [To Utc](#to-utc)
   - [To Local](#to-local)
+  - [To DateTime](#to-datetime)
 
 ## Import
 
@@ -471,4 +472,12 @@ Returns this day in the local time zone.
 
 ```dart
 Day.fromString('2019-04-30T10:30:30.000Z').toLocal();
+```
+
+### To DateTime
+
+Returns this day's DateTime instance.
+
+```dart
+Day.fromString('2019-04-30T10:30:30.000Z').toDateTime();
 ```
