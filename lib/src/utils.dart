@@ -57,6 +57,10 @@ int processDiffDuration(Duration duration, String unit) {
 String processMatchFromFormat(Match m, Day day) {
   final locale = day.localLocale != null ? day.localLocale : Day.locale;
 
+  if (m[0].startsWith('[') && m[0].endsWith(']')) {
+    return m[0].substring(1, m[0].length - 1);
+  }
+
   switch (m[0]) {
     case 'Y':
     case 'YY':

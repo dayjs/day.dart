@@ -9,6 +9,10 @@ void main() {
       expect(d.format(), equals('2019-04-30T10:30:30.000Z'));
     });
 
+    test('[YYYYescape]', () {
+      expect(d.format('[YYYYescape]'), 'YYYYescape');
+    });
+
     test('Y', () {
       expect(d.format('Y'), equals('19'));
     });
@@ -110,8 +114,8 @@ void main() {
     });
 
     test('All put together', () {
-      expect(d.format('YYYY MM DD HH mm ss A'), '2019 04 30 10 30 30 AM');
-      expect(d.format('YYYY-MM-DD-HH-mm-ss:A'), '2019-04-30-10-30-30:AM');
+      expect(d.format('[Today is] YYYY MM DD HH mm ss A'), 'Today is 2019 04 30 10 30 30 AM');
+      expect(d.format('[Today is] YYYY-MM-DD-HH-mm-ss:A'), 'Today is 2019-04-30-10-30-30:AM');
     });
   });
 }
