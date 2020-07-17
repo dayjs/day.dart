@@ -1,6 +1,6 @@
 # API Documentation
 
-Day.dart use `dart:core` 's `DateTime` class and expand its functionality, make it more useful.
+Day.dart uses `dart:core`'s `DateTime` class and expand its functionality to make it more useful.
 
 Also inherit from Day.js, part of manipulations is immutable.
 
