@@ -24,5 +24,20 @@ final Map<String, dynamic> locale = {
     7: 'Sunday'
   },
   'AM': 'AM',
-  'PM': 'PM'
+  'PM': 'PM',
+  'RelativeTime': {
+    'future': 'in %s',
+    'past': '%s ago',
+    's': 'a few seconds',
+    'm': 'a minute',
+    'mm': '%d minutes',
+    'h': 'an hour',
+    'hh': '%d hours',
+    'd': 'a day',
+    'dd': '%d days',
+    'M': 'a month',
+    'MM': '%d months',
+    'y': 'a year',
+    'yy': '%d years'
+  }
 };

@@ -3,10 +3,11 @@
 - [Introduction](#introduction)
 - [Plugins List](#plugins-list)
   - [Is Leap Year](#is-leap-year)
+  - [Relative Time](#relative-time)
 
 ## Introduction
 
-Day.dart use the extension syntax to implement plugins system. (Require the dart version >= 2.7.0)
+Day.dart use the `extension` syntax to implement plugins system. (Require the dart version >= 2.7.0)
 
 For example:
 
@@ -42,14 +43,14 @@ void main() {
     final d2000 = Day.fromString('2000-01-01');
     final d2100 = Day.fromString('2100-01-01');
 
-    expect(d.isLeapYear(), false);
-    expect(d2000.isLeapYear(), true);
-    expect(d2100.isLeapYear(), false);
+    expect(d.isLeapYear(), equals(false));
+    expect(d2000.isLeapYear(), equals(true));
+    expect(d2100.isLeapYear(), equals(false));
   });
 }
 ```
 
-Welcome PRs to add a new plugin. ⚙️
+⚙️ Welcome PRs to add a new plugin.️
 
 ## Plugins List
 
@@ -65,5 +66,30 @@ void main() {
   final d = Day.fromString('2019-04-30T10:30:30.001Z');
 
   print(d.isLeapYear()); // false
+}
+```
+
+### Relative Time
+
+Add relative time support.
+
+This plugin includes four methods: from, fromNow, to, toNow. All of them can help you to format date to a relative time string.
+
+```dart
+import 'package:test/test.dart';
+import 'package:day/day.dart';
+import 'package:day/plugins/relative_time.dart';
+
+void main() {
+  group('Plugin => Relative Time =>', () {
+    final d = Day.fromString('2019-04-30T10:30:30.001Z');
+    final d1 = d.add(1, 's');
+
+    test('from', () {
+      final fromD1 = d.from(d1);
+
+      expect(fromD1, equals('a few seconds ago'));
+    });
+  });
 }
 ```
