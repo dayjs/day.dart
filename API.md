@@ -409,7 +409,7 @@ Returns a number with the difference between two days by specified unit.
 final d1 = Day.fromString('2019-04-30T10:30:30.000Z');
 final d2 = Day.fromString('2021-05-01T10:30:30.000Z');
 
-d1.diff(d2, 'y'); // 2
+d1.diff(d2, 'y'); // -2
 ```
 
 Support unit shorthand. If the unit is null, it will be set to `ms`.
