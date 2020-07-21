@@ -255,7 +255,7 @@ class Day {
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMillisecond(int millisecond) => _values[Unit.ms] = millisecond;
 
-  /// Set by [String] key and [Int] val, it won't update the internal [_time].
+  /// Set by [key] and [val], it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setValue(String key, int val) {
