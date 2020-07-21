@@ -5,39 +5,39 @@ void main() {
   final d = Day.fromString('2019-04-30T10:30:30.000Z');
 
   group('Get Methods:', () {
-    test('Get year', () {
+    test('year', () {
       expect(d.year(), equals(2019));
     });
 
-    test('Get month', () {
+    test('month', () {
       expect(d.month(), equals(4));
     });
 
-    test('Get day', () {
+    test('day', () {
       expect(d.date(), equals(30));
     });
 
-    test('Get weekday', () {
+    test('weekday', () {
       expect(d.weekday(), equals(2));
     });
 
-    test('Get hour', () {
+    test('hour', () {
       expect(d.hour(), equals(10));
     });
 
-    test('Get minute', () {
+    test('minute', () {
       expect(d.minute(), equals(30));
     });
 
-    test('Get second', () {
+    test('second', () {
       expect(d.second(), equals(30));
     });
 
-    test('Get millisecond', () {
+    test('millisecond', () {
       expect(d.millisecond(), equals(0));
     });
 
-    test('Common getting', () {
+    test('shorthands', () {
       expect(d.get('y'), equals(2019));
       expect(d.get('M'), equals(4));
       expect(d.get('w'), equals(2));

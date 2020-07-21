@@ -4,7 +4,7 @@ import 'package:day/day.dart';
 void main() {
   final d = Day.fromString('2019-04-30T10:30:30.000Z');
 
-  group('En', () {
+  group('EN', () {
     test('Months', () {
       expect(d.format('MMM MMMM'), equals('Apr April'));
     });

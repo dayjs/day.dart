@@ -6,7 +6,7 @@ void main() {
   final d =
       Day.fromString('2019-04-30T10:30:30.000Z').useLocale(zh_cn_locale.locale);
 
-  group('En', () {
+  group('ZH_CN', () {
     test('Months', () {
       expect(d.format('MMM MMMM'), equals('4月 四月'));
     });

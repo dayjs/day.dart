@@ -3,7 +3,7 @@ import 'package:day/day.dart';
 
 void main() {
   group('Day Constructor:', () {
-    test('No named', () {
+    test('pure', () {
       final d = Day();
 
       expect(d.isValid(), true);

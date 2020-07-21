@@ -5,7 +5,7 @@ void main() {
   final d = Day.fromString('2019-04-30T10:30:30.000Z');
 
   group('Format:', () {
-    test('Default', () {
+    test('default', () {
       expect(d.format(), equals('2019-04-30T10:30:30.000Z'));
     });
 
@@ -113,7 +113,7 @@ void main() {
       expect(d.format('a'), equals('am'));
     });
 
-    test('All put together', () {
+    test('put all together', () {
       expect(d.format('[Today is] YYYY MM DD HH mm ss A'), 'Today is 2019 04 30 10 30 30 AM');
       expect(d.format('[Today is] YYYY-MM-DD-HH-mm-ss:A'), 'Today is 2019-04-30-10-30-30:AM');
     });

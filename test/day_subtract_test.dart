@@ -2,9 +2,10 @@ import 'package:test/test.dart';
 import 'package:day/day.dart';
 
 void main() {
+  final d = Day.fromString('2019-04-30T10:30:30.000Z');
+
   group('Subtract Method:', () {
-    test('Subtract 1 year', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('1 year', () {
       final Day dClone = d.subtract(1, 'year');
 
       expect(d.year(), equals(2019));
@@ -12,8 +13,7 @@ void main() {
       expect(dClone.year(), equals(2018));
     });
 
-    test('Subtract -1 year', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-1 year', () {
       final Day dClone = d.subtract(-1, 'year');
 
       expect(d.year(), equals(2019));
@@ -21,8 +21,7 @@ void main() {
       expect(dClone.year(), equals(2020));
     });
 
-    test('Subtract 2 months', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('2 months', () {
       final Day dClone = d.subtract(2, 'month');
 
       expect(d.month(), equals(4));
@@ -30,8 +29,7 @@ void main() {
       expect(dClone.month(), equals(3));
     });
 
-    test('Subtract 4 months', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('4 months', () {
       final Day dClone = d.subtract(4, 'month');
 
       expect(d.year(), equals(2019));
@@ -41,8 +39,7 @@ void main() {
       expect(dClone.month(), equals(12));
     });
 
-    test('Subtract 28 months', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('28 months', () {
       final Day dClone = d.subtract(28, 'month');
 
       expect(d.year(), equals(2019));
@@ -52,8 +49,7 @@ void main() {
       expect(dClone.month(), equals(12));
     });
 
-    test('Subtract -8 months', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-8 months', () {
       final Day dClone = d.subtract(-8, 'month');
 
       expect(d.year(), equals(2019));
@@ -63,8 +59,7 @@ void main() {
       expect(dClone.month(), equals(12));
     });
 
-    test('Subtract -9 months', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-9 months', () {
       final Day dClone = d.subtract(-9, 'month');
 
       expect(d.year(), equals(2019));
@@ -74,8 +69,7 @@ void main() {
       expect(dClone.month(), equals(1));
     });
 
-    test('Subtract 1 day', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('1 day', () {
       final Day dClone = d.subtract(1, 'date');
 
       expect(d.month(), equals(4));
@@ -85,8 +79,7 @@ void main() {
       expect(dClone.date(), equals(29));
     });
 
-    test('Subtract 1 hour', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('1 hour', () {
       final Day dClone = d.subtract(1, 'hour');
 
       expect(d.hour(), equals(10));
@@ -94,8 +87,7 @@ void main() {
       expect(dClone.hour(), equals(9));
     });
 
-    test('Subtract -1 hour', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-1 hour', () {
       final Day dClone = d.subtract(-1, 'hour');
 
       expect(d.hour(), equals(10));
@@ -103,8 +95,7 @@ void main() {
       expect(dClone.hour(), equals(11));
     });
 
-    test('Subtract 1 minute', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('1 minute', () {
       final Day dClone = d.subtract(1, 'minute');
 
       expect(d.minute(), equals(30));
@@ -112,8 +103,7 @@ void main() {
       expect(dClone.minute(), equals(29));
     });
 
-    test('Subtract -1 minute', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-1 minute', () {
       final Day dClone = d.subtract(-1, 'minute');
 
       expect(d.minute(), equals(30));
@@ -121,8 +111,7 @@ void main() {
       expect(dClone.minute(), equals(31));
     });
 
-    test('Subtract 1 second', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('1 second', () {
       final Day dClone = d.subtract(1, 'second');
 
       expect(d.second(), equals(30));
@@ -130,8 +119,7 @@ void main() {
       expect(dClone.second(), equals(29));
     });
 
-    test('Subtract -1 second', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-1 second', () {
       final Day dClone = d.subtract(-1, 'second');
 
       expect(d.second(), equals(30));
@@ -139,8 +127,7 @@ void main() {
       expect(dClone.second(), equals(31));
     });
 
-    test('Subtract 1 ms', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('1 ms', () {
       final Day dClone = d.subtract(1, 'ms');
 
       expect(d.millisecond(), equals(0));
@@ -148,8 +135,7 @@ void main() {
       expect(dClone.millisecond(), equals(999));
     });
 
-    test('Subtract -1 ms', () {
-      final d = Day.fromString('2019-04-30T10:30:30.000Z');
+    test('-1 ms', () {
       final Day dClone = d.subtract(-1, 'ms');
 
       expect(d.millisecond(), equals(0));
