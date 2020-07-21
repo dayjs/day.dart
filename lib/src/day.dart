@@ -331,9 +331,9 @@ class Day {
 
       return d;
     } else {
-      if (unit == Unit.y) {
+      if (unit == Unit.y || unit == 'y') {
         return _cloneAndSetSingleValue(Unit.y, year() + val);
-      } else if (unit == Unit.m) {
+      } else if (unit == Unit.m || unit == 'M') {
         final int result = month() + val;
 
         final d = clone();
@@ -373,9 +373,9 @@ class Day {
 
       return d;
     } else {
-      if (unit == Unit.y) {
+      if (unit == Unit.y || unit == 'y') {
         return _cloneAndSetSingleValue(Unit.y, year() - val);
-      } else if (unit == Unit.m) {
+      } else if (unit == Unit.m || unit == 'M') {
         final int result = month() - val;
 
         final d = clone();
