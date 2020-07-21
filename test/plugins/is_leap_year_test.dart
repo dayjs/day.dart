@@ -8,8 +8,8 @@ void main() {
     final d2000 = Day.fromString('2000-01-01');
     final d2100 = Day.fromString('2100-01-01');
 
-    expect(d.isLeapYear(), false);
-    expect(d2000.isLeapYear(), true);
-    expect(d2100.isLeapYear(), false);
+    expect(d.isLeapYear(), equals(false));
+    expect(d2000.isLeapYear(), equals(true));
+    expect(d2100.isLeapYear(), equals(false));
   });
 }
