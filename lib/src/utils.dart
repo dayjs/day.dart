@@ -40,22 +40,22 @@ Duration durationFromUnit(int val, String unit) {
 int processDiffDuration(Duration duration, String unit) {
   switch (unit) {
     case Unit.d:
-      return duration.inDays.abs();
+      return duration.inDays;
     case Unit.h:
-      return duration.inHours.abs();
+      return duration.inHours;
     case Unit.min:
-      return duration.inMinutes.abs();
+      return duration.inMinutes;
     case Unit.s:
-      return duration.inSeconds.abs();
+      return duration.inSeconds;
     case Unit.ms:
-      return duration.inMilliseconds.abs();
+      return duration.inMilliseconds;
     default:
       return null;
   }
 }
 
 String processMatchFromFormat(Match m, Day day) {
-  final locale = day.localLocale != null ? day.localLocale : Day.locale;
+  final locale = day.getLocale();
 
   if (m[0].startsWith('[') && m[0].endsWith(']')) {
     return m[0].substring(1, m[0].length - 1);

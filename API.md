@@ -412,7 +412,7 @@ final d2 = Day.fromString('2021-05-01T10:30:30.000Z');
 d1.diff(d2, 'y'); // 2
 ```
 
-Support unit shorthand.
+Support unit shorthand. If the unit is null, it will be set to `ms`.
 
 ### Compare To
 

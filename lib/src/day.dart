@@ -28,11 +28,15 @@ class Day {
   final Map<String, int> _values = {};
 
   static var _locale = en_locale.locale;
+
   static Map<String, dynamic> get locale => _locale;
+
   static set locale(Map<String, dynamic> locale) => _locale = locale;
 
   var _localLocale;
+
   Map<String, dynamic> get localLocale => _localLocale;
+
   Day useLocale(Map<String, dynamic> localLocale) {
     final d = clone();
 
@@ -40,6 +44,9 @@ class Day {
 
     return d;
   }
+
+  Map<String, dynamic> getLocale() =>
+      this.localLocale != null ? this.localLocale : Day.locale;
 
   /// Parses [time] to [_values], used internally.
   void _parseTime() {
@@ -438,15 +445,15 @@ class Day {
   isAfter(Day day) => _time.isAfter(day._time);
 
   /// Returns a number with the difference between two days by specified unit.
-  int diff(Day day, String unit) {
+  int diff(Day day, [String unit = Unit.ms]) {
     final difference = _time.difference(day._time);
     final processedUnit = u.processUnit(unit);
 
     switch (processedUnit) {
       case Unit.y:
-        return (year() - day.year()).abs();
+        return (year() - day.year());
       case Unit.m:
-        return (year() - day.year()).abs() * 12 + day.month() - month();
+        return (year() - day.year()) * 12 + (month() - day.month());
       default:
         return u.processDiffDuration(difference, processedUnit);
     }
