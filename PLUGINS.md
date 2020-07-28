@@ -4,6 +4,7 @@
 - [Plugins List](#plugins-list)
   - [Is Leap Year](#is-leap-year)
   - [Relative Time](#relative-time)
+  - [Day Of Year](#day-of-year)
 
 ## Introduction
 
@@ -109,3 +110,24 @@ void main() {
 | 46 days to 10 months     | MM  | 2 months ago ... 10 months ago   |
 | 11 months to 17months    | y   | a year ago                       |
 | 18 months+               | yy  | 2 years ago ... 20 years ago     |
+
+### Day Of Year
+
+/// Gets or sets the day of the year.
+
+```dart
+import 'package:test/test.dart';
+import 'package:day/day.dart';
+import 'package:day/plugins/day_of_year.dart';
+
+void main() {
+  test('Plugin => Day Of Year', () {
+    final d = Day.fromString('2019-04-30T10:30:30.001Z');
+    final d1001 = d.dayOfYear(274);
+
+    expect(d.dayOfYear(), equals(120));
+    expect(d1001.month(), equals(10));
+    expect(d1001.date(), equals(1));
+  });
+}
+```
