@@ -124,6 +124,8 @@ class Day {
     _initTime(day._time);
   }
 
+  bool isValid() => _time != null;
+
   /// Clone this [Day].
   ///
   /// returns a new [Day] instance.
@@ -220,6 +222,20 @@ class Day {
     }
   }
 
+  /// Get value by [String] unit. Support shorthand.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// get('date');
+  /// get('d');
+  /// ```
+  get(String unit) {
+    final processedUnit = u.processUnit(unit);
+
+    return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
+  }
+
   /// Set the year, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
@@ -264,35 +280,6 @@ class Day {
     }
   }
 
-  /// Updates the internal [_time] by [_values], used internally.
-  void _updateTime() {
-    final vals = _values;
-
-    _time = DateTime(vals[Unit.y], vals[Unit.m], vals[Unit.d], vals[Unit.h],
-        vals[Unit.min], vals[Unit.s], vals[Unit.ms]);
-
-    _parseTime();
-  }
-
-  /// Alias of [_updateTime].
-  ///
-  /// Updates the internal [_time] by [_values], used publicly.
-  void finished() => _updateTime();
-
-  /// Get value by [String] unit. Support shorthand.
-  ///
-  /// Example:
-  ///
-  /// ```dart
-  /// get('date');
-  /// get('d');
-  /// ```
-  get(String unit) {
-    final processedUnit = u.processUnit(unit);
-
-    return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
-  }
-
   /// Set val by unit. Support shorthand.
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
@@ -310,6 +297,21 @@ class Day {
       _values[processedUnit] = val;
     }
   }
+
+  /// Updates the internal [_time] by [_values], used internally.
+  void _updateTime() {
+    final vals = _values;
+
+    _time = DateTime(vals[Unit.y], vals[Unit.m], vals[Unit.d], vals[Unit.h],
+        vals[Unit.min], vals[Unit.s], vals[Unit.ms]);
+
+    _parseTime();
+  }
+
+  /// Alias of [_updateTime].
+  ///
+  /// Updates the internal [_time] by [_values], used publicly.
+  void finished() => _updateTime();
 
   /// Add val by unit. Support shorthand.
   ///
@@ -414,6 +416,9 @@ class Day {
         (Match m) => u.processMatchFromFormat(m, this));
   }
 
+  @override
+  String toString() => _time.toString();
+
   /// Returns an ISO-8601 full-precision extended format representation of this [Day].
   ///
   /// This will call the [DateTime]'s toIso8601String method.
@@ -429,21 +434,6 @@ class Day {
   /// This will call the [DateTime]'s timeZoneOffset method.
   Duration get timeZoneOffset => _time.timeZoneOffset;
 
-  /// Compares this day to other, returning zero if the values are equal.
-  ///
-  /// This will call the [DateTime]'s compareTo method.
-  compareTo(Day day) => _time.compareTo(day._time);
-
-  /// Returns true if this day occurs before other day.
-  ///
-  /// This will call the [DateTime]'s isBefore method.
-  isBefore(Day day) => _time.isBefore(day._time);
-
-  /// Returns true if this day occurs after other day.
-  ///
-  /// This will call the [DateTime]'s isAfter method.
-  isAfter(Day day) => _time.isAfter(day._time);
-
   /// Returns a number with the difference between two days by specified unit.
   int diff(Day day, [String unit = Unit.ms]) {
     final difference = _time.difference(day._time);
@@ -458,6 +448,21 @@ class Day {
         return u.processDiffDuration(difference, processedUnit);
     }
   }
+
+  /// Compares this day to other, returning zero if the values are equal.
+  ///
+  /// This will call the [DateTime]'s compareTo method.
+  compareTo(Day day) => _time.compareTo(day._time);
+
+  /// Returns true if this day occurs before other day.
+  ///
+  /// This will call the [DateTime]'s isBefore method.
+  isBefore(Day day) => _time.isBefore(day._time);
+
+  /// Returns true if this day occurs after other day.
+  ///
+  /// This will call the [DateTime]'s isAfter method.
+  isAfter(Day day) => _time.isAfter(day._time);
 
   /// True if this [Day] is set to UTC time.
   ///
@@ -481,11 +486,6 @@ class Day {
   }
 
   DateTime toDateTime() => _time;
-
-  bool isValid() => _time != null;
-
-  @override
-  String toString() => _time.toString();
 
   // https://dart.dev/guides/libraries/library-tour#implementing-map-keys
   @override
