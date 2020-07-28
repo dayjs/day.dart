@@ -113,7 +113,7 @@ void main() {
 
 ### Day Of Year
 
-/// Gets or sets the day of the year.
+Gets or sets the day of the year.
 
 ```dart
 import 'package:test/test.dart';
