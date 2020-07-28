@@ -268,15 +268,15 @@ d
   ..finished();
 ```
 
-| Method              | Shorthand                    | Shorthand2              |
-| ------------------- | ---------------------------- | ----------------------- |
-| `.setYear()`        | `setValue('year', 2020)`     | `set('year', 2020)`     |
-| `.setMonth()`       | `setValue('month', 5)`       | `set('month', 5)`       |
-| `.setDate()`        | `setValue('date', 1)`        | `set('date', 1)`        |
-| `.setHour()`        | `setValue('hour', 11)`       | `set('hour', 11)`       |
-| `.setMinute()`      | `setValue('minute', 31)`     | `set('minute', 31)`     |
-| `.setSecond()`      | `setValue('second', 31)`     | `set('second', 31)`     |
-| `.setMillisecond()` | `setValue('millisecond', 1)` | `set('millisecond', 1)` |
+| Method              | Shorthand                    | Shorthand2       |
+| ------------------- | ---------------------------- | ---------------- |
+| `.setYear()`        | `setValue('year', 2020)`     | `set('y', 2020)` |
+| `.setMonth()`       | `setValue('month', 5)`       | `set('M', 5)`    |
+| `.setDate()`        | `setValue('date', 1)`        | `set('d', 1)`    |
+| `.setHour()`        | `setValue('hour', 11)`       | `set('h', 11)`   |
+| `.setMinute()`      | `setValue('minute', 31)`     | `set('m', 31)`   |
+| `.setSecond()`      | `setValue('second', 31)`     | `set('s', 31)`   |
+| `.setMillisecond()` | `setValue('millisecond', 1)` | `set('ms', 1)`   |
 
 ## Manipulating
 
