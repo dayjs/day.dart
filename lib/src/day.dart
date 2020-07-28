@@ -46,7 +46,7 @@ class Day {
   }
 
   Map<String, dynamic> getLocale() =>
-      this.localLocale != null ? this.localLocale : Day.locale;
+      localLocale != null ? localLocale : Day.locale;
 
   /// Parses [time] to [_values], used internally.
   void _parseTime() {
