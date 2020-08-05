@@ -45,8 +45,7 @@ class Day {
     return d;
   }
 
-  Map<String, dynamic> getLocale() =>
-      localLocale != null ? localLocale : Day.locale;
+  Map<String, dynamic> getLocale() => localLocale ?? Day.locale;
 
   /// Parses [time] to [_values], used internally.
   void _parseTime() {
@@ -62,7 +61,7 @@ class Day {
     vals[Unit.ms] = _time.millisecond;
   }
 
-  _initTime(time) {
+  void _initTime(time) {
     _time = time;
     _parseTime();
   }
@@ -143,7 +142,7 @@ class Day {
   /// Get or set the year of this [Day].
   ///
   /// When setting a new year, it will return a new [Day] instance with the new year.
-  year([int year]) {
+  dynamic year([int year]) {
     if (year == null) {
       return _values[Unit.y];
     } else {
@@ -154,7 +153,7 @@ class Day {
   /// Get or set the month of this [Day].
   ///
   /// When setting a new month, it will return a new [Day] instance with the new month.
-  month([int month]) {
+  dynamic month([int month]) {
     if (month == null) {
       return _values[Unit.m];
     } else {
@@ -165,7 +164,7 @@ class Day {
   /// Get or set the date of this [Day].
   ///
   /// When setting a new date, it will return a new [Day] instance with the new date.
-  date([int date]) {
+  dynamic date([int date]) {
     if (date == null) {
       return _values[Unit.d];
     } else {
@@ -181,7 +180,7 @@ class Day {
   /// Get or set the hour of this [Day].
   ///
   /// When setting a new hour, it will return a new [Day] instance with the new hour.
-  hour([int hour]) {
+  dynamic hour([int hour]) {
     if (hour == null) {
       return _values[Unit.h];
     } else {
@@ -192,7 +191,7 @@ class Day {
   /// Get or set the minute of this [Day].
   ///
   /// When setting a new minute, it will return a new [Day] instance with the new minute.
-  minute([int minute]) {
+  dynamic minute([int minute]) {
     if (minute == null) {
       return _values[Unit.min];
     } else {
@@ -203,7 +202,7 @@ class Day {
   /// Get or set the second of this [Day].
   ///
   /// When setting a new second, it will return a new [Day] instance with the new second.
-  second([int second]) {
+  dynamic second([int second]) {
     if (second == null) {
       return _values[Unit.s];
     } else {
@@ -214,7 +213,7 @@ class Day {
   /// Get or set the millisecond of this [Day].
   ///
   /// When setting a new millisecond, it will return a new [Day] instance with the new millisecond.
-  millisecond([int millisecond]) {
+  dynamic millisecond([int millisecond]) {
     if (millisecond == null) {
       return _values[Unit.ms];
     } else {
@@ -230,7 +229,7 @@ class Day {
   /// get('date');
   /// get('d');
   /// ```
-  get(String unit) {
+  dynamic get(String unit) {
     final processedUnit = u.processUnit(unit);
 
     return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
@@ -321,7 +320,7 @@ class Day {
   /// add(1, 'date');
   /// add(1, 'd');
   /// ```
-  add(int val, String unit) {
+  dynamic add(int val, String unit) {
     final processedUnit = u.processUnit(unit);
     final duration = u.durationFromUnit(val, processedUnit);
 
@@ -363,7 +362,7 @@ class Day {
   /// subtract(1, 'date');
   /// subtract(1, 'd');
   /// ```
-  subtract(int val, String unit) {
+  dynamic subtract(int val, String unit) {
     final processedUnit = u.processUnit(unit);
     final duration = u.durationFromUnit(val, processedUnit);
 
@@ -398,10 +397,10 @@ class Day {
   }
 
   /// Alias of [add].
-  inc(int val, String unit) => add(val, unit);
+  dynamic inc(int val, String unit) => add(val, unit);
 
   /// Alias of [subtract].
-  dec(int val, String unit) => subtract(val, unit);
+  dynamic dec(int val, String unit) => subtract(val, unit);
 
   /// Format the [Day]'s displaying.
   ///
@@ -452,17 +451,17 @@ class Day {
   /// Compares this day to other, returning zero if the values are equal.
   ///
   /// This will call the [DateTime]'s compareTo method.
-  compareTo(Day day) => _time.compareTo(day._time);
+  int compareTo(Day day) => _time.compareTo(day._time);
 
   /// Returns true if this day occurs before other day.
   ///
   /// This will call the [DateTime]'s isBefore method.
-  isBefore(Day day) => _time.isBefore(day._time);
+  bool isBefore(Day day) => _time.isBefore(day._time);
 
   /// Returns true if this day occurs after other day.
   ///
   /// This will call the [DateTime]'s isAfter method.
-  isAfter(Day day) => _time.isAfter(day._time);
+  bool isAfter(Day day) => _time.isAfter(day._time);
 
   /// True if this [Day] is set to UTC time.
   ///
@@ -490,7 +489,7 @@ class Day {
   // https://dart.dev/guides/libraries/library-tour#implementing-map-keys
   @override
   int get hashCode {
-    int result = 17;
+    var result = 17;
     result = 37 * result + _time.hashCode;
     return result;
   }
