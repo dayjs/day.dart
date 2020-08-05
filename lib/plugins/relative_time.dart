@@ -33,9 +33,9 @@ extension RelativeTime on Day {
       if (t['u'] != null) {
         final tUnit = t['u'];
 
-        fromTo = isFrom ? this.diff(day, tUnit) : day.diff(this, tUnit);
+        fromTo = isFrom ? diff(day, tUnit) : day.diff(this, tUnit);
         final fromToSeconds =
-            (isFrom ? this.diff(day, 's') : day.diff(this, 's')).abs();
+            (isFrom ? diff(day, 's') : day.diff(this, 's')).abs();
 
         isFuture = fromTo > 0;
 
@@ -81,7 +81,8 @@ extension RelativeTime on Day {
   /// Returns the string of relative time from [day].
   ///
   /// The second param is optional, by set [withoutSuffix] to true, it will remove the suffix(ago).
-  String from(Day day, [bool withoutSuffix = false]) => _relativeTimeExec(day, withoutSuffix);
+  String from(Day day, [bool withoutSuffix = false]) =>
+      _relativeTimeExec(day, withoutSuffix);
 
   /// Returns the string of relative time from now.
   String fromNow([bool withoutSuffix = false]) => from(Day(), withoutSuffix);
@@ -89,7 +90,8 @@ extension RelativeTime on Day {
   /// Returns the string of relative time to [day].
   ///
   /// The second param is optional, by set [withoutSuffix] to true, it will remove the suffix(in).
-  String to(Day day, [bool withoutSuffix = false]) => _relativeTimeExec(day, withoutSuffix, false);
+  String to(Day day, [bool withoutSuffix = false]) =>
+      _relativeTimeExec(day, withoutSuffix, false);
 
   /// Returns the string of relative time to now.
   String toNow([bool withoutSuffix = false]) => to(Day(), withoutSuffix);

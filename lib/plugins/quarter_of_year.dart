@@ -13,7 +13,7 @@ extension QuarterOfYear on Day {
       final rem = month % 3;
 
       return currentQuarter == quarter
-          ? this.clone()
+          ? clone()
           : this.month((rem == 0 ? 3 : rem) + (quarter - 1) * 3);
     }
   }
