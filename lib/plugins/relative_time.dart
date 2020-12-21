@@ -25,13 +25,13 @@ extension RelativeTime on Day {
   String _relativeTimeExec(Day day, bool withoutSuffix, [bool isFrom = true]) {
     final locale = getLocale();
     final relativeTimeLocale = locale['RelativeTime'];
-    int fromTo;
-    bool isFuture;
-    String result;
+    late int fromTo;
+    late bool isFuture;
+    late String result;
 
     for (final t in thresholds) {
       if (t['u'] != null) {
-        final tUnit = t['u'];
+        final tUnit = t['u'] as String;
 
         fromTo = isFrom ? diff(day, tUnit) : day.diff(this, tUnit);
         final fromToSeconds =
@@ -59,7 +59,7 @@ extension RelativeTime on Day {
 
       final absResult = fromTo.abs();
 
-      if (t['v'] == null || absResult <= t['v']) {
+      if (t['v'] == null || absResult <= (t['v'] as int)) {
         final format = relativeTimeLocale[t['f']];
 
         result = (format as String).replaceFirst('%d', absResult.toString());

@@ -11,7 +11,7 @@ import 'package:day/i18n/en.dart' as en_locale;
 /// I18n: https://github.com/dayjs/day.dart/blob/master/I18N.md
 class Day {
   /// The internal [DateTime] instance of the [Day].
-  DateTime _time;
+  late DateTime _time;
 
   /// The values of [time].
   ///
@@ -35,7 +35,7 @@ class Day {
 
   var _localLocale;
 
-  Map<String, dynamic> get localLocale => _localLocale;
+  Map<String, dynamic>? get localLocale => _localLocale;
 
   Day useLocale(Map<String, dynamic> localLocale) {
     final d = clone();
@@ -123,6 +123,7 @@ class Day {
     _initTime(day._time);
   }
 
+  // ignore: unnecessary_null_comparison
   bool isValid() => _time != null;
 
   /// Clone this [Day].
@@ -142,7 +143,7 @@ class Day {
   /// Get or set the year of this [Day].
   ///
   /// When setting a new year, it will return a new [Day] instance with the new year.
-  dynamic year([int year]) {
+  dynamic year([int? year]) {
     if (year == null) {
       return _values[Unit.y];
     } else {
@@ -153,7 +154,7 @@ class Day {
   /// Get or set the month of this [Day].
   ///
   /// When setting a new month, it will return a new [Day] instance with the new month.
-  dynamic month([int month]) {
+  dynamic month([int? month]) {
     if (month == null) {
       return _values[Unit.m];
     } else {
@@ -164,7 +165,7 @@ class Day {
   /// Get or set the date of this [Day].
   ///
   /// When setting a new date, it will return a new [Day] instance with the new date.
-  dynamic date([int date]) {
+  dynamic date([int? date]) {
     if (date == null) {
       return _values[Unit.d];
     } else {
@@ -174,13 +175,13 @@ class Day {
 
   /// Get the weekday of this [Day].
   int weekday() {
-    return _values[Unit.w];
+    return _values[Unit.w]!;
   }
 
   /// Get or set the hour of this [Day].
   ///
   /// When setting a new hour, it will return a new [Day] instance with the new hour.
-  dynamic hour([int hour]) {
+  dynamic hour([int? hour]) {
     if (hour == null) {
       return _values[Unit.h];
     } else {
@@ -191,7 +192,7 @@ class Day {
   /// Get or set the minute of this [Day].
   ///
   /// When setting a new minute, it will return a new [Day] instance with the new minute.
-  dynamic minute([int minute]) {
+  dynamic minute([int? minute]) {
     if (minute == null) {
       return _values[Unit.min];
     } else {
@@ -202,7 +203,7 @@ class Day {
   /// Get or set the second of this [Day].
   ///
   /// When setting a new second, it will return a new [Day] instance with the new second.
-  dynamic second([int second]) {
+  dynamic second([int? second]) {
     if (second == null) {
       return _values[Unit.s];
     } else {
@@ -213,7 +214,7 @@ class Day {
   /// Get or set the millisecond of this [Day].
   ///
   /// When setting a new millisecond, it will return a new [Day] instance with the new millisecond.
-  dynamic millisecond([int millisecond]) {
+  dynamic millisecond([int? millisecond]) {
     if (millisecond == null) {
       return _values[Unit.ms];
     } else {
@@ -301,8 +302,15 @@ class Day {
   void _updateTime() {
     final vals = _values;
 
-    _time = DateTime(vals[Unit.y], vals[Unit.m], vals[Unit.d], vals[Unit.h],
-        vals[Unit.min], vals[Unit.s], vals[Unit.ms]);
+    _time = DateTime(
+      vals[Unit.y]!,
+      vals[Unit.m]!,
+      vals[Unit.d]!,
+      vals[Unit.h]!,
+      vals[Unit.min]!,
+      vals[Unit.s]!,
+      vals[Unit.ms]!,
+    );
 
     _parseTime();
   }
@@ -406,7 +414,7 @@ class Day {
   ///
   /// For more details, view:
   /// https://github.com/dayjs/day.dart/blob/master/API.md#format-format
-  String format([String format]) {
+  String format([String? format]) {
     if (format == null) {
       return toIso8601String();
     }
