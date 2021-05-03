@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.png?raw=true" alt="day.dart logo" />
 </p>
-<p align="center">A date library <a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart. With nearly the same API.</p>
+<p align="center">A date library <a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart.</p>
 
 <p align="center">
   <img alt="Pub" src="https://img.shields.io/pub/v/day.svg">
@@ -14,7 +14,7 @@
 </p>
 
 > Day.dart is inspired by Day.js. Write with nearly the same API. Build on the top of the powerful **DateTime** class.
-
+>
 > Important: Day.dart use the **extension** syntax to implement plugins system. So the dart version must >= 2.7.0
 
 ## Features
