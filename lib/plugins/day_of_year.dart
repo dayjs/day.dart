@@ -2,7 +2,7 @@ import '../day.dart';
 
 /// Gets or sets the day of the year from a [Day] instance.
 extension DayOfYear on Day {
-  dynamic dayOfYear([int val]) {
+  dynamic dayOfYear([int? val]) {
     final firstTimeOfYear = clone()
       ..setMonth(1)
       ..setDate(0)

@@ -14,13 +14,13 @@ const unitMap = {
 
 String processUnit(String unit) {
   if (unitMap.containsKey(unit)) {
-    return unitMap[unit];
+    return unitMap[unit]!;
   }
 
   return unit.trim().toLowerCase();
 }
 
-Duration durationFromUnit(int val, String unit) {
+Duration? durationFromUnit(int val, String unit) {
   switch (unit) {
     case Unit.d:
       return Duration(days: val);
@@ -50,18 +50,19 @@ int processDiffDuration(Duration duration, String unit) {
     case Unit.ms:
       return duration.inMilliseconds;
     default:
-      return null;
+      return duration.inMilliseconds;
   }
 }
 
 String processMatchFromFormat(Match m, Day day) {
   final locale = day.getLocale();
+  final mm = m[0]; // First match
 
-  if (m[0].startsWith('[') && m[0].endsWith(']')) {
-    return m[0].substring(1, m[0].length - 1);
+  if (mm != null && mm.startsWith('[') && mm.endsWith(']')) {
+    return mm.substring(1, mm.length - 1);
   }
 
-  switch (m[0]) {
+  switch (mm) {
     case 'Y':
     case 'YY':
       final year = day.year().toString();
@@ -119,7 +120,7 @@ String processMatchFromFormat(Match m, Day day) {
     case 'a':
       return _toAMOrPM(day.hour(), locale, true);
     default:
-      return null;
+      return day.toIso8601String();
   }
 }
 
