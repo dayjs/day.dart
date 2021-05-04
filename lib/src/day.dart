@@ -13,7 +13,7 @@ class Day {
   /// The internal [DateTime] instance of the [Day].
   late DateTime _time;
 
-  /// The values of [time].
+  /// The values of [_time].
   ///
   /// Include:
   ///
@@ -47,7 +47,7 @@ class Day {
 
   Map<String, dynamic> getLocale() => localLocale ?? Day.locale;
 
-  /// Parses [time] to [_values], used internally.
+  /// Parses [_time] to [_values], used internally.
   void _parseTime() {
     final vals = _values;
 

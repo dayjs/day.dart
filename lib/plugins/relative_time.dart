@@ -89,10 +89,10 @@ extension RelativeTime on Day {
 
   /// Returns the string of relative time to [day].
   ///
-  /// The second param is optional, by set [withoutSuffix] to true, it will remove the suffix(in).
-  String to(Day day, [bool withoutSuffix = false]) =>
-      _relativeTimeExec(day, withoutSuffix, false);
+  /// The second param is optional, by set [withoutPrefix] to true, it will remove the prefix(in).
+  String to(Day day, [bool withoutPrefix = false]) =>
+      _relativeTimeExec(day, withoutPrefix, false);
 
   /// Returns the string of relative time to now.
-  String toNow([bool withoutSuffix = false]) => to(Day(), withoutSuffix);
+  String toNow([bool withoutPrefix = false]) => to(Day(), withoutPrefix);
 }
