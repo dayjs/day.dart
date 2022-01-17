@@ -16,7 +16,7 @@ const thresholds = [
   {'f': 'yy', 'u': Unit.y}
 ];
 
-/// Add relative time support.
+/// Adds relative time support.
 ///
 /// This plugin includes four methods: from, fromNow, to, toNow.
 /// All of them can help you to format date to a relative time string.

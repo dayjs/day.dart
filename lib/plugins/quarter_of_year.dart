@@ -1,6 +1,6 @@
 import '../day.dart';
 
-/// Get or set the quarter of the year from a [Day] instance.
+/// Gets or sets the quarter of the year from a [Day] instance.
 extension QuarterOfYear on Day {
   dynamic quarter([int? val]) {
     final int month = this.month();

@@ -1,6 +1,6 @@
 import '../day.dart';
 
-/// Check a [Day] instance is a leap year or not.
+/// Checks if a [Day] instance is a leap year.
 ///
 /// Reference: https://stackoverflow.com/a/11595914/5676489
 extension IsLeapYear on Day {

@@ -140,7 +140,7 @@ class Day {
     return d;
   }
 
-  /// Get or set the year of this [Day].
+  /// Gets or sets the year of this [Day].
   ///
   /// When setting a new year, it will return a new [Day] instance with the new year.
   dynamic year([int? year]) {
@@ -151,7 +151,7 @@ class Day {
     }
   }
 
-  /// Get or set the month of this [Day].
+  /// Gets or sets the month of this [Day].
   ///
   /// When setting a new month, it will return a new [Day] instance with the new month.
   dynamic month([int? month]) {
@@ -162,7 +162,7 @@ class Day {
     }
   }
 
-  /// Get or set the date of this [Day].
+  /// Gets or sets the date of this [Day].
   ///
   /// When setting a new date, it will return a new [Day] instance with the new date.
   dynamic date([int? date]) {
@@ -173,12 +173,12 @@ class Day {
     }
   }
 
-  /// Get the weekday of this [Day].
+  /// Gets the weekday of this [Day].
   int weekday() {
     return _values[Unit.w]!;
   }
 
-  /// Get or set the hour of this [Day].
+  /// Gets or sets the hour of this [Day].
   ///
   /// When setting a new hour, it will return a new [Day] instance with the new hour.
   dynamic hour([int? hour]) {
@@ -189,7 +189,7 @@ class Day {
     }
   }
 
-  /// Get or set the minute of this [Day].
+  /// Gets or sets the minute of this [Day].
   ///
   /// When setting a new minute, it will return a new [Day] instance with the new minute.
   dynamic minute([int? minute]) {
@@ -200,7 +200,7 @@ class Day {
     }
   }
 
-  /// Get or set the second of this [Day].
+  /// Gets or sets the second of this [Day].
   ///
   /// When setting a new second, it will return a new [Day] instance with the new second.
   dynamic second([int? second]) {
@@ -211,7 +211,7 @@ class Day {
     }
   }
 
-  /// Get or set the millisecond of this [Day].
+  /// Gets or sets the millisecond of this [Day].
   ///
   /// When setting a new millisecond, it will return a new [Day] instance with the new millisecond.
   dynamic millisecond([int? millisecond]) {
@@ -222,7 +222,7 @@ class Day {
     }
   }
 
-  /// Get [int] value by [unit]. Supports shorthand. Returns null if the [unit] is not found.
+  /// Gets [int] value by [unit]. Supports shorthand. Returns null if the [unit] is not found.
   ///
   /// Example:
   ///
@@ -236,42 +236,42 @@ class Day {
     return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
   }
 
-  /// Set the year, it won't update the internal [_time].
+  /// Sets the year, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setYear(int year) => _values[Unit.y] = year;
 
-  /// Set the month, it won't update the internal [_time].
+  /// Sets the month, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMonth(int month) => _values[Unit.m] = month;
 
-  /// Set the date, it won't update the internal [_time].
+  /// Sets the date, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setDate(int date) => _values[Unit.d] = date;
 
-  /// Set the hour, it won't update the internal [_time].
+  /// Sets the hour, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setHour(int hour) => _values[Unit.h] = hour;
 
-  /// Set the minute, it won't update the internal [_time].
+  /// Sets the minute, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMinute(int minute) => _values[Unit.min] = minute;
 
-  /// Set the second, it won't update the internal [_time].
+  /// Sets the second, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setSecond(int second) => _values[Unit.s] = second;
 
-  /// Set the millisecond, it won't update the internal [_time].
+  /// Sets the millisecond, it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setMillisecond(int millisecond) => _values[Unit.ms] = millisecond;
 
-  /// Set by [key] and [val], it won't update the internal [_time].
+  /// Sets by [key] and [val], it won't update the internal [_time].
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   void setValue(String key, int val) {
@@ -280,7 +280,7 @@ class Day {
     }
   }
 
-  /// Set [val] by [unit]. Support shorthand.
+  /// Sets [val] by [unit]. Supports shorthand. It will not do anything if the [unit] is not found.
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   ///
@@ -320,7 +320,7 @@ class Day {
   /// Updates the internal [_time] by [_values], used publicly.
   void finished() => _updateTime();
 
-  /// Add [val] by [unit]. Support shorthand.
+  /// Add [val] by [unit]. Supports shorthand.
   ///
   /// Example:
   ///
@@ -362,7 +362,7 @@ class Day {
     return null;
   }
 
-  /// Subtract [val] by [unit]. Support shorthand.
+  /// Subtract [val] by [unit]. Supports shorthand.
   ///
   /// Example:
   ///
@@ -433,12 +433,12 @@ class Day {
 
   /// The time zone name.
   ///
-  /// This will call the [DateTime]'s timeZoneName method.
+  /// Uses [DateTime.timeZoneName].
   String get timeZoneName => _time.timeZoneName;
 
   /// The time zone offset, which is the difference between local time and UTC.
   ///
-  /// This will call the [DateTime]'s timeZoneOffset method.
+  /// Uses [DateTime.timeZoneOffset].
   Duration get timeZoneOffset => _time.timeZoneOffset;
 
   /// Returns a number with the difference between two days by specified [unit].
@@ -458,22 +458,22 @@ class Day {
 
   /// Compares this day to other, returning zero if the values are equal.
   ///
-  /// This will call the [DateTime]'s compareTo method.
+  /// This will call the [DateTime.compareTo] method.
   int compareTo(Day day) => _time.compareTo(day._time);
 
   /// Returns true if this day occurs before other day.
   ///
-  /// This will call the [DateTime]'s isBefore method.
+  /// This will call the [DateTime.isBefore] method.
   bool isBefore(Day day) => _time.isBefore(day._time);
 
   /// Returns true if this day occurs after other day.
   ///
-  /// This will call the [DateTime]'s isAfter method.
+  /// This will call the [DateTime.isAfter] method.
   bool isAfter(Day day) => _time.isAfter(day._time);
 
   /// True if this [Day] is set to UTC time.
   ///
-  /// Same as the [DateTime]'s isUtc method.
+  /// Uses [DateTime.isUtc].
   bool get isUtc => _time.isUtc;
 
   /// Convert this [Day] to UTC.
