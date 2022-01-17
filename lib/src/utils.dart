@@ -1,25 +1,6 @@
 import 'day.dart';
 import 'constants.dart' show Unit;
 
-const unitMap = {
-  'y': Unit.y,
-  'M': Unit.m,
-  'd': Unit.d,
-  'w': Unit.w,
-  'h': Unit.h,
-  'm': Unit.min,
-  's': Unit.s,
-  'ms': Unit.ms
-};
-
-String processUnit(String unit) {
-  if (unitMap.containsKey(unit)) {
-    return unitMap[unit]!;
-  }
-
-  return unit.trim().toLowerCase();
-}
-
 Duration? durationFromUnit(int val, String unit) {
   switch (unit) {
     case Unit.d:

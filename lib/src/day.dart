@@ -222,7 +222,7 @@ class Day {
     }
   }
 
-  /// Get value by [String] unit. Support shorthand.
+  /// Get [int] value by [unit]. Supports shorthand. Returns null if the [unit] is not found.
   ///
   /// Example:
   ///
@@ -230,8 +230,8 @@ class Day {
   /// get('date');
   /// get('d');
   /// ```
-  dynamic get(String unit) {
-    final processedUnit = u.processUnit(unit);
+  int? get(String unit) {
+    final processedUnit = Unit.fromShorthand(unit);
 
     return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
   }
@@ -280,7 +280,7 @@ class Day {
     }
   }
 
-  /// Set val by unit. Support shorthand.
+  /// Set [val] by [unit]. Support shorthand.
   ///
   /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
   ///
@@ -291,7 +291,7 @@ class Day {
   /// set('d', 1);
   /// ```
   void set(String unit, int val) {
-    final processedUnit = u.processUnit(unit);
+    final processedUnit = Unit.fromShorthand(unit);
 
     if (_values.containsKey(processedUnit)) {
       _values[processedUnit] = val;
@@ -320,7 +320,7 @@ class Day {
   /// Updates the internal [_time] by [_values], used publicly.
   void finished() => _updateTime();
 
-  /// Add val by unit. Support shorthand.
+  /// Add [val] by [unit]. Support shorthand.
   ///
   /// Example:
   ///
@@ -329,7 +329,7 @@ class Day {
   /// add(1, 'd');
   /// ```
   dynamic add(int val, String unit) {
-    final processedUnit = u.processUnit(unit);
+    final processedUnit = Unit.fromShorthand(unit);
     final duration = u.durationFromUnit(val, processedUnit);
 
     if (duration != null) {
@@ -362,7 +362,7 @@ class Day {
     return null;
   }
 
-  /// Subtract val by unit. Support shorthand.
+  /// Subtract [val] by [unit]. Support shorthand.
   ///
   /// Example:
   ///
@@ -371,7 +371,7 @@ class Day {
   /// subtract(1, 'd');
   /// ```
   dynamic subtract(int val, String unit) {
-    final processedUnit = u.processUnit(unit);
+    final processedUnit = Unit.fromShorthand(unit);
     final duration = u.durationFromUnit(val, processedUnit);
 
     if (duration != null) {
@@ -441,10 +441,10 @@ class Day {
   /// This will call the [DateTime]'s timeZoneOffset method.
   Duration get timeZoneOffset => _time.timeZoneOffset;
 
-  /// Returns a number with the difference between two days by specified unit.
+  /// Returns a number with the difference between two days by specified [unit].
   int diff(Day day, [String unit = Unit.ms]) {
     final difference = _time.difference(day._time);
-    final processedUnit = u.processUnit(unit);
+    final processedUnit = Unit.fromShorthand(unit);
 
     switch (processedUnit) {
       case Unit.y:
