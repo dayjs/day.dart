@@ -16,6 +16,6 @@ void main() {
     ..setDate(1)
     ..finished();
 
-  // Get year
+  // Gets year
   print(now.year());
 }

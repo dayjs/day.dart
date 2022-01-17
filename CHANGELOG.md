@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.2] - 2022-01-17
+
+- Refactor internal `Unit`
+- Enhance doc comments
+
 ## [0.7.1] - 2021-05-04
 
 - Update docs
@@ -27,25 +32,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.6.2]
 
-- Add `Quarter Of Year` plugin
+- Add [`Quarter Of Year`](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md#quarter-of-year) plugin
 
 ## [0.6.1]
 
-- Add `Day Of Year` plugin
+- Add [`Day Of Year`](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md#day-of-year) plugin
 
 ## [0.6.0]
 
-- Now `diff()` method return no abs value
-- Fix issues of `y` and `M` shorthands in `add()` and `substract()`
-- Add `Relative Time` plugin
+- Now `.diff()` method return no abs value
+- Fix issues of `y` and `M` shorthands in `.add()` and `.substract()`
+- Add [`Relative Time`](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md#relative-time) plugin
 
 ## [0.5.5]
 
-- Now can escape string in `format()` method
+- Now can escape string in `.format()` method
 
 ## [0.5.4]
 
-- Add `toDateTime()` method
+- Add `.toDateTime()` method
 
 ## [0.5.3]
 
@@ -62,7 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.5.0] - 2019-12-16
 
 - **Breaking change: rewrite plugins system with extension syntax**
-- Add `Is Leap Year` plugin
+- Add [`Is Leap Year`](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md#is-leap-year) plugin
 - Update some details
 - Update docs
 
