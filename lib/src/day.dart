@@ -123,9 +123,6 @@ class Day {
     _initTime(day._time);
   }
 
-  // ignore: unnecessary_null_comparison
-  bool isValid() => _time != null;
-
   /// Clone this [Day].
   ///
   /// returns a new [Day] instance.

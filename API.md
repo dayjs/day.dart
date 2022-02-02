@@ -11,7 +11,6 @@ Also inherit from Day.js, part of manipulations is immutable.
   - [From DateTime](#from-datetime)
   - [From Unix](#from-unix)
   - [From Day Instance](#from-day-instance)
-- [Check Is Valid](#check-is-valid)
 - [Clone](#clone)
 - [Get And Set](#get-and-set)
   - [Year `.year()`](#year-year)
@@ -100,15 +99,6 @@ final d = Day.fromUnix(0);
 ```dart
 final now = Day();
 final afterNow = Day.fromDayInstance(now);
-```
-
-## Check Is Valid
-
-Check whether a day instance is valid. If `false`, indicates that the instance did not initialize successfully.
-
-```dart
-final now = Day();
-final isValid = now.isValid()
 ```
 
 ## Clone
