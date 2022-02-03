@@ -376,7 +376,7 @@ class Day {
   /// add(1, 'date');
   /// add(1, 'd');
   /// ```
-  dynamic add(int val, String unit) => _add(val: val, unit: unit);
+  Day? add(int val, String unit) => _add(val: val, unit: unit);
 
   /// Add [val] by [unit] but rounded. Supports shorthand.
   ///

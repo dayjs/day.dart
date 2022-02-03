@@ -6,7 +6,7 @@ void main() {
 
   group('Add Method:', () {
     test('1 year', () {
-      final Day dClone = d.add(1, 'year');
+      final dClone = d.add(1, 'year')!;
 
       expect(d.year(), equals(2019));
 
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('-1 year', () {
-      final Day dClone = d.add(-1, 'year');
+      final dClone = d.add(-1, 'year')!;
 
       expect(d.year(), equals(2019));
 
@@ -22,7 +22,7 @@ void main() {
     });
 
     test('2 months', () {
-      final Day dClone = d.add(2, 'month');
+      final dClone = d.add(2, 'month')!;
 
       expect(d.month(), equals(4));
 
@@ -30,7 +30,7 @@ void main() {
     });
 
     test('9 months', () {
-      final Day dClone = d.add(9, 'month');
+      final dClone = d.add(9, 'month')!;
 
       expect(d.year(), equals(2019));
       expect(d.month(), equals(4));
@@ -40,7 +40,7 @@ void main() {
     });
 
     test('-6 months', () {
-      final Day dClone = d.add(-6, 'month');
+      final dClone = d.add(-6, 'month')!;
 
       expect(d.month(), equals(4));
 
@@ -49,7 +49,7 @@ void main() {
     });
 
     test('1 day', () {
-      final Day dClone = d.add(1, 'date');
+      final dClone = d.add(1, 'date')!;
 
       expect(d.month(), equals(4));
       expect(d.date(), equals(30));
@@ -59,7 +59,7 @@ void main() {
     });
 
     test('-1 day', () {
-      final Day dClone = d.add(-1, 'date');
+      final dClone = d.add(-1, 'date')!;
 
       expect(d.month(), equals(4));
       expect(d.date(), equals(30));
@@ -69,7 +69,7 @@ void main() {
     });
 
     test('-30 day', () {
-      final Day dClone = d.add(-30, 'date');
+      final dClone = d.add(-30, 'date')!;
 
       expect(d.month(), equals(4));
       expect(d.date(), equals(30));
@@ -79,7 +79,7 @@ void main() {
     });
 
     test('1 hour', () {
-      final Day dClone = d.add(1, 'hour');
+      final dClone = d.add(1, 'hour')!;
 
       expect(d.hour(), equals(10));
 
@@ -87,7 +87,7 @@ void main() {
     });
 
     test('-1 hour', () {
-      final Day dClone = d.add(-1, 'hour');
+      final dClone = d.add(-1, 'hour')!;
 
       expect(d.hour(), equals(10));
 
@@ -95,7 +95,7 @@ void main() {
     });
 
     test('-11 hour', () {
-      final Day dClone = d.add(-11, 'hour');
+      final dClone = d.add(-11, 'hour')!;
 
       expect(d.hour(), equals(10));
 
@@ -104,7 +104,7 @@ void main() {
     });
 
     test('1 minute', () {
-      final Day dClone = d.add(1, 'minute');
+      final dClone = d.add(1, 'minute')!;
 
       expect(d.minute(), equals(30));
 
@@ -112,7 +112,7 @@ void main() {
     });
 
     test('-1 minute', () {
-      final Day dClone = d.add(-1, 'minute');
+      final dClone = d.add(-1, 'minute')!;
 
       expect(d.minute(), equals(30));
 
@@ -120,7 +120,7 @@ void main() {
     });
 
     test('1 second', () {
-      final Day dClone = d.add(1, 'second');
+      final dClone = d.add(1, 'second')!;
 
       expect(d.second(), equals(30));
 
@@ -128,7 +128,7 @@ void main() {
     });
 
     test('-1 second', () {
-      final Day dClone = d.add(-1, 'second');
+      final dClone = d.add(-1, 'second')!;
 
       expect(d.second(), equals(30));
 
@@ -136,7 +136,7 @@ void main() {
     });
 
     test('1 ms', () {
-      final Day dClone = d.add(1, 'ms');
+      final dClone = d.add(1, 'ms')!;
 
       expect(d.millisecond(), equals(0));
 
@@ -144,7 +144,7 @@ void main() {
     });
 
     test('-1 ms', () {
-      final Day dClone = d.add(-1, 'ms');
+      final dClone = d.add(-1, 'ms')!;
 
       expect(d.millisecond(), equals(0));
 

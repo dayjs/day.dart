@@ -5,36 +5,36 @@ import 'package:day/plugins/relative_time.dart';
 void main() {
   group('Plugin => Relative Time =>', () {
     final d = Day.fromString('2019-04-30T10:30:30.001Z');
-    final d1 = d.add(1, 's');
-    final d2 = d.add(44, 's');
+    final d1 = d.add(1, 's')!;
+    final d2 = d.add(44, 's')!;
 
-    final d3 = d.add(45, 's');
-    final d4 = d.add(89, 's');
+    final d3 = d.add(45, 's')!;
+    final d4 = d.add(89, 's')!;
 
-    final d5 = d.add(90, 's');
-    final d6 = d.add(120, 's');
-    final d7 = d.add(44, 'm');
+    final d5 = d.add(90, 's')!;
+    final d6 = d.add(120, 's')!;
+    final d7 = d.add(44, 'm')!;
 
-    final d8 = d.add(45, 'm');
-    final d9 = d.add(89, 'm');
+    final d8 = d.add(45, 'm')!;
+    final d9 = d.add(89, 'm')!;
 
-    final d10 = d.add(90, 'm');
-    final d11 = d.add(120, 'm');
-    final d12 = d.add(21, 'h');
+    final d10 = d.add(90, 'm')!;
+    final d11 = d.add(120, 'm')!;
+    final d12 = d.add(21, 'h')!;
 
-    final d13 = d.add(22, 'h');
-    final d14 = d.add(35, 'h');
+    final d13 = d.add(22, 'h')!;
+    final d14 = d.add(35, 'h')!;
 
-    final d15 = d.add(36, 'h');
-    final d16 = d.add(48, 'h');
-    final d17 = d.add(25, 'd');
+    final d15 = d.add(36, 'h')!;
+    final d16 = d.add(48, 'h')!;
+    final d17 = d.add(25, 'd')!;
 
-    final d18 = d.add(26, 'd');
-    final d19 = d.add(45, 'd');
+    final d18 = d.add(26, 'd')!;
+    final d19 = d.add(45, 'd')!;
 
-    final d20 = d.add(46, 'd');
-    final d21 = d.add(60, 'd');
-    final d22 = d.add(4, 'M');
+    final d20 = d.add(46, 'd')!;
+    final d21 = d.add(60, 'd')!;
+    final d22 = d.add(4, 'M')!;
 
     final d2020 = d.year(2020);
     final d2021 = d.year(2021);
