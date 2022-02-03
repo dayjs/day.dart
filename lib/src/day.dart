@@ -128,10 +128,21 @@ class Day {
   /// returns a new [Day] instance.
   Day clone() => Day.fromDateTime(_time);
 
-  Day _cloneAndSetSingleValue(key, val) {
+  Day _cloneAndSetSingleValue(String key, val) {
     final d = clone();
 
     d.setValue(key, val);
+    d.finished();
+
+    return d;
+  }
+
+  Day _cloneAndSetMultipleValues(Map<String, int> values) {
+    final d = clone();
+
+    values.forEach((key, value) {
+      d.setValue(key, value);
+    });
     d.finished();
 
     return d;
@@ -334,7 +345,22 @@ class Day {
       return d;
     } else {
       if (unit == Unit.y || unit == 'y') {
-        return _cloneAndSetSingleValue(Unit.y, year() + val);
+        final currentYear = year() + val;
+
+        if (rounded) {
+          final currentMonth = month();
+
+          // First determines if the month is February to avoid over-checking
+          if (currentMonth == 2 &&
+              u.isDateOverflow(currentYear, currentMonth, date())) {
+            return _cloneAndSetMultipleValues({
+              Unit.y: currentYear,
+              Unit.d: u.daysInMonth(currentYear, currentMonth),
+            });
+          }
+        }
+
+        return _cloneAndSetSingleValue(Unit.y, currentYear);
       } else if (unit == Unit.m || unit == 'M') {
         final d = clone();
 
@@ -352,7 +378,7 @@ class Day {
 
         if (rounded) {
           final currentYear = d.year();
-          var currentMonth = d.month();
+          final currentMonth = d.month();
 
           if (u.isDateOverflow(currentYear, currentMonth, d.date())) {
             d.setValue(Unit.d, u.daysInMonth(currentYear, currentMonth));
