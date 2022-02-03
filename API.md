@@ -29,6 +29,7 @@ Also inherit from Day.js, part of manipulations is immutable.
   - [Add `.add(int val, String unit)`](#add-addint-val-string-unit)
   - [Add Round `.addRound(int val, String unit)`](#add-round-addroundint-val-string-unit)
   - [Subtract `.subtract(int val, String unit)`](#subtract-subtractint-val-string-unit)
+  - [Subtract Round `.subtractRound(int val, String unit)`](#subtract-round-subtractroundint-val-string-unit)
   - [Inc (Same as add)](#inc-same-as-add)
   - [Dec (Same as subtract)](#dec-same-as-subtract)
 - [Displaying](#displaying)
@@ -309,10 +310,25 @@ d.addRound(1, 'month'); // 2022-04-30T15:52:50.000Z
 
 Returns a cloned day with a specified amount of time subtracted.
 
+So if you wanna receive a non-overflow date, you should use `.subtractRound()` method below.
+
+Refer to [`.add()`](#add-addint-val-string-unit) for more details.
+
 ```dart
 final d = Day();
 
 d.subtract(1, 'date');
+```
+
+### Subtract Round `.subtractRound(int val, String unit)`
+
+Returns a cloned day with a specified amount of time subtracted but rounded to the last day of the current month if overflowed.
+
+```dart
+final d = Day.fromString('2022-03-31T15:52:50.000Z');
+
+d.subtract(1, 'month'); // 2022-03-03T15:52:50.000Z
+d.subtractRound(1, 'month'); // 2022-02-28T15:52:50.000Z
 ```
 
 ### Inc (Same as add)
