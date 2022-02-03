@@ -331,6 +331,7 @@ class Day {
   Day? _add({
     required int val,
     required String unit,
+    bool opposite = false,
     bool rounded = false,
   }) {
     final processedUnit = Unit.fromShorthand(unit);
@@ -339,13 +340,13 @@ class Day {
     if (duration != null) {
       final d = clone();
 
-      d._time = d._time.add(duration);
+      d._time = !opposite ? d._time.add(duration) : d._time.subtract(duration);
       d._parseTime();
 
       return d;
     } else {
       if (unit == Unit.y || unit == 'y') {
-        final currentYear = year() + val;
+        final currentYear = year() + (!opposite ? val : -val);
 
         if (rounded) {
           final currentMonth = month();
@@ -364,7 +365,7 @@ class Day {
       } else if (unit == Unit.m || unit == 'M') {
         final d = clone();
 
-        final int result = month() + val;
+        final int result = month() + (!opposite ? val : -val);
 
         if (result > 0) {
           d.setValue(Unit.m, result);
@@ -423,39 +424,11 @@ class Day {
   /// subtract(1, 'date');
   /// subtract(1, 'd');
   /// ```
-  dynamic subtract(int val, String unit) {
-    final processedUnit = Unit.fromShorthand(unit);
-    final duration = u.durationFromUnit(val, processedUnit);
+  Day? subtract(int val, String unit) =>
+      _add(val: val, unit: unit, opposite: true);
 
-    if (duration != null) {
-      final d = clone();
-
-      d._time = d._time.subtract(duration);
-      d._parseTime();
-
-      return d;
-    } else {
-      if (unit == Unit.y || unit == 'y') {
-        return _cloneAndSetSingleValue(Unit.y, year() - val);
-      } else if (unit == Unit.m || unit == 'M') {
-        final int result = month() - val;
-
-        final d = clone();
-        if (result > 0) {
-          d.setValue(Unit.m, result);
-        } else {
-          d
-            ..setValue(Unit.y, d.year() - (result.abs() ~/ 12 + 1))
-            ..setValue(Unit.m, 12 - result.abs() % 12);
-        }
-        d.finished();
-
-        return d;
-      }
-    }
-
-    return null;
-  }
+  Day? subtractRound(int val, String unit) =>
+      _add(val: val, unit: unit, opposite: true, rounded: true);
 
   /// Alias of [add].
   dynamic inc(int val, String unit) => add(val, unit);
