@@ -282,6 +282,12 @@ Day('2019-04-30')
 
 Returns a cloned day with a specified amount of time added.
 
+Due to the `DateTime.parse` can parse out-of-range date, as the doc described:
+
+> This method accepts out-of-range component values and interprets them as overflows into the next larger component. For example, "2020-01-42" will be parsed as 2020-02-11, because the last valid date in that month is 2020-01-31, so 42 days is interpreted as 31 days of that month plus 11 days into the next month.
+
+So if you wanna receive a non-overflow date, you should use `.addRound()` method below.
+
 ```dart
 final d = Day();
 

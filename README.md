@@ -15,7 +15,9 @@
 
 > Day.dart is inspired by Day.js. Write with nearly the same API. Build on the top of the powerful **DateTime** class.
 >
-> Important: Day.dart use the **extension** syntax to implement plugins system. So the dart version must >= 2.7.0
+> ~~Important: Day.dart use the **extension** syntax to implement plugins system. So the dart version must `>= 2.7.0`.~~
+>
+> As Day.dart already migrated to null safety. So the minimum dart version is `2.12.0`.
 
 ## Features
 
@@ -26,11 +28,13 @@
 - ⚙️ Plugin system
 - 🌐 I18n support
 
-### 📚 [API Documentation](https://github.com/dayjs/day.dart/blob/master/API.md)
+### Documentation
 
-### ⚙️ [Plugins](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md)
+- 📚 [API](https://github.com/dayjs/day.dart/blob/master/API.md)
 
-### 🌐 [I18n](https://github.com/dayjs/day.dart/blob/master/I18N.md)
+- ⚙️ [Plugins](https://github.com/dayjs/day.dart/blob/master/PLUGINS.md)
+
+- 🌐 [I18n](https://github.com/dayjs/day.dart/blob/master/I18N.md)
 
 ## License
 
