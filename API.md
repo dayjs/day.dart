@@ -295,6 +295,7 @@ Returns a cloned day with a specified amount of time added but rounded to the la
 ```dart
 final d = Day.fromString('2022-03-31T15:52:50.000Z');
 
+d.add(1, 'month'); // 2022-05-01T15:52:50.000Z
 d.addRound(1, 'month'); // 2022-04-30T15:52:50.000Z
 ```
 
