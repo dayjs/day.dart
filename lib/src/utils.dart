@@ -1,5 +1,6 @@
 import 'day.dart';
 import 'constants.dart' show Unit;
+import 'package:day/plugins/is_leap_year.dart' show isLeapYearFunc;
 
 Duration? durationFromUnit(int val, String unit) {
   switch (unit) {
@@ -113,4 +114,38 @@ String _toAMOrPM(int hour, dynamic locale, [bool toLowercase = false]) {
   final result = hour < 12 ? locale['AM'] : locale['PM'];
 
   return toLowercase ? result.toLowerCase() : result;
+}
+
+bool isDateOverflow(int year, int month, int date) {
+  var isOverflow = false;
+
+  switch (month) {
+    case 2:
+      isOverflow = isLeapYearFunc(year) ? date > 29 : date > 28;
+
+      break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      isOverflow = date > 30;
+
+      break;
+  }
+
+  return isOverflow;
+}
+
+int daysInMonth(int year, int month) {
+  switch (month) {
+    case 2:
+      return isLeapYearFunc(year) ? 29 : 28;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      return 30;
+    default:
+      return 31;
+  }
 }
