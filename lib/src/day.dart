@@ -395,7 +395,7 @@ class Day {
     return null;
   }
 
-  /// Add [val] by [unit]. Supports shorthand.
+  /// Adds [val] by [unit]. Supports shorthand.
   ///
   /// Example:
   ///
@@ -405,18 +405,18 @@ class Day {
   /// ```
   Day? add(int val, String unit) => _add(val: val, unit: unit);
 
-  /// Add [val] by [unit] but rounded. Supports shorthand.
+  /// Adds [val] by [unit] but rounded. Supports shorthand.
   ///
   /// Example:
   ///
   /// ```dart
   /// addRound(1, 'month');
-  /// add(1, 'M');
+  /// addRound(1, 'M');
   /// ```
   Day? addRound(int val, String unit) =>
       _add(val: val, unit: unit, rounded: true);
 
-  /// Subtract [val] by [unit]. Supports shorthand.
+  /// Subtracts [val] by [unit]. Supports shorthand.
   ///
   /// Example:
   ///
@@ -427,14 +427,22 @@ class Day {
   Day? subtract(int val, String unit) =>
       _add(val: val, unit: unit, opposite: true);
 
+  /// Subtracts [val] by [unit] but rounded. Supports shorthand.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// subtractRound(1, 'month');
+  /// subtractRound(1, 'M');
+  /// ```
   Day? subtractRound(int val, String unit) =>
       _add(val: val, unit: unit, opposite: true, rounded: true);
 
   /// Alias of [add].
-  dynamic inc(int val, String unit) => add(val, unit);
+  Day? inc(int val, String unit) => add(val, unit);
 
   /// Alias of [subtract].
-  dynamic dec(int val, String unit) => subtract(val, unit);
+  Day? dec(int val, String unit) => subtract(val, unit);
 
   /// Format the [Day]'s displaying.
   ///

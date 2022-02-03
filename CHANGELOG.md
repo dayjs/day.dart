@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2022-02-04
+
+### Added
+
+- feat: add method `addRound` to prevent date overflow by @g1eny0ung in <https://github.com/dayjs/day.dart/pull/41>
+- feat: add method `subtractRound` to prevent date overflow by @g1eny0ung in <https://github.com/dayjs/day.dart/pull/42>
+
+### Changed
+
+- chore!: now `.add()` and `.subtract()` return nullable
+
+### Removed
+
+- chore!: remove useless `.isValid()`
+
 ## [0.7.2] - 2022-01-17
 
 - Refactor internal `Unit`
