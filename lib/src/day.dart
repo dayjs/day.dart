@@ -317,15 +317,11 @@ class Day {
   /// Updates the internal [_time] by [_values], used publicly.
   void finished() => _updateTime();
 
-  /// Add [val] by [unit]. Supports shorthand.
-  ///
-  /// Example:
-  ///
-  /// ```dart
-  /// add(1, 'date');
-  /// add(1, 'd');
-  /// ```
-  dynamic add(int val, String unit) {
+  Day? _add({
+    required int val,
+    required String unit,
+    bool rounded = false,
+  }) {
     final processedUnit = Unit.fromShorthand(unit);
     final duration = u.durationFromUnit(val, processedUnit);
 
@@ -340,16 +336,29 @@ class Day {
       if (unit == Unit.y || unit == 'y') {
         return _cloneAndSetSingleValue(Unit.y, year() + val);
       } else if (unit == Unit.m || unit == 'M') {
+        final d = clone();
+
         final int result = month() + val;
 
-        final d = clone();
         if (result > 0) {
           d.setValue(Unit.m, result);
         } else {
+          final abs = result.abs();
+
           d
-            ..setValue(Unit.y, d.year() - (result.abs() ~/ 12 + 1))
-            ..setValue(Unit.m, 12 - result.abs() % 12);
+            ..setValue(Unit.y, d.year() - (abs ~/ 12 + 1))
+            ..setValue(Unit.m, 12 - abs % 12);
         }
+
+        if (rounded) {
+          final currentYear = d.year();
+          var currentMonth = d.month();
+
+          if (u.isDateOverflow(currentYear, currentMonth, d.date())) {
+            d.setValue(Unit.d, u.daysInMonth(currentYear, currentMonth));
+          }
+        }
+
         d.finished();
 
         return d;
@@ -358,6 +367,27 @@ class Day {
 
     return null;
   }
+
+  /// Add [val] by [unit]. Supports shorthand.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// add(1, 'date');
+  /// add(1, 'd');
+  /// ```
+  dynamic add(int val, String unit) => _add(val: val, unit: unit);
+
+  /// Add [val] by [unit] but rounded. Supports shorthand.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// addRound(1, 'month');
+  /// add(1, 'M');
+  /// ```
+  Day? addRound(int val, String unit) =>
+      _add(val: val, unit: unit, rounded: true);
 
   /// Subtract [val] by [unit]. Supports shorthand.
   ///

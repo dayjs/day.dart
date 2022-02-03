@@ -27,6 +27,7 @@ Also inherit from Day.js, part of manipulations is immutable.
     - [List of all available methods](#list-of-all-available-methods)
 - [Manipulating](#manipulating)
   - [Add `.add(int val, String unit)`](#add-addint-val-string-unit)
+  - [Add Round `.addRound(int val, String unit)`](#add-round-addroundint-val-string-unit)
   - [Subtract `.subtract(int val, String unit)`](#subtract-subtractint-val-string-unit)
   - [Inc (Same as add)](#inc-same-as-add)
   - [Dec (Same as subtract)](#dec-same-as-subtract)
@@ -285,6 +286,16 @@ Returns a cloned day with a specified amount of time added.
 final d = Day();
 
 d.add(1, 'date');
+```
+
+### Add Round `.addRound(int val, String unit)`
+
+Returns a cloned day with a specified amount of time added but rounded to the last day of the current month if overflowed.
+
+```dart
+final d = Day.fromString('2022-03-31T15:52:50.000Z');
+
+d.addRound(1, 'month'); // 2022-04-30T15:52:50.000Z
 ```
 
 ### Subtract `.subtract(int val, String unit)`
