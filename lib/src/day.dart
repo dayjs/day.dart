@@ -306,8 +306,10 @@ class Day {
     }
   }
 
-  /// Updates the internal [_time] by [_values], used internally.
-  void _updateTime() {
+  /// Updates the internal [_time] by [_values].
+  ///
+  /// Use to apply all changes.
+  void finished() {
     final vals = _values;
 
     _time = DateTime(
@@ -322,11 +324,6 @@ class Day {
 
     _parseTime();
   }
-
-  /// Alias of [_updateTime].
-  ///
-  /// Updates the internal [_time] by [_values], used publicly.
-  void finished() => _updateTime();
 
   Day? _add({
     required int val,
