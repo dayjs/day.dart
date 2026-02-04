@@ -16,7 +16,7 @@
 > Day.dart is inspired by Day.js. Write with nearly the same API. Build on the top of the powerful **DateTime** class.
 
 > [!IMPORTANT]
-> ~~Important: Day.dart use the **extension** syntax to implement plugins system. So the dart version must `>= 2.7.0`.~~
+> ~~Day.dart use the **extension** syntax to implement plugins system. So the dart version must `>= 2.7.0`.~~
 
 > [!NOTE]
 > As Day.dart already migrated to null safety. So the minimum dart version is `2.12.0`.
