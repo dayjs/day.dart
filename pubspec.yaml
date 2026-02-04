@@ -15,4 +15,4 @@ environment:
 
 dev_dependencies:
   test: ^1.17.3
-  pedantic: ^1.10.0
+  lints: ^6.1.0

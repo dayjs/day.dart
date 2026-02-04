@@ -27,13 +27,9 @@ class Day {
   /// - millisecond
   final Map<String, int> _values = {};
 
-  static var _locale = en_locale.locale;
+  static var locale = en_locale.locale;
 
-  static Map<String, dynamic> get locale => _locale;
-
-  static set locale(Map<String, dynamic> locale) => _locale = locale;
-
-  var _localLocale;
+  Map<String, dynamic>? _localLocale;
 
   Map<String, dynamic>? get localLocale => _localLocale;
 
@@ -61,7 +57,7 @@ class Day {
     vals[Unit.ms] = _time.millisecond;
   }
 
-  void _initTime(time) {
+  void _initTime(DateTime time) {
     _time = time;
     _parseTime();
   }
@@ -534,5 +530,5 @@ class Day {
   }
 
   @override
-  bool operator ==(day) => day is Day && _time == day._time;
+  bool operator ==(other) => other is Day && _time == other._time;
 }
