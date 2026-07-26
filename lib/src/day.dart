@@ -2,7 +2,7 @@ import 'constants.dart' show Unit, dayDartRegexpFormat;
 import 'utils.dart' as u;
 import 'package:day/i18n/en.dart' as en_locale;
 
-/// A [Day] object is a [DateTime] manager.
+/// A [Day] object manages a [DateTime] instance.
 ///
 /// API Documentation: https://github.com/dayjs/day.dart/blob/master/API.md
 ///
@@ -15,7 +15,7 @@ class Day {
 
   /// The values of [_time].
   ///
-  /// Include:
+  /// They include:
   ///
   /// - year
   /// - month
@@ -62,7 +62,8 @@ class Day {
     _parseTime();
   }
 
-  /// Constructs a new [Day] instance with current date and time in the local time zone.
+  /// Constructs a new [Day] instance with the current date and time in the
+  /// local time zone.
   ///
   /// Example:
   ///
@@ -78,7 +79,7 @@ class Day {
   /// Example:
   ///
   /// ```dart
-  /// final d = Day.fromString('2019-04-30')
+  /// final d = Day.fromString('2019-04-30');
   /// ```
   Day.fromString(String time) {
     _initTime(DateTime.parse(time));
@@ -95,9 +96,9 @@ class Day {
     _initTime(time);
   }
 
-  /// Constructs a new [Day] from a unix milliseconds.
+  /// Constructs a new [Day] from milliseconds since the Unix epoch.
   ///
-  /// This will call the [DateTime]'s fromMillisecondsSinceEpoch method.
+  /// This calls [DateTime.fromMillisecondsSinceEpoch].
   ///
   /// Example:
   ///
@@ -119,9 +120,9 @@ class Day {
     _initTime(day._time);
   }
 
-  /// Clone this [Day].
+  /// Clones this [Day].
   ///
-  /// returns a new [Day] instance.
+  /// Returns a new [Day] instance.
   Day clone() => Day.fromDateTime(_time);
 
   Day _cloneAndSetSingleValue(String key, val) {
@@ -226,7 +227,8 @@ class Day {
     }
   }
 
-  /// Gets [int] value by [unit]. Supports shorthand. Returns null if the [unit] is not found.
+  /// Gets the [int] value by [unit]. Supports shorthand. Returns null if the
+  /// [unit] is not found.
   ///
   /// Example:
   ///
@@ -240,53 +242,54 @@ class Day {
     return _values.containsKey(processedUnit) ? _values[processedUnit] : null;
   }
 
-  /// Sets the year, it won't update the internal [_time].
+  /// Sets the year without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setYear(int year) => _values[Unit.y] = year;
 
-  /// Sets the month, it won't update the internal [_time].
+  /// Sets the month without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setMonth(int month) => _values[Unit.m] = month;
 
-  /// Sets the date, it won't update the internal [_time].
+  /// Sets the date without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setDate(int date) => _values[Unit.d] = date;
 
-  /// Sets the hour, it won't update the internal [_time].
+  /// Sets the hour without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setHour(int hour) => _values[Unit.h] = hour;
 
-  /// Sets the minute, it won't update the internal [_time].
+  /// Sets the minute without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setMinute(int minute) => _values[Unit.min] = minute;
 
-  /// Sets the second, it won't update the internal [_time].
+  /// Sets the second without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setSecond(int second) => _values[Unit.s] = second;
 
-  /// Sets the millisecond, it won't update the internal [_time].
+  /// Sets the millisecond without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setMillisecond(int millisecond) => _values[Unit.ms] = millisecond;
 
-  /// Sets by [key] and [val], it won't update the internal [_time].
+  /// Sets by [key] and [val] without updating the internal [_time].
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   void setValue(String key, int val) {
     if (_values.containsKey(key)) {
       _values[key] = val;
     }
   }
 
-  /// Sets [val] by [unit]. Supports shorthand. It will not do anything if the [unit] is not found.
+  /// Sets [val] by [unit]. Supports shorthand. Does nothing if [unit] is not
+  /// found.
   ///
-  /// You must call [finished] method to apply all changes. Usually used in chain setting (Cascade).
+  /// Call [finished] to apply all changes. Typically used in a cascade.
   ///
   /// Example:
   ///
@@ -302,9 +305,9 @@ class Day {
     }
   }
 
-  /// Updates the internal [_time] by [_values].
+  /// Updates the internal [_time] from [_values].
   ///
-  /// Use to apply all changes.
+  /// Applies all pending changes.
   void finished() {
     final vals = _values;
 
@@ -398,7 +401,8 @@ class Day {
   /// ```
   Day? add(int val, String unit) => _add(val: val, unit: unit);
 
-  /// Adds [val] by [unit] but rounded. Supports shorthand.
+  /// Adds [val] by [unit] but rounded to the last day of the current month
+  /// if overflowed. Supports shorthand.
   ///
   /// Example:
   ///
@@ -420,7 +424,8 @@ class Day {
   Day? subtract(int val, String unit) =>
       _add(val: val, unit: unit, opposite: true);
 
-  /// Subtracts [val] by [unit] but rounded. Supports shorthand.
+  /// Subtracts [val] by [unit] but rounded to the last day of the current month
+  /// if overflowed. Supports shorthand.
   ///
   /// Example:
   ///
@@ -437,7 +442,7 @@ class Day {
   /// Alias of [subtract].
   Day? dec(int val, String unit) => subtract(val, unit);
 
-  /// Format the [Day]'s displaying.
+  /// Formats this [Day] for display.
   ///
   /// For more details, view:
   /// https://github.com/dayjs/day.dart/blob/master/API.md#format-format
@@ -453,9 +458,10 @@ class Day {
   @override
   String toString() => _time.toString();
 
-  /// Returns an ISO-8601 full-precision extended format representation of this [Day].
+  /// Returns an ISO-8601 full-precision extended format representation of this
+  /// [Day].
   ///
-  /// This will call the [DateTime]'s toIso8601String method.
+  /// This calls [DateTime.toIso8601String].
   String toIso8601String() => _time.toIso8601String();
 
   /// The time zone name.
@@ -468,7 +474,7 @@ class Day {
   /// Uses [DateTime.timeZoneOffset].
   Duration get timeZoneOffset => _time.timeZoneOffset;
 
-  /// Returns a number with the difference between two days by specified [unit].
+  /// Returns the difference between this day and [day] in the specified [unit].
   int diff(Day day, [String unit = Unit.ms]) {
     final difference = _time.difference(day._time);
     final processedUnit = Unit.fromShorthand(unit);
@@ -483,27 +489,27 @@ class Day {
     }
   }
 
-  /// Compares this day to other, returning zero if the values are equal.
+  /// Compares this day to [day], returning zero if the values are equal.
   ///
   /// This will call the [DateTime.compareTo] method.
   int compareTo(Day day) => _time.compareTo(day._time);
 
-  /// Returns true if this day occurs before other day.
+  /// Returns true if this day occurs before [day].
   ///
   /// This will call the [DateTime.isBefore] method.
   bool isBefore(Day day) => _time.isBefore(day._time);
 
-  /// Returns true if this day occurs after other day.
+  /// Returns true if this day occurs after [day].
   ///
   /// This will call the [DateTime.isAfter] method.
   bool isAfter(Day day) => _time.isAfter(day._time);
 
-  /// True if this [Day] is set to UTC time.
+  /// Whether this [Day] is set to UTC time.
   ///
   /// Uses [DateTime.isUtc].
   bool get isUtc => _time.isUtc;
 
-  /// Convert this [Day] to UTC.
+  /// Converts this [Day] to UTC.
   Day toUtc() {
     final d = clone();
     d._time = d._time.toUtc();
@@ -511,7 +517,7 @@ class Day {
     return d;
   }
 
-  /// Convert this [Day] to local.
+  /// Converts this [Day] to local time.
   Day toLocal() {
     final d = clone();
     d._time = d._time.toLocal();
@@ -519,6 +525,7 @@ class Day {
     return d;
   }
 
+  /// Returns this [Day]'s [DateTime] instance.
   DateTime toDateTime() => _time;
 
   // https://dart.dev/guides/libraries/library-tour#implementing-map-keys

@@ -52,7 +52,7 @@ void main() {
 }
 ```
 
-⚙️ Welcome PRs to add a new plugin.️
+⚙️ Welcome PRs to add a new plugin.
 
 ## Plugins List
 
