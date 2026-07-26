@@ -2,6 +2,7 @@ mixin Unit {
   static const y = 'year';
   static const m = 'month';
   static const d = 'date';
+  static const week = 'week';
   static const w = 'weekday';
   static const h = 'hour';
   static const min = 'minute';
