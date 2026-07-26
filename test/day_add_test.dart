@@ -78,6 +78,51 @@ void main() {
       expect(dClone.date(), equals(31));
     });
 
+    test('1 week supports full and shorthand units', () {
+      final fullUnit = d.add(1, 'week')!;
+      final shorthand = d.add(1, 'w')!;
+
+      expect(
+          fullUnit.toDateTime(), equals(DateTime.utc(2019, 5, 7, 10, 30, 30)));
+      expect(shorthand, equals(fullUnit));
+    });
+
+    test('10 weeks crosses multiple months', () {
+      final start = Day.fromString('2019-01-01T10:30:30.000Z');
+
+      expect(
+        start.add(10, 'week')!.toDateTime(),
+        equals(DateTime.utc(2019, 3, 12, 10, 30, 30)),
+      );
+    });
+
+    test('2 weeks crosses into a new year', () {
+      final start = Day.fromString('2019-12-25T10:30:30.000Z');
+
+      expect(
+        start.add(2, 'week')!.toDateTime(),
+        equals(DateTime.utc(2020, 1, 8, 10, 30, 30)),
+      );
+    });
+
+    test('2 weeks crosses February in a common year', () {
+      final start = Day.fromString('2019-02-15T10:30:30.000Z');
+
+      expect(
+        start.add(2, 'week')!.toDateTime(),
+        equals(DateTime.utc(2019, 3, 1, 10, 30, 30)),
+      );
+    });
+
+    test('2 weeks includes February 29 in a leap year', () {
+      final start = Day.fromString('2020-02-15T10:30:30.000Z');
+
+      expect(
+        start.add(2, 'week')!.toDateTime(),
+        equals(DateTime.utc(2020, 2, 29, 10, 30, 30)),
+      );
+    });
+
     test('1 hour', () {
       final dClone = d.add(1, 'hour')!;
 

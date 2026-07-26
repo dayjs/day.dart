@@ -327,7 +327,7 @@ class Day {
     bool opposite = false,
     bool rounded = false,
   }) {
-    final processedUnit = Unit.fromShorthand(unit);
+    final processedUnit = unit == 'w' ? Unit.week : Unit.fromShorthand(unit);
     final duration = u.durationFromUnit(val, processedUnit);
 
     if (duration != null) {

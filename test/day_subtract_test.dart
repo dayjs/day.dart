@@ -79,6 +79,33 @@ void main() {
       expect(dClone.date(), equals(29));
     });
 
+    test('1 week supports full and shorthand units', () {
+      final fullUnit = d.subtract(1, 'week')!;
+      final shorthand = d.subtract(1, 'w')!;
+
+      expect(
+        fullUnit.toDateTime(),
+        equals(DateTime.utc(2019, 4, 23, 10, 30, 30)),
+      );
+      expect(shorthand, equals(fullUnit));
+    });
+
+    test('-1 week adds a week', () {
+      expect(
+        d.subtract(-1, 'week')!.toDateTime(),
+        equals(DateTime.utc(2019, 5, 7, 10, 30, 30)),
+      );
+    });
+
+    test('1 week reaches February 29 in a leap year', () {
+      final start = Day.fromString('2020-03-07T10:30:30.000Z');
+
+      expect(
+        start.subtract(1, 'week')!.toDateTime(),
+        equals(DateTime.utc(2020, 2, 29, 10, 30, 30)),
+      );
+    });
+
     test('1 hour', () {
       final dClone = d.subtract(1, 'hour')!;
 

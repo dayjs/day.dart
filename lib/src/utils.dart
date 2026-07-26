@@ -6,6 +6,8 @@ Duration? durationFromUnit(int val, String unit) {
   switch (unit) {
     case Unit.d:
       return Duration(days: val);
+    case Unit.week:
+      return Duration(days: val * 7);
     case Unit.h:
       return Duration(hours: val);
     case Unit.min:
