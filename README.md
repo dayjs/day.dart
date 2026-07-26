@@ -11,7 +11,7 @@ A date library [Day.js](https://github.com/iamkun/dayjs) in dart.
 > Day.dart is inspired by Day.js. Write with nearly the same API. Build on the top of the powerful **DateTime** class.
 
 > [!NOTE]
-> After Day.dart v1.0.0, the minimum Dart SDK version is 3.0.0. If you are using an older version of Dart, please use Day.dart v0.8.0.
+> After Day.dart `v1.0.0`, the minimum Dart SDK version is `3.0.0`. If you are using an older version of Dart, please use Day.dart `v0.8.0`.
 
 ## Features
 
