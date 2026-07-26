@@ -3,7 +3,7 @@
 <br />
 
 <p align="center">
-  <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.png?raw=true" alt="day.dart logo" />
+  <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.svg?raw=true" alt="Day.dart logo" />
 </p>
 <p align="center">A date library <a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart.</p>
 
