@@ -1,11 +1,8 @@
-<br />
-<br />
-<br />
+<img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.svg?raw=true" width="128" alt="Day.dart logo" />
 
-<p align="center">
-  <img src="https://github.com/g1eny0ung/day.dart/blob/master/day.dart.svg?raw=true" alt="Day.dart logo" />
-</p>
-<p align="center">A date library <a href="https://github.com/iamkun/dayjs/">Day.js</a> in dart.</p>
+# Day.dart
+
+A date library [Day.js](https://github.com/iamkun/dayjs) in dart.
 
 ![Pub Version](https://img.shields.io/pub/v/day)
 [![Dart](https://github.com/dayjs/day.dart/actions/workflows/dart.yml/badge.svg)](https://github.com/dayjs/day.dart/actions/workflows/dart.yml)
@@ -13,11 +10,8 @@
 
 > Day.dart is inspired by Day.js. Write with nearly the same API. Build on the top of the powerful **DateTime** class.
 
-> [!IMPORTANT]
-> ~~Day.dart use the **extension** syntax to implement plugins system. So the dart version must `>= 2.7.0`.~~
-
 > [!NOTE]
-> As Day.dart already migrated to null safety. So the minimum dart version is `2.12.0`.
+> After Day.dart v1.0.0, the minimum Dart SDK version is 3.0.0. If you are using an older version of Dart, please use Day.dart v0.8.0.
 
 ## Features
 
