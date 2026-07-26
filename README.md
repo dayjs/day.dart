@@ -4,7 +4,7 @@
 
 A date library [Day.js](https://github.com/iamkun/dayjs) in dart.
 
-![Pub Version](https://img.shields.io/pub/v/day)
+[![Pub Version](https://img.shields.io/pub/v/day)](https://pub.dev/packages/day)
 [![Dart](https://github.com/dayjs/day.dart/actions/workflows/dart.yml/badge.svg)](https://github.com/dayjs/day.dart/actions/workflows/dart.yml)
 ![GitHub License](https://img.shields.io/github/license/dayjs/day.dart)
 
