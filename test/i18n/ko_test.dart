@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:day/day.dart';
+import 'package:day/plugins/relative_time.dart';
 import 'package:day/i18n/ko.dart' as ko_locale;
 
 void main() {
@@ -17,6 +18,13 @@ void main() {
 
     test('AM', () {
       expect(d.format('A'), equals('오전'));
+    });
+
+    test('RelativeTime month counter', () {
+      final target = d.add(2, 'M')!;
+      expect(d.to(target), '2개월 후');
+      expect(d.from(target), '2개월 전');
+      expect(d.to(target, true), '2개월');
     });
   });
 }

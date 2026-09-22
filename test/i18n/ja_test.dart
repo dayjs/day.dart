@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:day/day.dart';
+import 'package:day/plugins/relative_time.dart';
 import 'package:day/i18n/ja.dart' as ja_locale;
 
 void main() {
@@ -17,6 +18,17 @@ void main() {
 
     test('AM', () {
       expect(d.format('A'), equals('午前'));
+    });
+
+    test('RelativeTime spacing and month counter', () {
+      final units = {'m': '分', 'h': '時間', 'd': '日', 'M': 'か月', 'y': '年'};
+      for (final entry in units.entries) {
+        for (final count in [1, 2]) {
+          final target = d.add(count, entry.key)!;
+          expect(d.to(target), '$count ${entry.value}後');
+          expect(d.from(target), '$count ${entry.value}前');
+        }
+      }
     });
   });
 }

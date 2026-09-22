@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:day/day.dart';
+import 'package:day/plugins/relative_time.dart';
 import 'package:day/i18n/pt_br.dart' as pt_br_locale;
 
 void main() {
@@ -17,6 +18,12 @@ void main() {
 
     test('AM', () {
       expect(d.format('A'), equals('AM'));
+    });
+
+    test('RelativeTime', () {
+      final target = d.add(2, 'm')!;
+      expect(d.to(target), 'em 2 minutos');
+      expect(d.from(target), 'há 2 minutos');
     });
   });
 }
