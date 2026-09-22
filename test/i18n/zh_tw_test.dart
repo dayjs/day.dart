@@ -9,7 +9,12 @@ void main() {
 
   group('ZH_TW', () {
     test('Months', () {
-      expect(d.format('MMM MMMM'), equals('4月 四月'));
+      for (var month = 1; month <= 12; month++) {
+        final date = Day.fromDateTime(DateTime.utc(2020, month, 1))
+            .useLocale(zh_tw_locale.locale);
+        expect(date.format('MMM MMMM'), '$month月 $month月');
+        expect(date.format('D MMMM'), '1 $month月');
+      }
     });
 
     test('Weekdays', () {

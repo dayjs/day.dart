@@ -13,7 +13,13 @@ void main() {
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('Di Di. Dienstag'));
+      expect(d.format('WW WWW WWWW'), equals('Di. Di. Dienstag'));
+      final names = ['Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.', 'So.'];
+      for (var index = 0; index < names.length; index++) {
+        final date = Day.fromDateTime(DateTime.utc(2020, 1, 6 + index))
+            .useLocale(de_locale.locale);
+        expect(date.format('WW'), names[index]);
+      }
     });
 
     test('AM', () {

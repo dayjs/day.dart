@@ -13,7 +13,13 @@ void main() {
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('二 周二 星期二'));
+      expect(d.format('WW WWW WWWW'), equals('周二 周二 星期二'));
+      final names = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+      for (var index = 0; index < names.length; index++) {
+        final date = Day.fromDateTime(DateTime.utc(2020, 1, 6 + index))
+            .useLocale(zh_cn_locale.locale);
+        expect(date.format('WW WWW'), '${names[index]} ${names[index]}');
+      }
     });
 
     test('AM', () {
@@ -21,10 +27,15 @@ void main() {
     });
 
     test('RelativeTime', () {
-      final target = d.add(2, 'm')!;
-      expect(d.to(target), '2 分钟后');
-      expect(d.from(target), '2 分钟前');
-      expect(d.to(target, true), '2 分钟');
+      final units = {'m': '分钟', 'h': '小时', 'd': '天', 'M': '个月', 'y': '年'};
+      for (final unit in units.entries) {
+        for (final count in [1, 2]) {
+          final target = d.add(count, unit.key)!;
+          expect(d.to(target), '$count${unit.value}后');
+          expect(d.from(target), '$count${unit.value}前');
+          expect(d.to(target, true), '$count${unit.value}');
+        }
+      }
     });
   });
 }

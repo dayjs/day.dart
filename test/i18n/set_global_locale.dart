@@ -13,7 +13,7 @@ void main() {
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('三 周三 星期三'));
+      expect(d.format('WW WWW WWWW'), equals('周三 周三 星期三'));
     });
   });
 }
