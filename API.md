@@ -1,8 +1,8 @@
 # API Documentation
 
-Day.dart uses `dart:core`'s `DateTime` class and expand its functionality to make it more useful.
+Day.dart uses `dart:core`'s `DateTime` class and expands its functionality to make dates easier to work with.
 
-Also inherit from Day.js, part of manipulations is immutable.
+Day.dart also inherits from Day.js and retains the immutability of some of its operations.
 
 - [Import](#import)
 - [Constructor](#constructor)
@@ -66,7 +66,7 @@ import 'package:day/plugins/is_leap_year.dart';
 
 ### Without Parameter
 
-If you don't pass a parameter to `Day`, it will returns the current time.
+If you don't pass a parameter to `Day`, it returns the current time.
 
 ```dart
 final now = Day();
@@ -90,7 +90,7 @@ final now = Day.fromDateTime(DateTime.now());
 
 ### From Unix
 
-This will call `DateTime.fromMillisecondsSinceEpoch()` to initialize a Day.
+This calls `DateTime.fromMillisecondsSinceEpoch()` to initialize a Day.
 
 ```dart
 final d = Day.fromUnix(0);
@@ -105,7 +105,7 @@ final afterNow = Day.fromDayInstance(now);
 
 ## Clone
 
-Call `.clone()` will return a new day instance.
+Calling `.clone()` returns a new day instance.
 
 ```dart
 final now = Day();
@@ -203,7 +203,7 @@ d.millisecond(128);
 
 ### Get `.get(String unit)`
 
-Returns a number associate with the unit from Day instance.
+Returns a number associated with the unit of a Day instance.
 
 ```dart
 final d = Day();
@@ -228,11 +228,11 @@ d.get('weekday');
 
 ### Set `.set(String unit, int val)`
 
-Different from `Day.js`, `Day.dart` won't create a new Instance after setting.
+Unlike `Day.js`, `Day.dart` won't create a new instance after setting.
 
-All set methods will change the origin instance.
+All set methods change the original instance.
 
-You must call **`.finished()`** method to apply all changes.
+You must call the **`.finished()`** method to apply all changes.
 
 For example:
 
@@ -248,9 +248,9 @@ d
 
 #### List of all available methods
 
-Only **`.set()`** support unit shorthand (See Above).
+Only **`.set()`** supports unit shorthand (see above).
 
-Use **`.setValue()`** for semantics.
+Use **`.setValue()`** with full unit names.
 
 ```dart
 d
@@ -273,7 +273,7 @@ d
 ## Manipulating
 
 ```dart
-Day('2019-04-30')
+Day.fromString('2019-04-30')
   .add(1, 'date')
   .subtract(1, 'year')
   .toString(); // 2018-05-01 00:00:00.000
@@ -285,11 +285,11 @@ Returns a cloned day with a specified amount of time added.
 
 Use `week` or `w` to add whole weeks.
 
-Due to the `DateTime.parse` can parse out-of-range date, as the doc described:
+Due to the fact that `DateTime.parse` can parse out-of-range dates, as its documentation describes:
 
 > This method accepts out-of-range component values and interprets them as overflows into the next larger component. For example, "2020-01-42" will be parsed as 2020-02-11, because the last valid date in that month is 2020-01-31, so 42 days is interpreted as 31 days of that month plus 11 days into the next month.
 
-So if you wanna receive a non-overflow date, you should use `.addRound()` method below.
+So if you want a date without overflow, use the `.addRound()` method below.
 
 ```dart
 final d = Day();
@@ -316,7 +316,7 @@ Returns a cloned day with a specified amount of time subtracted.
 
 Use `week` or `w` to subtract whole weeks.
 
-So if you wanna receive a non-overflow date, you should use `.subtractRound()` method below.
+So if you want a date without overflow, use the `.subtractRound()` method below.
 
 Refer to [`.add()`](#add-addint-val-string-unit) for more details.
 
@@ -363,7 +363,7 @@ d.dec(1, 'date');
 
 ### Format `.format()`
 
-Returns a string with specific format. If no format passed, the `.format()` will call `.toIso8601String()`.
+Returns a string in a specific format. If no format is passed, `.format()` calls `.toIso8601String()`.
 
 ```dart
 Day().format(); // 2019-05-08T16:38:31.721959
@@ -372,32 +372,32 @@ Day.fromString('2019-05-08').format('YYYY-MM-DDTHH:mm:ss'); // 2019-05-08T00:00:
 
 #### List of all available formats
 
-| Format     | Output           | Description                           |
-| ---------- | ---------------- | ------------------------------------- |
-| `[escape]` | escape           | Escape string in []                   |
-| `YY`       | 19               | Two-digit year                        |
-| `YYYY`     | 2019             | Four-digit year                       |
-| `M`        | 1-12             | The month, beginning at 1             |
-| `MM`       | 01-12            | The month, 2 digits                   |
-| `MMM`      | Jan-Dec          | The abbreviated month name            |
-| `MMMM`     | January-December | The full month name                   |
-| `D`        | 1-31             | The day of the month                  |
-| `DD`       | 01-31            | The day of the month, 2 digits        |
-| `W`        | 1-7              | The day of the week                   |
-| `WW`       | Mo-Su            | The min name of the day of the week   |
-| `WWW`      | Mon-Sun          | The short name of the day of the week |
-| `WWWW`     | Monday-Sunday    | The name of the day of the week       |
-| `H`        | 0-23             | The hour                              |
-| `HH`       | 00-23            | The hour, 2 digits                    |
-| `h`        | 1-12             | The hour, 12 hour clock               |
-| `hh`       | 01-12            | The hour, 12 hour clock, 2 digits     |
-| `m`        | 0-59             | The minute                            |
-| `mm`       | 00-59            | The minute, 2 digits                  |
-| `s`        | 0-59             | The second                            |
-| `ss`       | 00-59            | The second, 2 digits                  |
-| `SSS`      | 000-999          | The millisecond, 3 digits             |
-| `A`        | AM PM            |                                       |
-| `a`        | am pm            |                                       |
+| Format     | Output           | Description                             |
+| ---------- | ---------------- | --------------------------------------- |
+| `[escape]` | escape           | Escape string in []                     |
+| `YY`       | 19               | Two-digit year                          |
+| `YYYY`     | 2019             | Four-digit year                         |
+| `M`        | 1-12             | The month, beginning at 1               |
+| `MM`       | 01-12            | The month, 2 digits                     |
+| `MMM`      | Jan-Dec          | The abbreviated month name              |
+| `MMMM`     | January-December | The full month name                     |
+| `D`        | 1-31             | The day of the month                    |
+| `DD`       | 01-31            | The day of the month, 2 digits          |
+| `W`        | 1-7              | The day of the week                     |
+| `WW`       | Mo-Su            | The minimal name of the day of the week |
+| `WWW`      | Mon-Sun          | The short name of the day of the week   |
+| `WWWW`     | Monday-Sunday    | The name of the day of the week         |
+| `H`        | 0-23             | The hour                                |
+| `HH`       | 00-23            | The hour, 2 digits                      |
+| `h`        | 1-12             | The hour, 12 hour clock                 |
+| `hh`       | 01-12            | The hour, 12 hour clock, 2 digits       |
+| `m`        | 0-59             | The minute                              |
+| `mm`       | 00-59            | The minute, 2 digits                    |
+| `s`        | 0-59             | The second                              |
+| `ss`       | 00-59            | The second, 2 digits                    |
+| `SSS`      | 000-999          | The millisecond, 3 digits               |
+| `A`        | AM PM            |                                         |
+| `a`        | am pm            |                                         |
 
 ### As String
 
@@ -435,7 +435,7 @@ Day().timeZoneOffset;
 
 ### Difference
 
-Returns a number with the difference between two days by specified unit.
+Returns the difference between two days as a number in the specified unit.
 
 ```dart
 final d1 = Day.fromString('2019-04-30T10:30:30.000Z');
@@ -444,13 +444,13 @@ final d2 = Day.fromString('2021-05-01T10:30:30.000Z');
 d1.diff(d2, 'y'); // -2
 ```
 
-Support unit shorthand. If the unit is null, it will be set to `ms`.
+Supports unit shorthand. If the unit is omitted, it defaults to `ms`.
 
 ### Compare To
 
-Compare this day to other, returning zero if the values are equal.
+Compares this day to another, returning zero if the values are equal.
 
--1 is before, 1 is after.
+Returns -1 if before, 1 if after.
 
 ```dart
 final now = Day();
@@ -461,7 +461,7 @@ now.compareTo(afterNow); // -1
 
 ### Is Before
 
-Returns true if this day occurs before other.
+Returns true if this day occurs before the other.
 
 ```dart
 final now = Day();
@@ -472,7 +472,7 @@ now.isBefore(afterNow); // true
 
 ### Is After
 
-Returns true if this day occurs after other.
+Returns true if this day occurs after the other.
 
 ```dart
 final now = Day();

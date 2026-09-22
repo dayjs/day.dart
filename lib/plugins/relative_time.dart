@@ -19,9 +19,9 @@ const thresholds = [
 /// Adds relative time support.
 ///
 /// This plugin includes four methods: from, fromNow, to, toNow.
-/// All of them can help you to format date to a relative time string.
+/// All of them help you format a date to a relative time string.
 extension RelativeTime on Day {
-  // Internal exec func of relative time
+  // Internal executor for relative time
   String _relativeTimeExec(Day day, bool withoutSuffix, [bool isFrom = true]) {
     final locale = getLocale();
     final relativeTimeLocale = locale['RelativeTime'];
@@ -85,7 +85,8 @@ extension RelativeTime on Day {
 
   /// Returns the string of relative time from [day].
   ///
-  /// The second param is optional, by set [withoutSuffix] to true, it will remove the suffix(ago).
+  /// The second parameter is optional. Setting [withoutSuffix] to true
+  /// removes the suffix (for example, "ago").
   String from(Day day, [bool withoutSuffix = false]) =>
       _relativeTimeExec(day, withoutSuffix);
 
@@ -94,7 +95,8 @@ extension RelativeTime on Day {
 
   /// Returns the string of relative time to [day].
   ///
-  /// The second param is optional, by set [withoutPrefix] to true, it will remove the prefix(in).
+  /// The second parameter is optional. Setting [withoutPrefix] to true
+  /// removes the prefix (for example, "in").
   String to(Day day, [bool withoutPrefix = false]) =>
       _relativeTimeExec(day, withoutPrefix, false);
 

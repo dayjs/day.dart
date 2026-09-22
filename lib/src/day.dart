@@ -43,7 +43,7 @@ class Day {
 
   Map<String, dynamic> getLocale() => localLocale ?? Day.locale;
 
-  /// Parses [_time] to [_values], used internally.
+  /// Parses [_time] into [_values]. Used internally.
   void _parseTime() {
     final vals = _values;
 
@@ -347,7 +347,7 @@ class Day {
         if (rounded) {
           final currentMonth = month();
 
-          // First determines if the month is February to avoid over-checking
+          // First, determine whether the month is February to avoid over-checking.
           if (currentMonth == 2 &&
               u.isDateOverflow(currentYear, currentMonth, date())) {
             return _cloneAndSetMultipleValues({

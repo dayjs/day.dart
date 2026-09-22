@@ -9,7 +9,7 @@
 
 ## Introduction
 
-Day.dart use the `extension` syntax to implement plugins system. (Require the dart version >= 2.7.0)
+Day.dart uses the `extension` syntax to implement its plug-in system. (Requires Dart version >= 2.7.0)
 
 For example:
 
@@ -52,13 +52,13 @@ void main() {
 }
 ```
 
-⚙️ Welcome PRs to add a new plugin.
+⚙️ PRs are welcome to add new plugins.
 
 ## Plugins List
 
 ### Is Leap Year
 
-Check a Day instance is a leap year or not.
+Checks whether a Day instance is a leap year.
 
 ```dart
 import 'package:day/day.dart';
@@ -109,7 +109,7 @@ void main() {
 | 36 hours to 25 days      | dd  | 2 days ago ... 25 days ago       |
 | 26 to 45 days            | M   | a month ago                      |
 | 46 days to 10 months     | MM  | 2 months ago ... 10 months ago   |
-| 11 months to 17months    | y   | a year ago                       |
+| 11 months to 17 months   | y   | a year ago                       |
 | 18 months+               | yy  | 2 years ago ... 20 years ago     |
 
 ### Day Of Year
