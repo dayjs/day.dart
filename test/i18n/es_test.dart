@@ -12,11 +12,11 @@ void main() {
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('ma mar. martes'));
+      expect(d.format('WW WWW WWWW'), equals('MA mar martes'));
     });
 
     test('AM', () {
-      expect(d.format('A'), equals('AM'));
+      expect(d.format('A'), equals('a.\u202fm.'));
     });
   });
 }

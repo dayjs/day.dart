@@ -33,8 +33,8 @@ void main() {
         'мар.',
         'апр.',
         'мая',
-        'июня',
-        'июля',
+        'июн.',
+        'июл.',
         'авг.',
         'сент.',
         'окт.',
@@ -60,7 +60,7 @@ void main() {
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('вт втр вторник'));
+      expect(d.format('WW WWW WWWW'), equals('вт вт вторник'));
     });
 
     test('AM', () {

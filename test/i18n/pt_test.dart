@@ -8,15 +8,15 @@ void main() {
 
   group('PT', () {
     test('Months', () {
-      expect(d.format('MMM MMMM'), equals('abr abril'));
+      expect(d.format('MMM MMMM'), equals('abr. abril'));
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('ter ter terça-feira'));
+      expect(d.format('WW WWW WWWW'), equals('ter. terça terça-feira'));
     });
 
     test('AM', () {
-      expect(d.format('A'), equals('AM'));
+      expect(d.format('A'), equals('a.m.'));
     });
   });
 }

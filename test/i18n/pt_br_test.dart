@@ -8,11 +8,11 @@ void main() {
 
   group('PT_BR', () {
     test('Months', () {
-      expect(d.format('MMM MMMM'), equals('abr abril'));
+      expect(d.format('MMM MMMM'), equals('abr. abril'));
     });
 
     test('Weekdays', () {
-      expect(d.format('WW WWW WWWW'), equals('ter ter terça-feira'));
+      expect(d.format('WW WWW WWWW'), equals('ter. ter. terça-feira'));
     });
 
     test('AM', () {

@@ -15,18 +15,18 @@ final Map<String, dynamic> locale = {
     12: 'dezembro'
   },
   'MonthsShort': {
-    1: 'jan',
-    2: 'fev',
-    3: 'mar',
-    4: 'abr',
-    5: 'mai',
-    6: 'jun',
-    7: 'jul',
-    8: 'ago',
-    9: 'set',
-    10: 'out',
-    11: 'nov',
-    12: 'dez'
+    1: 'jan.',
+    2: 'fev.',
+    3: 'mar.',
+    4: 'abr.',
+    5: 'mai.',
+    6: 'jun.',
+    7: 'jul.',
+    8: 'ago.',
+    9: 'set.',
+    10: 'out.',
+    11: 'nov.',
+    12: 'dez.'
   },
   'Weekdays': {
     1: 'segunda-feira',
@@ -38,22 +38,22 @@ final Map<String, dynamic> locale = {
     7: 'domingo'
   },
   'WeekdaysShort': {
-    1: 'seg',
-    2: 'ter',
-    3: 'qua',
-    4: 'qui',
-    5: 'sex',
-    6: 'sáb',
-    7: 'dom'
+    1: 'seg.',
+    2: 'ter.',
+    3: 'qua.',
+    4: 'qui.',
+    5: 'sex.',
+    6: 'sáb.',
+    7: 'dom.'
   },
   'WeekdaysMin': {
-    1: 'seg',
-    2: 'ter',
-    3: 'qua',
-    4: 'qui',
-    5: 'sex',
-    6: 'sáb',
-    7: 'dom'
+    1: 'seg.',
+    2: 'ter.',
+    3: 'qua.',
+    4: 'qui.',
+    5: 'sex.',
+    6: 'sáb.',
+    7: 'dom.'
   },
   'AM': 'AM',
   'PM': 'PM',

@@ -23,7 +23,7 @@ final Map<String, dynamic> locale = {
     6: 'jun',
     7: 'jul',
     8: 'ago',
-    9: 'sep',
+    9: 'sept',
     10: 'oct',
     11: 'nov',
     12: 'dic'
@@ -38,27 +38,27 @@ final Map<String, dynamic> locale = {
     7: 'domingo'
   },
   'WeekdaysShort': {
-    1: 'lun.',
-    2: 'mar.',
-    3: 'mié.',
-    4: 'jue.',
-    5: 'vie.',
-    6: 'sáb.',
-    7: 'dom.'
+    1: 'lun',
+    2: 'mar',
+    3: 'mié',
+    4: 'jue',
+    5: 'vie',
+    6: 'sáb',
+    7: 'dom'
   },
   'WeekdaysMin': {
-    1: 'lu',
-    2: 'ma',
-    3: 'mi',
-    4: 'ju',
-    5: 'vi',
-    6: 'sá',
-    7: 'do'
+    1: 'LU',
+    2: 'MA',
+    3: 'MI',
+    4: 'JU',
+    5: 'VI',
+    6: 'SA',
+    7: 'DO'
   },
-  'AM': 'AM',
-  'PM': 'PM',
+  'AM': 'a.\u202fm.',
+  'PM': 'p.\u202fm.',
   'RelativeTime': {
-    'future': 'en %s',
+    'future': 'dentro de %s',
     'past': 'hace %s',
     's': 'unos segundos',
     'm': 'un minuto',
