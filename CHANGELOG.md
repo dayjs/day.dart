@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-All locales added or updated in this release were implemented with AI using [Unicode CLDR](https://github.com/unicode-org/cldr-json) as a reference. If you encounter any problems, please [open an issue](https://github.com/dayjs/day.dart/issues).
+## [1.1.0] - 2026-09-22
+
+All locales added or updated in this release were implemented with AI using [Unicode CLDR](https://github.com/unicode-org/cldr-json) as a reference.
+If you encounter any issues, feel free to [open an issue](https://github.com/dayjs/day.dart/issues) at any time.
 
 ### Added
 
@@ -27,6 +30,7 @@ All locales added or updated in this release were implemented with AI using [Uni
 ### Changed
 
 - Simplified Chinese weekday abbreviations now include `周` (for example, `周一`). Relative times omit spaces between numbers and units and use `后` for future times (for example, `2分钟后`).
+- Refined the API, plugin, and i18n documentation, source doc comments, and the package description.
 
 ## [1.0.0] - 2026-07-26
 
