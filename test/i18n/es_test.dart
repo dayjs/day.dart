@@ -10,6 +10,8 @@ void main() {
   group('ES', () {
     test('Months', () {
       expect(d.format('MMM MMMM'), equals('abr abril'));
+      expect(d.format('D MMM YYYY'), '30 abr 2019');
+      expect(d.format('D MMMM YYYY'), '30 abril 2019');
     });
 
     test('Weekdays', () {

@@ -7,6 +7,8 @@ void main() {
   group('EN', () {
     test('Months', () {
       expect(d.format('MMM MMMM'), equals('Apr April'));
+      expect(d.format('D MMM YYYY'), '30 Apr 2019');
+      expect(d.format('D MMMM YYYY'), '30 April 2019');
     });
 
     test('Weekdays', () {

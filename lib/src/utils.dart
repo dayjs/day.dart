@@ -60,11 +60,16 @@ String processMatchFromFormat(Match m, Day day) {
     case 'MM':
       return day.month().toString().padLeft(2, '0');
     case 'MMM':
-      return locale['Name'] == 'en'
-          ? locale['Months'][day.month()].substring(0, 3)
+      if (locale['Name'] == 'en') {
+        return locale['Months'][day.month()].substring(0, 3);
+      }
+      return locale['MonthsShortFormat'] == null
+          ? locale['MonthsShort'][day.month()]
           : _monthName(m, day, 'MonthsShort');
     case 'MMMM':
-      return _monthName(m, day, 'Months');
+      return locale['MonthsFormat'] == null
+          ? locale['Months'][day.month()]
+          : _monthName(m, day, 'Months');
     case 'D':
       return day.date().toString();
     case 'DD':
@@ -114,7 +119,7 @@ final _monthInDate = RegExp(r'D{1,2}(?:\[[^\[\]]*\]|\s)+$');
 String _monthName(Match match, Day day, String key) {
   final locale = day.getLocale();
   final inDate = _monthInDate.hasMatch(match.input.substring(0, match.start));
-  final months = inDate ? locale['${key}Format'] ?? locale[key] : locale[key];
+  final months = inDate ? locale['${key}Format'] : locale[key];
   return months[day.month()];
 }
 
