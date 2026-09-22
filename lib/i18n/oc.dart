@@ -63,7 +63,7 @@ final Map<String, dynamic> locale = {
     's': 'unas segondas',
     'm': 'una minuta',
     'mm': '%d minutas',
-    'h': 'un ora',
+    'h': 'una ora',
     'hh': '%d oras',
     'd': 'un jorn',
     'dd': '%d jorns',

@@ -55,7 +55,7 @@ void main() {
         (1, 's', 'unas segondas'),
         (1, 'm', 'una minuta'),
         (2, 'm', '2 minutas'),
-        (1, 'h', 'un ora'),
+        (1, 'h', 'una ora'),
         (2, 'h', '2 oras'),
         (1, 'd', 'un jorn'),
         (2, 'd', '2 jorns'),
