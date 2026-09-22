@@ -30,7 +30,7 @@ void main() {
     'ru': ru.locale,
     'zh_tw': zh_tw.locale,
   };
-  // Deliberate Day.js-style display choices documented in I18N.md.
+  // Preserve Day.js-style Chinese month numerals and German weekday labels.
   const chineseMonths = [
     '一月',
     '二月',
