@@ -50,26 +50,30 @@ void main() {
       }
     });
 
-    test('RelativeTime uses CLDR numeric fallback patterns', () {
-      final units = {
-        's': 's',
-        'm': 'min',
-        'h': 'h',
-        'd': 'd',
-        'M': 'm',
-        'y': 'y'
-      };
-      for (final unit in units.entries) {
-        for (final count in [1, 2]) {
-          final target = d.add(count, unit.key)!;
-          expect(d.to(target), '+$count ${unit.value}');
-          expect(d.from(target), '-$count ${unit.value}');
-          expect(d.to(target, true), '$count ${unit.value}');
-        }
+    test('RelativeTime preserves Occitan translations', () {
+      final cases = [
+        (1, 's', 'unas segondas'),
+        (1, 'm', 'una minuta'),
+        (2, 'm', '2 minutas'),
+        (1, 'h', 'un ora'),
+        (2, 'h', '2 oras'),
+        (1, 'd', 'un jorn'),
+        (2, 'd', '2 jorns'),
+        (1, 'M', 'un mes'),
+        (2, 'M', '2 meses'),
+        (1, 'y', 'un an'),
+        (2, 'y', '2 ans'),
+      ];
+      for (final (count, unit, text) in cases) {
+        final target = d.add(count, unit)!;
+        expect(d.to(target), 'dins $text');
+        expect(d.from(target), 'fa $text');
+        expect(d.to(target, true), text);
+        expect(d.from(target, true), text);
       }
-      expect(d.to(d.add(44, 's')!), '+44 s');
-      expect(d.to(d.add(45, 's')!), '+1 min');
-      expect(d.to(d.add(90, 's')!), '+2 min');
+      expect(d.to(d.add(44, 's')!), 'dins unas segondas');
+      expect(d.to(d.add(45, 's')!), 'dins una minuta');
+      expect(d.to(d.add(90, 's')!), 'dins 2 minutas');
     });
   });
 }

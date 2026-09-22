@@ -58,18 +58,18 @@ final Map<String, dynamic> locale = {
   'AM': 'AM',
   'PM': 'PM',
   'RelativeTime': {
-    'future': '+%s',
-    'past': '-%s',
-    's': '%d s',
-    'm': '1 min',
-    'mm': '%d min',
-    'h': '1 h',
-    'hh': '%d h',
-    'd': '1 d',
-    'dd': '%d d',
-    'M': '1 m',
-    'MM': '%d m',
-    'y': '1 y',
-    'yy': '%d y'
+    'future': 'dins %s',
+    'past': 'fa %s',
+    's': 'unas segondas',
+    'm': 'una minuta',
+    'mm': '%d minutas',
+    'h': 'un ora',
+    'hh': '%d oras',
+    'd': 'un jorn',
+    'dd': '%d jorns',
+    'M': 'un mes',
+    'MM': '%d meses',
+    'y': 'un an',
+    'yy': '%d ans'
   }
 };
