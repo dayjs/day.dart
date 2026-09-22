@@ -1,0 +1,30 @@
+import 'package:test/test.dart';
+import 'package:day/day.dart';
+import 'package:day/plugins/relative_time.dart';
+import 'package:day/i18n/ko.dart' as ko_locale;
+
+void main() {
+  final d =
+      Day.fromString('2019-04-30T10:30:30.000Z').useLocale(ko_locale.locale);
+
+  group('KO', () {
+    test('Months', () {
+      expect(d.format('MMM MMMM'), equals('4월 4월'));
+    });
+
+    test('Weekdays', () {
+      expect(d.format('WW WWW WWWW'), equals('화 화 화요일'));
+    });
+
+    test('AM', () {
+      expect(d.format('A'), equals('오전'));
+    });
+
+    test('RelativeTime month counter', () {
+      final target = d.add(2, 'M')!;
+      expect(d.to(target), '2개월 후');
+      expect(d.from(target), '2개월 전');
+      expect(d.to(target, true), '2개월');
+    });
+  });
+}

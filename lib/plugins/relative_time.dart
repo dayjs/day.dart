@@ -62,7 +62,12 @@ extension RelativeTime on Day {
       if (t['v'] == null || absResult <= (t['v'] as int)) {
         final format = relativeTimeLocale[t['f']];
 
-        result = (format as String).replaceFirst('%d', absResult.toString());
+        // The value can be either a literal String or a function that selects
+        // the correct template based on the count and suffix usage.
+        result = format is String
+            ? format
+            : (format as String Function(int, bool))(absResult, withoutSuffix);
+        result = result.replaceFirst('%d', absResult.toString());
 
         break;
       }
