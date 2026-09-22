@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+All locales added or updated in this release were implemented with AI using [Unicode CLDR](https://github.com/unicode-org/cldr-json) as a reference. If you encounter any problems, please [open an issue](https://github.com/dayjs/day.dart/issues).
+
+### Added
+
+- New locales:
+  - German (`de`)
+  - Spanish (`es`)
+  - French (`fr`)
+  - Japanese (`ja`)
+  - Korean (`ko`)
+  - Occitan (`oc`)
+  - Portuguese (`pt`)
+  - Brazilian Portuguese (`pt_br`)
+  - Russian (`ru`)
+  - Traditional Chinese (`zh_tw`)
+- Optional `MonthsFormat` and `MonthsShortFormat` locale maps for month names in dates, used by Russian.
+
+### Changed
+
+- Simplified Chinese weekday abbreviations now include `周` (for example, `周一`). Relative times omit spaces between numbers and units and use `后` for future times (for example, `2分钟后`).
+
 ## [1.0.0] - 2026-07-26
 
 We are finally releasing the 1.0.0 version of Day.dart! This version upgrades the minimum Dart SDK version to 3.0.0 and resolves all existing GitHub issues.
