@@ -50,7 +50,7 @@ final Map<String, dynamic> locale = {
   'AM': '上午',
   'PM': '下午',
   'RelativeTime': {
-    'future': '%s内',
+    'future': '%s后',
     'past': '%s前',
     's': '几秒',
     'm': '1 分钟',

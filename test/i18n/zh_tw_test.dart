@@ -20,7 +20,7 @@ void main() {
       expect(d.format('A'), equals('上午'));
     });
 
-    test('RelativeTime future means after', () {
+    test('RelativeTime', () {
       final target = d.add(2, 'm')!;
       expect(d.to(target), '2 分鐘後');
       expect(d.from(target), '2 分鐘前');

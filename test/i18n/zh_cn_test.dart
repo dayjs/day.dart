@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'package:day/day.dart';
+import 'package:day/plugins/relative_time.dart';
 import 'package:day/i18n/zh_cn.dart' as zh_cn_locale;
 
 void main() {
@@ -17,6 +18,13 @@ void main() {
 
     test('AM', () {
       expect(d.format('A'), equals('上午'));
+    });
+
+    test('RelativeTime', () {
+      final target = d.add(2, 'm')!;
+      expect(d.to(target), '2 分钟后');
+      expect(d.from(target), '2 分钟前');
+      expect(d.to(target, true), '2 分钟');
     });
   });
 }
